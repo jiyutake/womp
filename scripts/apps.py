@@ -77,6 +77,9 @@ def get_desktop_entries(app_info, app_count):
 
 def update_cache(all_apps):
     data = {"apps": all_apps }
+    p = os.path.dirname(jsonPath)
+    if not os.path.exists(p): 
+        os.makedirs(p)
     with open(jsonPath, "w") as file:
         json.dump(data, file, indent=2)
 
