@@ -25,5 +25,6 @@
           :flipped true
           :active false)
         (image 
+          :visible {EWW_BATTERY.BAT0.status == "Charging"}
           :image-height 16
           :path "./assets/icons/bolt.svg")))))
