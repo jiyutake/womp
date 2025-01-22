@@ -2,9 +2,9 @@
 (defwindow screenborder []
   :monitor 0 
   :geometry (geometry 
-              :x 60 
+              :x 0
               :y 0 
-              :width 1860
+              :width "100%"
               :height "100%"
               :anchor "top left")
   :stacking "bg"
