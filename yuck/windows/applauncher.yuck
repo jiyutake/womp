@@ -1,0 +1,27 @@
+(defvar revealapplauncher false)
+
+(defwindow applauncher 
+  :geometry (geometry 
+              :x 60
+              :y 0 
+              :width 300 
+              :height 220 
+              :anchor "top left")
+  :stacking "fg"
+  :exclusive true 
+  :monitor 0 
+  :wm-ignore false
+  :windowtype "dialog"
+  :focusable true
+  (box 
+    :orientation "v"
+    :space-evenly false
+    (revealer
+      :valign "start"
+      :reveal revealapplauncher
+      :transition "slidedown"
+      (box 
+        :width 300 
+        :height 220
+        :class "popup"
+        (applauncherwid)))))

@@ -1,0 +1,45 @@
+
+(defwidget applauncherwid []
+  (box 
+    :orientation "v"
+    :space-evenly false
+    (box 
+      :class "widget"
+      (input 
+        :onchange "./scripts/apps.py --query {}"
+        :onaccept "
+          ${ arraylength(appsjson.apps) > 0 ? "(${appsjson.apps[0].desktop}) & ./scripts/apps.py --increase '${appsjson.apps[0].name}' &" : ''}
+          ./scripts/hackslide.sh applauncher revealapplauncher &"))
+    (scroll 
+      :class "applist"
+      :vexpand true 
+      :vscroll true 
+      :hscroll false 
+      (box 
+        :space-evenly false 
+        :orientation "v"
+        (for a in {appsjson.apps}
+          (app :a a))))))
+
+(defwidget app [a]
+  (button 
+    :class "buttonapp"
+    :onclick "
+      (${a.desktop}) & ./scripts/apps.py --increase '${a.name}' & ./scripts/hackslide.sh applauncher applauncherwid
+    "
+    (box 
+      :orientation "h"
+      :space-evenly false 
+      :spacing 10 
+      (image 
+        :visible {a.icon != "null"}
+        :image-height 20 
+        :path {a.icon != "null" ? a.icon : ""})
+      (scroll
+        :hexpand true 
+        :hscroll true 
+        :vscroll false
+        (label 
+          :xalign 0 
+          :markup {a.name})))))
+      

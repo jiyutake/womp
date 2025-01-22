@@ -6,7 +6,7 @@
               :width 60 
               :height "100%"
               :anchor "center left")
-  :stacking "overlay"
+  :stacking "bg"
   :exclusive true 
   :monitor 0 
   :wm-ignore false 

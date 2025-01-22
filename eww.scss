@@ -19,8 +19,11 @@ tooltip {
 }
 
 .popup {
-  @extend tooptip;
-  margin: $margin;
+  background-color: $base;
+  padding: $padding;
+  border: solid 1px $highlight-med;
+  border-radius: $round;
+  margin: $margin * 2;
 }
 
 menu {
@@ -85,7 +88,12 @@ entry {
   margin: $margin;
   border: solid 1px $muted;
   border-radius: $round; 
+  &.transparent {
+    background-color: transparent;
+    border: none;
+  }
 }
 
 @import "./scss/bar.scss";
 @import "./scss/screenborder.scss";
+@import "./scss/applauncher.scss";

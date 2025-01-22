@@ -7,12 +7,16 @@
 
 (deflisten theme :initial '{}' "./scripts/parsetheme.py")
 
+(deflisten appsjson :initial '{"apps": []}' "./scripts/apps.py")
+
 ;; Windows
 (include "./yuck/windows/bar.yuck")
 (include "./yuck/windows/screenborder.yuck")
+(include "./yuck/windows/applauncher.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/workspaces.yuck")
 (include "./yuck/widgets/clock.yuck")
 (include "./yuck/widgets/battery.yuck")
 (include "./yuck/widgets/system.yuck")
+(include "./yuck/widgets/applauncher.yuck")

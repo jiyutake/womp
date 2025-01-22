@@ -23,7 +23,7 @@
             :reveal {scrolliconsindex == 0}
             (buttonicons 
               :path "./assets/icons/search.svg"
-              :onclick ""))
+              :onclick "./bin/toggle_applauncher.sh &"))
           (buttonicons 
             :path "./assets/icons/bell.svg"
             :onclick "")
@@ -46,7 +46,7 @@
 
 (defwidget buttonicons [path onclick]
   (button 
-    :onclick "onclick"
+    :onclick onclick
     (image 
       :style "margin: 2px;"
       :path path 
