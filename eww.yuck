@@ -9,9 +9,9 @@
 
 ;; Windows
 (include "./yuck/windows/bar.yuck")
-(include "./yuck/windows/screenborder.yuck")
 
 ;; Widgets
+(include "./yuck/widgets/workspaces.yuck")
 (include "./yuck/widgets/clock.yuck")
 (include "./yuck/widgets/battery.yuck")
 (include "./yuck/widgets/system.yuck")

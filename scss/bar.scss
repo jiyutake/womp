@@ -6,7 +6,7 @@
 
 .clock {
   border-radius: 50px;
-  border: dashed 1px $muted;
+  border: dashed 2.5px $muted;
   background-color: $base;
 }
 
@@ -31,7 +31,6 @@
     background-color: $highlight-med;
 
     highlight {
-      min-height: 8px;
       background-color: $accent;
       border-radius: $round - 3px;
     }

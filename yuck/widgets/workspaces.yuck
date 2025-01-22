@@ -1,0 +1,3 @@
+(deflisten status_workspaces "~/.config/eww/scripts/workspaces.sh")
+(defwidget workspaces []
+    (literal :content status_workspaces))

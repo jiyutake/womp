@@ -37,4 +37,5 @@
         (box 
           :orientation "v"
           (label :text thour)
-          (label :text tmin))))))
+          (label :text tmin)
+          (label :text tpm))))))
