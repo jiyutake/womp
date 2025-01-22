@@ -1,0 +1,14 @@
+
+(defwindow screenborder []
+  :monitor 0 
+  :geometry (geometry 
+              :x 60 
+              :y 0 
+              :width 1860
+              :height "100%"
+              :anchor "top left")
+  :stacking "bg"
+  :windowtype "desktop"
+  (box 
+    :class "screenborder"))
+  

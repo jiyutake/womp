@@ -9,6 +9,7 @@
 
 ;; Windows
 (include "./yuck/windows/bar.yuck")
+(include "./yuck/windows/screenborder.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/clock.yuck")
