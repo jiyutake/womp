@@ -1,0 +1,48 @@
+
+(defvar scrolliconsindex 0)
+
+(defwidget scrollableicons [] 
+  (overlay
+    (box 
+      :style "margin-right: -10px;"
+      :height 78)
+    (eventbox
+      :onscroll "./scripts/scrollicons.sh {} 2"
+      (box 
+        :class "widget"
+        :orientation "v"
+        :space-evenly false
+        (revealer
+          :transition "slidedown"
+          :reveal {scrolliconsindex == 0}
+          (buttonicons 
+            :path "./assets/icons/search.svg"
+            :onclick ""))
+        (buttonicons 
+          :path "./assets/icons/bell.svg"
+          :onclick "")
+        (revealer
+          :transition "slideup"
+          :reveal {scrolliconsindex == 1}
+          (buttonicons 
+            :path "./assets/icons/music.svg"
+            :onclick ""))))
+    (box
+      :vexpand true
+      :halign "end"
+      :class "fakescrollbar"
+      (box 
+        :class "fakescrollhighlight"
+        :style "
+          margin-top: ${scrolliconsindex * 52 / 2}px;
+          margin-bottom: ${(1-scrolliconsindex) * 52 / 2}px;
+        "))))
+
+(defwidget buttonicons [path onclick]
+  (button 
+    :onclick "onclick"
+    (image 
+      :style "margin: 2px;"
+      :path path 
+      :image-width 24))) 
+      ; :fill-svg {theme.subtle})))

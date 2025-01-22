@@ -1,0 +1,40 @@
+
+(defwindow bar 
+  :geometry (geometry 
+              :x "0"
+              :y "0"
+              :width 60 
+              :height "100%"
+              :anchor "center left")
+  :stacking "overlay"
+  :exclusive true 
+  :monitor 0 
+  :wm-ignore false 
+  :reserve (struts :distance "60px" :side "left")
+  (barstruct))
+
+(defwidget barstruct [] 
+  (centerbox 
+    :class "barbg"
+    :orientation "v"
+    (top)
+    (middle)
+    (bottom)))
+
+(defwidget top [] 
+  (box 
+    :orientation "v"
+    :space-evenly false 
+    (clock)
+    (scrollableicons)))
+
+(defwidget middle [] 
+  (box 
+    :orientation "v"
+    :space-evenly false)) 
+(defwidget bottom [] 
+  (box 
+    :valign "end"
+    :orientation "v"
+    :space-evenly false 
+    (batteryscale)))

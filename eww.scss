@@ -1,0 +1,90 @@
+@import "./theme.scss";
+
+$round: 10px; // widget rounding
+$padding: 5px; 
+$margin: 5px; 
+
+* {
+  all: unset;
+  color: $text; 
+  font-family: "Inter";
+  font-size: 16px;
+}
+
+tooltip {
+  background-color: $base;
+  padding: $padding;
+  border: solid 1px $highlight-med;
+  border-radius: $round;
+}
+
+.popup {
+  @extend tooptip;
+  margin: $margin;
+}
+
+menu {
+  @extend tooltip;
+}
+
+calendar {
+  background-color: $base;
+  color: $text;
+  border-radius: $round;
+  padding: 3px;
+}
+
+calendar:selected {
+  color: $accent;
+  border-radius: $round;
+  font-weight: bold;
+}
+
+calendar.header {
+  color: $accent;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: $muted;
+}
+
+checkbutton {
+  border-radius: 24px;
+  border: solid 2px $text;
+  padding: 2px;
+  check {
+    color: transparent;
+    border-radius: 24px;
+    background-color: transparent;
+  }
+}
+
+checkbutton:checked {
+  check{
+    background-color: $accent;
+  }
+}
+
+entry {
+  color: $text;
+  margin: 0px 5px;
+}
+
+// probably won't use
+.icon {
+  font-family: "Symbols Nerd Font";
+  min-width: 1em;
+  min-height: 1em;
+  font-size: 18px;
+}
+
+.widget {
+  background-color: $overlay;
+  padding: $padding;
+  margin: $margin;
+  border: solid 1px $muted;
+  border-radius: $round; 
+}
+
+@import "./scss/bar.scss";

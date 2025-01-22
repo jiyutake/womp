@@ -1,0 +1,41 @@
+
+(defvar revealdigitaltime false)
+
+(defwidget clock [] 
+  (eventbox
+    :onhover "${EWW_CMD} update revealdigitaltime=true"
+    :onhoverlost "${EWW_CMD} update revealdigitaltime=false"
+    (box 
+      :orientation "v"
+      :class "widget"
+      :space-evenly false
+      (revealer
+        :reveal {!revealdigitaltime}
+        :transition "slidedown"
+        (overlay
+          (box
+            :height 28
+            :class "clock")
+          (transform
+            :transform-origin-x "50%"
+            :transform-origin-y "50%"
+            :rotate {tmin*100/60}
+            (box
+              (box 
+                :class "longhand")))
+          (transform
+            :transform-origin-x "50%"
+            :transform-origin-y "50%"
+            :rotate {(thour * 60 + tmin) * 100 / (12 * 60)}
+            (box
+              (box 
+                :class "shorthand")))))
+          
+      (revealer
+        :reveal revealdigitaltime
+        :transition "slideup"
+        (box 
+          :orientation "v"
+          (label :text thour)
+          (label :text tmin)
+          (label :text tpm))))))

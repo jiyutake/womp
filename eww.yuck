@@ -1,0 +1,16 @@
+
+(defpoll thour :initial "0" :interval "60s" "date +'%I'")
+(defpoll tmin :initial "0" :interval "60s" "date +'%M'")
+(defpoll tpm :initial "0" :interval "60s" "date +'%p'")
+
+(defpoll bat0 :initial "0" :interval "30s" "./scripts/sys_info.sh --bat")
+
+(deflisten theme :initial '{}' "./scripts/parsetheme.py")
+
+;; Windows
+(include "./yuck/windows/bar.yuck")
+
+;; Widgets
+(include "./yuck/widgets/clock.yuck")
+(include "./yuck/widgets/battery.yuck")
+(include "./yuck/widgets/system.yuck")

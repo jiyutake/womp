@@ -1,0 +1,29 @@
+
+(defwidget batteryscale [] 
+  (box 
+    :orientation "v"
+    :space-evenly false
+    (box 
+      :halign "center"
+      :width 16 
+      :height 4
+      :class "batnub")
+    (box 
+      :class "widget"
+      :style "padding: 3px;"
+      :height 55
+      :tooltip "${bat0}%"
+      (overlay
+        (scale 
+          :hexpand true
+          :vexpand true
+          :class "batscale"
+          :value bat0 
+          :min 0 
+          :max 100 
+          :orientation "v"
+          :flipped true
+          :active false)
+        (image 
+          :image-height 16
+          :path "./assets/icons/bolt.svg")))))

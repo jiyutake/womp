@@ -1,0 +1,58 @@
+
+.barbg {
+  background-color: $base;
+  padding: $padding;
+}
+
+.clock {
+  border-radius: 50px;
+  border: dashed 1px $muted;
+  background-color: $base;
+}
+
+.shorthand {
+  margin: 6px 13px 13px 13px;
+  background-color: $love;
+  border-radius: $round;
+}
+
+.longhand {
+  margin: 4px 13px 13px 13px;
+  background-color: $pine;
+  border-radius: $round;
+}
+
+.batscale {
+  all: unset; 
+  trough {
+    min-height: 40px;
+    min-width: 32px;
+    border-radius: $round - 3px;
+    background-color: $highlight-med;
+
+    highlight {
+      background-color: $accent;
+      border-radius: $round - 3px;
+    }
+  }
+}
+
+.batnub {
+  background-color: $muted;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-top: 6px;
+  margin-bottom: -10px;
+}
+
+.fakescrollbar {
+  background-color: $highlight-med;
+  border-radius: $round;
+  margin: 13px -1px 13px -2px;
+}
+
+.fakescrollhighlight {
+  background-color: $subtle;
+  border-radius: $round;
+  transition: 500ms;
+}
