@@ -48,11 +48,39 @@
 .fakescrollbar {
   background-color: $highlight-med;
   border-radius: $round;
-  margin: 13px -1px 13px -2px;
+  margin: 13px 4px 13px -7px;
 }
 
 .fakescrollhighlight {
   background-color: $subtle;
   border-radius: $round;
   transition: 500ms;
+}
+
+.workspace {
+  border-radius: 10px;
+  margin: $margin;
+  transition: 500ms;
+
+  &.occupied {
+    background-color: $muted;
+    padding: 10px 0px;
+  }
+
+  &.focused {
+    background-color: $accent;
+    color: $accent;
+    padding: 20px 0px;
+  }
+
+  &.urgent {
+    background-color: $red;
+    padding: 15px 0px;
+  }
+
+  &.empty {
+    background-color: $overlay;
+    border: 1px solid $muted;
+    padding: 8px 0px;
+  }
 }

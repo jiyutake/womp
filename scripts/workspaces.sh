@@ -1,11 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
 # Checks if a list ($1) contains an element ($2)
 contains() {
     for e in $1; do
-        [ "$e" -eq "$2" ] && echo 1 && return 
+        [ "$e" = "$2" ] && echo 1 && return 
     done; echo 0
-} print_workspaces() { buf=""
+} 
+
+print_workspaces() { 
+    buf=""
     desktops=$(bspc query -D --names)
     focused_desktop=$(bspc query -D -d focused --names)
     occupied_desktops=$(bspc query -D -d .occupied --names)
@@ -24,10 +27,11 @@ contains() {
             ws=$d
             class="empty"
         fi  
-        buf="$buf (eventbox :cursor \"hand\" (button :class \"$class\" :onclick \"bspc desktop -f $ws\" \"\"))"
+        buf="$buf\"$class\","
     done
-    echo "(box :class \"workspaces\" :halign \"center\" :valign \"center\" :vexpand true :hexpand true :space-evenly false $buf)"
-} print_workspaces
+    echo "[${buf%,}]"
+} 
+print_workspaces
 bspc subscribe desktop node_transfer | while read -r _ ; do
     print_workspaces
 done 

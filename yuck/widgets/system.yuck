@@ -2,41 +2,47 @@
 (defvar scrolliconsindex 0)
 
 (defwidget scrollableicons [] 
-  (overlay
-    (box 
-      :style "margin-right: -10px;"
-      :height 78)
-    (eventbox
-      :onscroll "./scripts/scrollicons.sh {} 2"
+  (box 
+    :style "margin-right: -5px;"
+    :height 78
+    (overlay
+      ; I have no idea why adding this box makes it work
       (box 
-        :class "widget"
-        :orientation "v"
-        :space-evenly false
-        (revealer
-          :transition "slidedown"
-          :reveal {scrolliconsindex == 0}
+        :style "margin-right: -5px;"
+        :height 78)
+      (eventbox
+        :onscroll "./scripts/scrollicons.sh {} 2"
+        (box 
+          :width 40
+          :halign "start"
+          :class "widget"
+          :orientation "v"
+          :space-evenly false
+          (revealer
+            :transition "slidedown"
+            :reveal {scrolliconsindex == 0}
+            (buttonicons 
+              :path "./assets/icons/search.svg"
+              :onclick ""))
           (buttonicons 
-            :path "./assets/icons/search.svg"
-            :onclick ""))
-        (buttonicons 
-          :path "./assets/icons/bell.svg"
-          :onclick "")
-        (revealer
-          :transition "slideup"
-          :reveal {scrolliconsindex == 1}
-          (buttonicons 
-            :path "./assets/icons/music.svg"
-            :onclick ""))))
-    (box
-      :vexpand true
-      :halign "end"
-      :class "fakescrollbar"
-      (box 
-        :class "fakescrollhighlight"
-        :style "
-          margin-top: ${scrolliconsindex * 52 / 2}px;
-          margin-bottom: ${(1-scrolliconsindex) * 52 / 2}px;
-        "))))
+            :path "./assets/icons/bell.svg"
+            :onclick "")
+          (revealer
+            :transition "slideup"
+            :reveal {scrolliconsindex == 1}
+            (buttonicons 
+              :path "./assets/icons/music.svg"
+              :onclick ""))))
+      (box
+        :vexpand true
+        :halign "end"
+        :class "fakescrollbar"
+        (box 
+          :class "fakescrollhighlight"
+          :style "
+            margin-top: ${scrolliconsindex * 52 / 2}px;
+            margin-bottom: ${(1-scrolliconsindex) * 52 / 2}px;
+          ")))))
 
 (defwidget buttonicons [path onclick]
   (button 

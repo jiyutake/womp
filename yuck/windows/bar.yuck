@@ -32,7 +32,9 @@
   (box 
     :orientation "v"
     :space-evenly false
+    :valign "center"
     (workspaces))) 
+
 (defwidget bottom [] 
   (box 
     :valign "end"
