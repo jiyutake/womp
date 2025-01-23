@@ -37,8 +37,14 @@ def update():
     print("{" + f"\"disc\": {r}, \"hand\": {h}" + "}", flush=True)
 
 if __name__ == "__main__": 
+    initial = True
     while True: 
         out = proc.stdout.readline().strip()
+        # silly bug where playerctl thinks the status is stopped upon following
+        if initial: 
+            out = subprocess.getoutput("playerctl status").strip()
+            initial = False
+
         playing = out == "Playing"
         if playing: 
             threading.Thread(target=spinning, daemon=True).start()

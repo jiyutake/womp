@@ -3,4 +3,4 @@
   (scroll 
     (label 
       :visible false 
-      :text "${notifications}")))
+      :text "${notifications} ${playerctl}")))
