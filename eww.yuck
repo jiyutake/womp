@@ -7,6 +7,9 @@
 
 (deflisten theme :initial '{}' "./scripts/parsetheme.py")
 
+(deflisten pcover "./scripts/pollcover.sh")
+(deflisten playerctl :initial '{"song": "", "artist": "", "status: "Stopped"}' "playerctl metadata --format '{\"song\": \"{{title}}\",\"artist\": \"{{artist}}\", \"status\": \"{{status}}\"}' -F")
+
 (deflisten appsjson :initial '{"apps": []}' "./scripts/apps.py")
 
 (deflisten notifications :initial '{
@@ -22,6 +25,7 @@
 (include "./yuck/windows/screenborder.yuck")
 (include "./yuck/windows/applauncher.yuck")
 (include "./yuck/windows/notifications.yuck")
+(include "./yuck/windows/recordplayer.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/workspaces.yuck")
@@ -31,3 +35,5 @@
 (include "./yuck/widgets/applauncher.yuck")
 (include "./yuck/widgets/notifications.yuck")
 (include "./yuck/widgets/keepopen.yuck")
+(include "./yuck/widgets/systray.yuck")
+(include "./yuck/widgets/recordplayer.yuck")

@@ -32,7 +32,7 @@
             :reveal {scrolliconsindex == 1}
             (buttonicons 
               :path "./assets/icons/music.svg"
-              :onclick ""))))
+              :onclick "${EWW_CMD} open recordplayer --toggle"))))
       (box
         :vexpand true
         :halign "end"

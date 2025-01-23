@@ -26,7 +26,8 @@
     :orientation "v"
     :space-evenly false 
     (clock)
-    (scrollableicons)))
+    (scrollableicons)
+    (John)))
 
 (defwidget middle [] 
   (box 

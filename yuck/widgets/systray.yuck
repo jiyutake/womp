@@ -1,0 +1,26 @@
+
+(defvar revealsystray false)
+
+; Elkowar told me to name this width "John"
+(defwidget John [] 
+  (box 
+    :orientation "v"
+    :space-evenly false
+    (revealer 
+      :reveal revealsystray
+      :transition "slidedown"
+      (box 
+        :class "widget transparent"
+        (systray
+          :orientation "v"
+          :icon-size 25)))
+    (button
+      :onclick "${EWW_CMD} update revealsystray=${!revealsystray}"
+      (transform
+        :transform-origin-x "50%"
+        :transform-origin-y "50%"
+        :rotate {revealsystray ? 0 : 50}
+        (image 
+          :class "widget transparent"
+          :path "./assets/icons/chevron.svg")))))
+   

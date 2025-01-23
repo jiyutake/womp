@@ -1,0 +1,26 @@
+
+.recordcover {
+  transition: 500ms;
+  border-radius: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 1.0;
+}
+
+.recordcenter {
+  border-radius: 500px;
+  background-color: $overlay;
+  padding: 26px;
+}
+
+.recordcentercenter {
+  border-radius: 500px;
+  background-color: $muted;
+  padding: 5px;
+}
+
+.artisttext {
+  color: $muted;
+  font-size: 15px;
+}

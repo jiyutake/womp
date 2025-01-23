@@ -1,0 +1,94 @@
+
+(deflisten recordanim :initial "{\"disc\": 0, \"hand\": -2}" "./scripts/recordhandanim.py")
+
+(defwidget recordplayerwid []
+  (box 
+    :class "popup"
+    :orientation "h"
+    :space-evenly false
+    (dischand)
+    (box
+      :orientation "v"
+      :hexpand true
+      (box 
+        :orientation "v"
+        :valign "end"
+        :halign "center"
+        :width 210
+        :style "margin: 10px;"
+        (scroll
+          :hscroll true
+          :vscroll false
+          (label 
+            :xalign 0
+            :markup "${playerctl.song}")) 
+        (scroll
+          :hscroll true
+          :vscroll false
+          :hexpand true
+          (label 
+            :xalign 0
+            :class "artisttext"
+            :markup "<b>${playerctl.artist}</b>"))) 
+      (box
+        :class "widget"
+        :orientation "h"
+        :halign "center"
+        :valign "start"
+        :width 200
+        :height 70
+        (button 
+          :onclick "playerctl previous"
+          (image 
+            :image-height 30
+            :path "./assets/icons/previous.svg")) 
+        (button 
+          :onclick "playerctl play-pause"
+          (image 
+            :image-height 30
+            :path {playerctl.status == "Playing" ? "./assets/icons/pause.svg" : "./assets/icons/play.svg"})) 
+        (button 
+          :onclick "playerctl next"
+          (image 
+            :image-height 30
+            :path "./assets/icons/next.svg")))))) 
+        
+          
+
+(defwidget dischand [] 
+  (overlay 
+    (box 
+      :width 230 
+      :height 230)
+    (transform
+      :transform-origin-x "50%"
+      :transform-origin-y "50%"
+      :rotate {recordanim.disc}
+      (box 
+        :halign "center"
+        :valign "center"
+        :class "recordcover"
+        :width 180 
+        :height 180
+        :valign "center"
+        :style "background-image: url('${pcover}');"))
+    (box 
+      :valign "center"
+      :halign "center"
+      :class "recordcenter")
+    (box 
+      :valign "center"
+      :halign "center"
+      :class "recordcentercenter")
+    (transform
+      :transform-origin-x 204
+      :transform-origin-y 39
+      :rotate {recordanim.hand}
+      (box
+        (image 
+          :style "margin-top: 5px;"
+          :path "./assets/recordhand.svg"
+          :valign "start"
+          :halign "end"
+          :image-width 110)))))
+      
