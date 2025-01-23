@@ -72,9 +72,6 @@ class NotificationDaemon(dbus.service.Object):
 
     @dbus.service.method("org.freedesktop.Notifications", in_signature="susssasa{sv}i", out_signature="u")
     def Notify(self, app_name, replaces_id, app_icon, summary, body, actions, hints, expire_timeout):
-        command = "zsh /home/$(whoami)/.config/eww/scripts/notifClose  > /dev/null 2>&1 & "
-        subprocess.run(command, shell=True)
-
         if int(replaces_id) != 0:
             id = int(replaces_id)
         else:
@@ -196,7 +193,7 @@ class NotificationDaemon(dbus.service.Object):
             popup = True
         else:
             popup = False
-            Timer(0.5, self.hackslide, args=(True,))
+            Timer(0.5, self.hackslide, args=(True,)).start()
 
         output_json = json.dumps(data)
         print (output_json, flush=True)
