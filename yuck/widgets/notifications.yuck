@@ -1,0 +1,38 @@
+(defwidget singlenotif [noti]
+  (revealer 
+    :transition "slideup"
+    :reveal {noti.id != -727}
+    (button 
+      :onclick "./scripts/notifmanage.sh --dismiss ${noti.id}"
+      :onrightclick "./scripts/notifmanage.sh --close ${noti.id}"
+      (box 
+        :class "popup"
+        :style "margin: 0px;"
+        :orientation "h"
+        :space-evenly false
+        (box 
+          :halign "start"
+          :valign "center"
+          :visible {noti.image != "null"}
+          :class "notiimage"
+          :width 60 
+          :height 60 
+          :style "background-image: url('${noti.image}')")
+        (box 
+          :orientation "v"
+          :valign "center"
+          :hexpand true
+          :space-evenly false
+          (scroll 
+            :height 20 
+            :hscroll true 
+            :vscroll false 
+            (label 
+              :xalign "0"
+              :markup "<b>${noti.summary}</b>"))
+          (label 
+            :xalign "0"
+            :wrap true 
+            :visible {noti.body != "null"}
+            :markup {noti.body}))))))
+        

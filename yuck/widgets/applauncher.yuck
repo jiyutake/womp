@@ -25,7 +25,7 @@
   (button 
     :class "buttonapp"
     :onclick "
-      (${a.desktop}) & ./scripts/apps.py --increase '${a.name}' & ./scripts/hackslide.sh applauncher applauncherwid
+      (${a.desktop}) & ./scripts/apps.py --increase '${a.name}' & ./scripts/hackslide.sh applauncher revealapplauncher &
     "
     (box 
       :orientation "h"

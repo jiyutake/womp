@@ -1,0 +1,10 @@
+
+.notiimage {
+  transition: 500ms ease;
+  border-radius: $round;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: $margin;
+  opacity: 1.0;
+}

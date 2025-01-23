@@ -9,10 +9,19 @@
 
 (deflisten appsjson :initial '{"apps": []}' "./scripts/apps.py")
 
+(deflisten notifications :initial '{
+                                    "count": 0,
+                                    "dnd": false,
+                                    "notifications": [],
+                                    "popups": []}
+    '
+    "./scripts/notifcatch.py")
+
 ;; Windows
 (include "./yuck/windows/bar.yuck")
 (include "./yuck/windows/screenborder.yuck")
 (include "./yuck/windows/applauncher.yuck")
+(include "./yuck/windows/notifications.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/workspaces.yuck")
@@ -20,3 +29,5 @@
 (include "./yuck/widgets/battery.yuck")
 (include "./yuck/widgets/system.yuck")
 (include "./yuck/widgets/applauncher.yuck")
+(include "./yuck/widgets/notifications.yuck")
+(include "./yuck/widgets/keepopen.yuck")

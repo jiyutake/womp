@@ -1,0 +1,6 @@
+
+(defwidget keepupdate [] 
+  (scroll 
+    (label 
+      :visible false 
+      :text "${notifications}")))
