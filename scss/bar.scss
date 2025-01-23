@@ -37,6 +37,11 @@
   }
 }
 
+.batoverlay {
+  border-radius: $round - 3px;
+  box-shadow: 0px 0px 0px 2px $overlay;
+}
+
 .batnub {
   background-color: $muted;
   border-top-left-radius: 5px;

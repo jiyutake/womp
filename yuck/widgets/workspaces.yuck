@@ -9,5 +9,6 @@
     :space-evenly false 
     ; This makes it so the boxes don't rerender, making animations work
     (for i in {[0, 1, 2]}
-      (box 
+      (button 
+        :onclick "bspc desktop -f ${i+1}"
         :class "workspace ${status_workspaces[i]}"))))

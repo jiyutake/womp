@@ -27,4 +27,6 @@
         (image 
           :visible {EWW_BATTERY.BAT0.status == "Charging"}
           :image-height 16
-          :path "./assets/icons/bolt.svg")))))
+          :path "./assets/icons/bolt.svg")
+        (box 
+          :class "batoverlay")))))
