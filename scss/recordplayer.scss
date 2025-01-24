@@ -6,15 +6,22 @@
   background-size: cover;
   background-position: center;
   opacity: 1.0;
+  margin: 10px;
+  &.unround {
+    border-radius: $round;
+    margin: 0px;
+  }
 }
 
 .recordcenter {
+  transition: 500ms;
   border-radius: 500px;
   background-color: $overlay;
-  padding: 26px;
+  padding: 28px;
 }
 
 .recordcentercenter {
+  transition: 500ms;
   border-radius: 500px;
   background-color: $muted;
   padding: 5px;
@@ -23,4 +30,14 @@
 .artisttext {
   color: $muted;
   font-size: 15px;
+}
+
+.trickcover {
+  background-color: $overlay;
+  margin-top: -65;
+  margin-bottom: 6px;
+  margin-left: 0px;
+  margin-right: -5px;
+  border-bottom: solid 1px $muted;
+  border-top: solid 1px $muted;
 }

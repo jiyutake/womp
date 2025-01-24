@@ -30,6 +30,7 @@ eww_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__
 
 os.makedirs(cache_dir, exist_ok=True)
 
+picomrunning = subprocess.getoutput("pidof picom").isdigit()
 popup = False
 active_popups = {}
 
@@ -178,7 +179,7 @@ class NotificationDaemon(dbus.service.Object):
         ).savev(save_path, "png")
 
     def write_log_file(self, data):
-        global popup
+        global popup, picomrunning
         # global active_popups
         # for p in data["popups"]: 
         #     pid = p["id"]
@@ -193,7 +194,10 @@ class NotificationDaemon(dbus.service.Object):
             popup = True
         else:
             popup = False
-            Timer(0.5, self.hackslide, args=(True,)).start()
+            if not picomrunning: 
+                self.hackslide(True)
+            else:
+                Timer(0.5, self.hackslide, args=(True,)).start()
 
         output_json = json.dumps(data)
         print (output_json, flush=True)
@@ -206,11 +210,11 @@ class NotificationDaemon(dbus.service.Object):
     def hackslide(self, close=False):
         global popup
         if not close: 
-            subprocess.Popen(["eww", "-c", eww_dir, "open", "notifications"])
+            subprocess.Popen(["eww", "-c", eww_dir, "open", "notifications"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         else:
             if popup:
                 return
-            subprocess.Popen(["eww", "-c", eww_dir, "close", "notifications"])
+            subprocess.Popen(["eww", "-c", eww_dir, "close", "notifications"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     def read_log_file(self):
         try:
@@ -249,10 +253,10 @@ class NotificationDaemon(dbus.service.Object):
         
 
     def save_popup(self, notification):
-        global active_popups
+        global active_popups, picomrunning
 
         current = self.read_log_file()
-        if len(current["popups"]) >= 3:
+        if len(current["popups"]) >= (3 if picomrunning else 1):
             oldest_popup = current["popups"].pop()
             self.DismissPopup(oldest_popup["id"])
 

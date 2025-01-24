@@ -2,8 +2,8 @@
 
 (defwindow applauncher 
   :geometry (geometry 
-              :x 60
-              :y 0 
+              :x 70
+              :y 10 
               :width 300 
               :height 220 
               :anchor "top left")
@@ -20,8 +20,9 @@
       :valign "start"
       :reveal revealapplauncher
       :transition "slidedown"
+      :duration {picomrunning ? 500 : 0}
       (box 
         :width 300 
         :height 220
-        :class "popup"
+        :class "popup ${picomrunning ? '' : 'square'}"
         (applauncherwid)))))

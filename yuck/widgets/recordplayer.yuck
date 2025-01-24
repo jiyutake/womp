@@ -1,94 +1,156 @@
 
-(deflisten recordanim :initial "{\"disc\": 0, \"hand\": -2}" "./scripts/recordhandanim.py")
+(deflisten recordanim :initial "{\"disc\": 0, \"hand\": -1}" "./scripts/recordhandanim.py")
+(deflisten lyricsjson :initial '{"found": false, "lyrics": "Can\'t find lyrics :\("}' "./scripts/lyrics.py")
+(defvar reveallyrics false)
 
 (defwidget recordplayerwid []
   (box 
-    :class "popup"
+    :class "popup ${picomrunning ? '' : 'square'}"
     :orientation "h"
     :space-evenly false
-    (dischand)
-    (box
+    (box 
       :orientation "v"
-      :hexpand true
-      (box 
-        :orientation "v"
-        :valign "end"
-        :halign "center"
-        :width 210
-        :style "margin: 10px;"
-        (scroll
-          :hscroll true
-          :vscroll false
-          (label 
-            :xalign 0
-            :markup "${playerctl.song}")) 
-        (scroll
-          :hscroll true
-          :vscroll false
-          :hexpand true
-          (label 
-            :xalign 0
-            :class "artisttext"
-            :markup "<b>${playerctl.artist}</b>"))) 
+      :space-evenly false
+      (dischand)
       (box
-        :class "widget"
-        :orientation "h"
-        :halign "center"
-        :valign "start"
-        :width 200
-        :height 70
-        (button 
-          :onclick "playerctl previous"
-          (image 
-            :image-height 30
-            :path "./assets/icons/previous.svg")) 
-        (button 
-          :onclick "playerctl play-pause"
-          (image 
-            :image-height 30
-            :path {playerctl.status == "Playing" ? "./assets/icons/pause.svg" : "./assets/icons/play.svg"})) 
-        (button 
-          :onclick "playerctl next"
-          (image 
-            :image-height 30
-            :path "./assets/icons/next.svg")))))) 
-        
-          
+        :orientation "v"
+        :vexpand true
+        (box 
+          :orientation "v"
+          :valign "start"
+          :halign "center"
+          :width 240
+          (scroll
+            :hscroll true
+            :vscroll false
+            (label 
+              :markup "${playerctl.song}")) 
+          (scroll
+            :hscroll true
+            :vscroll false
+            :hexpand true
+            (label 
+              :class "artisttext"
+              :markup "<b>${playerctl.artist}</b>"))) 
+        (box
+          :orientation "h"
+          :space-evenly false
+          :halign "center"
+          (box
+            :class "widget"
+            :orientation "h"
+            :halign "center"
+            :valign "end"
+            :width 180
+            :height 70
+            (button 
+              :onclick "playerctl previous"
+              (image 
+                :image-height 30
+                :path "./assets/icons/previous.svg")) 
+            (button 
+              :onclick "playerctl play-pause"
+              (image 
+                :image-height 30
+                :path {playerctl.status == "Playing" ? "./assets/icons/pause.svg" : "./assets/icons/play.svg"})) 
+            (button 
+              :onclick "playerctl next"
+              (image 
+                :image-height 30
+                :path "./assets/icons/next.svg"))) 
+          (revealer
+            :reveal {lyricsjson.found && picomrunning}
+            :transition "slideright"
+            (box 
+              :class "widget"   
+              :style {reveallyrics ? "margin-right: 0px; padding-right: 11px; border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0;" : ""}
+              :valign "end"
+              :orientation "h"
+              :width 120
+              :height 70
+              (image 
+                :image-height 30
+                :path "./assets/icons/lyrics.svg") 
+              (button
+                :onclick "${EWW_CMD} update reveallyrics=${!reveallyrics}"
+                (transform
+                  :transform-origin-x "50%"
+                  :transform-origin-y "50%"
+                  :rotate { reveallyrics ? 75 : 25}
+                  (image 
+                    :image-height 30
+                    :path "./assets/icons/chevron.svg")))))))) 
+    (revealer
+      :reveal {reveallyrics && lyricsjson.found && picomrunning}
+      :transition "slideright"
+      (overlay
+        (box 
+          :class "widget"
+          :style "border-bottom-left-radius: 0px; padding: 10px;"
+          :width 310
+          (scroll 
+            :hexpand true 
+            :vexpand true
+            :hscroll false 
+            :vscroll true 
+            (label 
+              :yalign 0
+              :wrap true 
+              :markup {lyricsjson.lyrics})))
+        (box 
+          :halign "start"
+          :valign "end"
+          :class "trickcover")))))
+
 
 (defwidget dischand [] 
   (overlay 
     (box 
-      :width 230 
-      :height 230)
+      :width 300 
+      :height 300)
     (transform
       :transform-origin-x "50%"
       :transform-origin-y "50%"
-      :rotate {recordanim.disc}
+      :rotate {powersaving ? 0 : recordanim.disc}
       (box 
         :halign "center"
         :valign "center"
-        :class "recordcover"
-        :width 180 
-        :height 180
+        :class "recordcover ${powersaving ? 'unround' : ''}"
+        :width  250
+        :height 250
         :valign "center"
         :style "background-image: url('${pcover}');"))
     (box 
+      :style {powersaving ? "opacity: 0;" : ""}
       :valign "center"
       :halign "center"
       :class "recordcenter")
     (box 
+      :style {powersaving ? "opacity: 0;" : ""}
       :valign "center"
       :halign "center"
       :class "recordcentercenter")
     (transform
-      :transform-origin-x 204
-      :transform-origin-y 39
+      :transform-origin-x 269
+      :transform-origin-y 56
       :rotate {recordanim.hand}
       (box
+        :visible {!powersaving}
         (image 
-          :style "margin-top: 5px;"
+          :style "margin-top: 15px;"
           :path "./assets/recordhand.svg"
           :valign "start"
           :halign "end"
-          :image-width 110)))))
+          :image-width 130)))))
+    ;; to find the pivot
+    ; (box 
+    ;   :halign "start"
+    ;   :valign "start"
+    ;   :style "
+    ;   background-color: red;
+    ;   margin-left: 269px;
+    ;   margin-right: -270px;
+    ;   margin-top: 56px;
+    ;   margin-bottom: -57px;
+    ;   ")))
       

@@ -23,7 +23,7 @@ def spinning():
 def handmove(): 
     global playing, h
     cstate = playing
-    target = 4 if playing else -2
+    target = 3 if playing else -1
     while abs(h-target) > 0.01: 
         if playing != cstate: 
             return

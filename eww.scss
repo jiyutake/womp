@@ -23,7 +23,9 @@ tooltip {
   padding: $padding;
   border: solid 1px $highlight-med;
   border-radius: $round;
-  margin: $margin * 2;
+  &.square {
+    border-radius: 0;
+  }
 }
 
 menu {
@@ -88,6 +90,7 @@ entry {
   margin: $margin;
   border: solid 1px $muted;
   border-radius: $round; 
+  transition: 500ms;
   &.transparent {
     background-color: transparent;
     border: none;

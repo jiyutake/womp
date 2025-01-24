@@ -2,12 +2,13 @@
   (revealer 
     :transition "slideup"
     :reveal {noti.id != -727}
+    :duration {picomrunning ? 500 : 0}
     (button 
       :onclick "./scripts/notifmanage.sh --dismiss ${noti.id}"
       :onrightclick "./scripts/notifmanage.sh --close ${noti.id}"
       (box 
-        :class "popup"
-        :style "margin: 0px;"
+        :class "popup ${picomrunning ? '' : 'square'}"
+        :style {picomrunning ? "margin: 10px;" : ""}
         :orientation "h"
         :space-evenly false
         (box 
