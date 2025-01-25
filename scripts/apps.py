@@ -53,10 +53,11 @@ def get_desktop_entries(app_info, app_count):
     
     icon = app_info.get_icon()
     if icon and icon.get_names():
-        icon_name = icon.get_names()[0]
+        icon_name = icon.to_string()
         icon_path = fetch(icon_name) or fetch("unknown")
     else: 
         icon_path = fetch("unknown")
+    # icon_path = fetch(app_name.lower()) or fetch("unknown")
 
     exe_path = app_info.get_executable()
 
@@ -100,7 +101,6 @@ def get_cached_entries(refresh=False):
     for app_info in app_info.get_all(): 
         if not app_info.should_show(): 
             continue
-
         all_apps.append(get_desktop_entries(app_info, app_count))
 
     # Sort applications by count
