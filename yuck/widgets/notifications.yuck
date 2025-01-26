@@ -37,3 +37,72 @@
             :visible {noti.body != "null"}
             :markup {noti.body}))))))
         
+(defwidget notiflogwid [] 
+  (box 
+    :orientation "v"
+    :space-evenly false
+    (box 
+      :orientation "h"
+      :space-evenly false 
+      (label 
+        :class "widget transparent"
+        :xalign 0
+        :hexpand true
+        :markup "Notifications")
+      (button 
+        :class "widget"
+        :style "margin-right: 15px;"
+        :onclick "./scripts/notifmanage.sh --clear"
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (image 
+            :path "./assets/icons/bin.svg"
+            :image-height 24)
+          (label 
+            :style "margin: 0px 5px;"
+            :text "Delete"))))
+    (scroll 
+      :class "notilog"
+      :vexpand true 
+      :hscroll false 
+      :vscroll true 
+      (box 
+        :orientation "v"
+        :space-evenly false 
+        (for n in {notifications.notifications}
+          (singlenotiflog :noti n))))))
+  
+(defwidget singlenotiflog [noti] 
+  (button 
+    :onclick "./scripts/notifmanage.sh --close ${noti.id}"
+    (box 
+      :class "widget"
+      :style "margin-right: 15px;"
+      :orientation "h"
+      :space-evenly false
+      (box 
+        :halign "start"
+        :valign "center"
+        :visible {noti.image != "null"}
+        :class "notiimage"
+        :width 60 
+        :height 60 
+        :style "background-image: url('${noti.image}')")
+      (box 
+        :orientation "v"
+        :valign "center"
+        :hexpand true
+        :space-evenly false
+        (scroll 
+          :height 20 
+          :hscroll true 
+          :vscroll false 
+          (label 
+            :xalign "0"
+            :markup "<b>${noti.summary}</b>"))
+        (label 
+          :xalign "0"
+          :wrap true 
+          :visible {noti.body != "null"}
+          :markup {noti.body})))))

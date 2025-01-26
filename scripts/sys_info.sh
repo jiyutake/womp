@@ -69,9 +69,9 @@ get_battery() {
     case $battery_state in
         "discharging")
             if [ "$battery_percentage" -le 10 ]; then
-                notify-send -a battery "Battery percentage 10%" "HOLY FUCK PLEASE CHARGE ME"
+                notify-send -a battery "Desktop" "io'm m tired....,,... (10% battery left)"
             elif [ "$battery_percentage" -le 15 ]; then
-                notify-send -a battery "Battery Percentage 15%" "You should probably plug in the charger"
+                notify-send -a battery "Desktop" "getting eepy (15% battery left)"
             fi
             ;;
     esac

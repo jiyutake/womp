@@ -8,3 +8,17 @@
   margin: $margin;
   opacity: 1.0;
 }
+
+.notilog > scrollbar {
+  background-color: $highlight-med;
+  transition: 500ms;
+  margin: $margin;
+  border-radius: $round;
+
+  slider {
+    background-color: $subtle;
+    border-radius: $round;
+    min-width: 5px;
+    transition: 500ms;
+  }
+}

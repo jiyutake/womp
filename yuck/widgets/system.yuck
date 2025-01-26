@@ -26,7 +26,8 @@
               :onclick "./bin/toggle_applauncher.sh &"))
           (buttonicons 
             :path "./assets/icons/bell.svg"
-            :onclick "")
+            :onrightclick "./scripts/notifmanage.sh --toggle"
+            :onclick "./scripts/hackslide.sh notificationlog revealnotificationlog &")
           (revealer
             :transition "slideup"
             :reveal {scrolliconsindex == 1}
@@ -44,11 +45,20 @@
             margin-bottom: ${(1-scrolliconsindex) * 52 / 2}px;
           ")))))
 
-(defwidget buttonicons [path onclick]
+(defwidget buttonicons [path onclick ?onrightclick]
   (button 
     :onclick onclick
+    :onrightclick onrightclick
     (image 
       :style "margin: 2px;"
       :path path 
       :image-width 24))) 
       ; :fill-svg {theme.subtle})))
+
+(defwidget hamburg [] 
+  (button 
+    :class "widget"
+    (image 
+      :image-width 24
+      :style "margin: 2px;"
+      :path "./assets/icons/menu.svg")))

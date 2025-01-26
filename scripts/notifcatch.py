@@ -235,7 +235,7 @@ class NotificationDaemon(dbus.service.Object):
         current = self.read_log_file()
         current["notifications"].insert(0, notification)
         
-        if len(current["notifications"]) > 5: 
+        if len(current["notifications"]) > 15: 
             latest = current["notifications"].pop()
             self.CloseNotification(latest["id"])
 

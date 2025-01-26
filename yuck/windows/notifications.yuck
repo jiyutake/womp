@@ -33,4 +33,36 @@
                    "tleft": 0}
                '}))))
 
+(defvar revealnotificationlog false)
+
+(defwindow notificationlog 
+  :geometry (geometry
+              :x -10 
+              :y 10 
+              :width 420 
+              :height 320
+              :anchor "top right")
+  :stacking "fg"
+  :exclusive false 
+  :monitor 0 
+  :wm-ignore false 
+  :windowtype "dialog"
+  :focusable true
+  (box 
+    :orientation "h"
+    :space-evenly false 
+    (box 
+      :hexpand true)
+    (revealer 
+      :halign "end"
+      :reveal revealnotificationlog
+      :transition "slideleft"
+      :duration {picomrunning ? 500 : 0}
+      (box 
+        :width 420 
+        :height 320 
+        :class "popup ${picomrunning ? '': 'square'}"
+        :style "padding-right: 0px;"
+        (notiflogwid)))))
         
+                     
