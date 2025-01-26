@@ -10,7 +10,7 @@
       :reveal revealsystray
       :transition "slidedown"
       (box 
-        :class "widget transparent"
+        :class "widget transparent bar"
         (systray
           :orientation "v"
           :icon-size 25)))
@@ -21,6 +21,6 @@
         :transform-origin-y "50%"
         :rotate {revealsystray ? 0 : 50}
         (image 
-          :class "widget transparent"
+          :class "widget transparent bar"
           :path "./assets/icons/chevron.svg")))))
    

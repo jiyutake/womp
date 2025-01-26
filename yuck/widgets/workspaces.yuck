@@ -4,7 +4,7 @@
 
 (defwidget workspaces []
   (box 
-    :class "widget"
+    :class "widget bar"
     :orientation "v"
     :space-evenly false 
     ; This makes it so the boxes don't rerender, making animations work

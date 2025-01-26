@@ -15,24 +15,24 @@
         (box 
           :width 40
           :halign "start"
-          :class "widget"
+          :class "widget bar"
           :orientation "v"
           :space-evenly false
           (revealer
             :transition "slidedown"
             :reveal {scrolliconsindex == 0}
             (buttonicons 
-              :path "./assets/icons/search.svg"
+              :path "./assets/icons/search${revealapplauncher ? '' : 'off'}.svg"
               :onclick "./bin/toggle_applauncher.sh &"))
           (buttonicons 
-            :path "./assets/icons/bell.svg"
+            :path "./assets/icons/bell${notifications.dnd ? 'off' : ''}.svg"
             :onrightclick "./scripts/notifmanage.sh --toggle"
             :onclick "./scripts/hackslide.sh notificationlog revealnotificationlog &")
           (revealer
             :transition "slideup"
             :reveal {scrolliconsindex == 1}
             (buttonicons 
-              :path "./assets/icons/music.svg"
+              :path "./assets/icons/music${playerctl.song == '' ? 'off' : ''}.svg"
               :onclick "${EWW_CMD} open recordplayer --toggle"))))
       (box
         :vexpand true
@@ -45,20 +45,79 @@
             margin-bottom: ${(1-scrolliconsindex) * 52 / 2}px;
           ")))))
 
-(defwidget buttonicons [path onclick ?onrightclick]
+(defwidget buttonicons [path onclick ?onrightclick ?class ?tooltip ?size]
   (button 
+    :class class
     :onclick onclick
     :onrightclick onrightclick
+    :tooltip tooltip
     (image 
       :style "margin: 2px;"
       :path path 
-      :image-width 24))) 
+      :image-width {size ?: 24}))) 
       ; :fill-svg {theme.subtle})))
 
 (defwidget hamburg [] 
   (button 
-    :class "widget"
+    :class "widget bar"
+    :onclick "./scripts/hackslide.sh systemctl revealsystemctl &"
     (image 
       :image-width 24
       :style "margin: 2px;"
       :path "./assets/icons/menu.svg")))
+
+(defwidget systemctlwid [] 
+  (box
+    :orientation "v"
+    :space-evenly false 
+    (box 
+      :orientation "h"
+      (buttonicons 
+        :class "widget"
+        :onclick {wifiradio == "enabled" ? "nmcli radio wifi off" : "nmcli radio wifi on"}
+        :path "./assets/icons/wifi${wifiradio == 'enabled' ? '' : 'off'}.svg"
+        :tooltip wifiessid)
+      (buttonicons 
+        :class "widget"
+        :onclick "./scripts/bluetooth.sh --toggle"
+        :path "./assets/icons/bluetooth${bluetoothstatus == 'connected' ? '' : 'off'}.svg"
+        :tooltip bluetoothdevice)
+      (buttonicons 
+        :class "widget"
+        :onclick ""
+        :path "./assets/icons/pen.svg"
+        :tooltip "theme"))
+    (box 
+      :class "widget"
+      :orientation "v"
+      (sysslide 
+        :path "./assets/icons/volumemid.svg"
+        :val volume
+        :tooltip "${volume}%"
+        :onchange "pamixer --set-volume {} & ${EWW_CMD} update volume={} &")
+      (sysslide 
+        :path "./assets/icons/brightness.svg"
+        :val brightness
+        :tooltip "${brightness}%"
+        :onchange "brightnessctl set {}% & ${EWW_CMD} update brightness={} &"))))
+
+(defwidget sysslide [path val onchange ?tooltip]
+  (box 
+    :class "widget transparent bar"
+    :orientation "h"
+    :space-evenly false 
+    :tooltip tooltip
+    :spacing 10
+    (image 
+      :path path
+      :image-height 24) 
+    (scale 
+      :hexpand true 
+      :class "sysslide"
+      :value val 
+      :min 0 
+      :max 100 
+      :orientation "h"
+      :onchange onchange)))
+
+   

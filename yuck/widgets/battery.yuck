@@ -9,7 +9,7 @@
       :height 4
       :class "batnub")
     (box 
-      :class "widget"
+      :class "widget bar"
       :style "padding: 3px;"
       :height 55
       :tooltip "${bat0}%"

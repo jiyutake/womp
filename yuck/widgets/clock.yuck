@@ -7,7 +7,7 @@
     :onhoverlost "${EWW_CMD} update revealdigitaltime=false"
     (box 
       :orientation "v"
-      :class "widget"
+      :class "widget bar"
       :space-evenly false
       (revealer
         :reveal {!revealdigitaltime}

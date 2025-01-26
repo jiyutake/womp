@@ -3,6 +3,17 @@
 (defpoll tmin :initial "0" :interval "60s" "date +'%M'")
 (defpoll tpm :initial "0" :interval "60s" "date +'%p'")
 
+;; TODO increase polling time after adding osd
+(defpoll brightness :initial "0" :interval "2s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+(defpoll volumemute :initial "false" :interval "2s" "pamixer --get-mute")
+(defpoll volume :initial "0" :interval "2s" "pamixer --get-volume")
+
+(defpoll wifiessid :initial "" :interval "30s" "./scripts/sys_info.sh --wifi")
+(defpoll wifiradio :initial "off" :interval "2s" "nmcli radio wifi")
+
+(defpoll bluetoothstatus :initial "disconnected" :interval "30s" "./scripts/bluetooth.sh --con_status")
+(defpoll bluetoothdevice :initial "" :interval "30s" "./scripts/bluetooth.sh --devname")
+
 (defpoll bat0 :initial "0" :interval "30s" "./scripts/sys_info.sh --bat")
 
 (deflisten theme :initial '{}' "./scripts/parsetheme.py")
@@ -29,6 +40,7 @@
 (include "./yuck/windows/applauncher.yuck")
 (include "./yuck/windows/notifications.yuck")
 (include "./yuck/windows/recordplayer.yuck")
+(include "./yuck/windows/systemctl.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/workspaces.yuck")

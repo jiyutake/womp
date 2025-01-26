@@ -113,6 +113,15 @@ get_vol_icon () {
     echo $icon
 }
 
+get_wifi_essid () {
+    if [ $status ]; then 
+        text=""
+    else
+        text=$(nmcli c | grep wlp0s20f3 | awk '{print ($1)}')
+    fi
+    echo $text
+}
+
 ## Execute accordingly
 if [[ "$1" == "--cpu" ]]; then
 	get_cpu
@@ -126,4 +135,6 @@ elif [[ "$1" == "--baticon" ]]; then
 	get_battery_icon
 elif [[ "$1" == "--volicon" ]]; then
 	get_vol_icon
+elif [[ "$1" == "--wifi" ]]; then
+	get_wifi_essid
 fi

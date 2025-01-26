@@ -20,7 +20,7 @@ tooltip {
 
 .popup {
   background-color: $base;
-  padding: $padding;
+  padding: 2 * $padding;
   border: solid 1px $highlight-med;
   border-radius: $round;
   &.square {
@@ -87,10 +87,14 @@ entry {
 .widget {
   background-color: $overlay;
   padding: $padding;
-  margin: $margin;
+  margin: 2 * $margin;
   border: solid 1px $muted;
   border-radius: $round; 
   transition: 500ms;
+  &.bar {
+    padding: $padding;
+    margin: $margin;
+  }
   &.transparent {
     background-color: transparent;
     border: none;
@@ -102,3 +106,4 @@ entry {
 @import "./scss/applauncher.scss";
 @import "./scss/notifications.scss";
 @import "./scss/recordplayer.scss";
+@import "./scss/systemctl.scss";

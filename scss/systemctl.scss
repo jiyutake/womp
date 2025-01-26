@@ -1,0 +1,22 @@
+
+.sysslide {
+  all: unset;
+  trough {
+    background-color: $highlight-med;
+    border-radius: $round;
+    margin : $margin;
+    min-height: 12px;
+    min-width: 80px;
+
+    slider {
+      min-height: 15px;
+      min-width: 15px;
+      margin: -10px;
+    }
+
+    highlight {
+      background-color: $text;
+      border-radius: $round;
+    }
+  }
+}

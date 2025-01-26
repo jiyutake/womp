@@ -42,7 +42,7 @@
             :halign "center"
             :valign "end"
             :width 180
-            :height 70
+            :height 80
             (button 
               :onclick "playerctl previous"
               (image 
@@ -67,7 +67,7 @@
               :valign "end"
               :orientation "h"
               :width 120
-              :height 70
+              :height 80
               (image 
                 :image-height 30
                 :path "./assets/icons/lyrics.svg") 
@@ -138,7 +138,7 @@
         :visible {!powersaving}
         (image 
           :style "margin-top: 15px;"
-          :path "./assets/recordhand.svg"
+          :path "./assets/icons/recordhand.svg"
           :valign "start"
           :halign "end"
           :image-width 130)))))

@@ -66,26 +66,29 @@
   border-radius: 10px;
   margin: $margin;
   transition: 500ms;
+  border: solid 1px;
 
   &.occupied {
     background-color: $muted;
+    border-color: $subtle;
     padding: 10px 0px;
   }
 
   &.focused {
     background-color: $accent;
-    color: $accent;
+    border-color: $text;
     padding: 20px 0px;
   }
 
   &.urgent {
     background-color: $red;
+    border-color: $text;
     padding: 15px 0px;
   }
 
   &.empty {
     background-color: $overlay;
-    border: 1px solid $muted;
+    border-color: $muted;
     padding: 8px 0px;
   }
 }
