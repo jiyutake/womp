@@ -133,8 +133,16 @@ class Manager:
 
     def listen_playback(self): 
         proc = Popen(["playerctl", "status", "-F"], stdout=PIPE, text=True)
+        initial = True
         while True: 
             out = proc.stdout.readline().strip()
+            
+            # stupid playerctl bug
+            
+            if initial: 
+                out = getoutput("playerctl status").strip()
+                initial = False
+
             self.running = out == "Playing"
             self.reset()
 

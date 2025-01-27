@@ -41,3 +41,14 @@
   border-bottom: solid 1px $muted;
   border-top: solid 1px $muted;
 }
+
+.trickcoverround {
+  margin-top: -80px;
+  margin-bottom: 70px;
+  margin-left: 0px;
+  margin-right: -10px;
+  border-bottom: solid 1px $muted;
+  border-right: solid 1px $muted;
+  border-bottom-right-radius: $round;
+  box-shadow: 3px 3px 0px $overlay;
+}

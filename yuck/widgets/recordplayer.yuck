@@ -63,7 +63,7 @@
             :transition "slideright"
             (box 
               :class "widget"   
-              :style {reveallyrics ? "margin-right: 0px; padding-right: 11px; border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0;" : ""}
+              :style {reveallyrics ? "margin-right: 0px; padding-right: 16px; border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0;" : ""}
               :valign "end"
               :orientation "h"
               :width 120
@@ -87,7 +87,8 @@
         (box 
           :class "widget"
           :style "border-bottom-left-radius: 0px; padding: 10px;"
-          :width 310
+          :halign "start"
+          :width 330
           (scroll 
             :hexpand true 
             :vexpand true
@@ -100,7 +101,11 @@
         (box 
           :halign "start"
           :valign "end"
-          :class "trickcover")))))
+          :class "trickcover")
+        (box 
+          :halign "start"
+          :valign "end"
+          :class "trickcoverround")))))
 
 
 (defwidget dischand [] 

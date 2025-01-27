@@ -11,6 +11,7 @@
         :style {picomrunning ? "margin: 10px;" : ""}
         :orientation "h"
         :space-evenly false
+        :spacing 20
         (box 
           :halign "start"
           :valign "center"
@@ -86,8 +87,8 @@
         :valign "center"
         :visible {noti.image != "null"}
         :class "notiimage"
-        :width 60 
-        :height 60 
+        :width 70 
+        :height 70 
         :style "background-image: url('${noti.image}')")
       (box 
         :orientation "v"

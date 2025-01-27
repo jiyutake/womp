@@ -1,8 +1,8 @@
 
 (defwindow recordplayer
   :geometry (geometry
-              :x -10 
-              :y -10 
+              :x -20 
+              :y -20 
               :width 300 
               :height 430
               :anchor "bottom right")

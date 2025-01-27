@@ -37,8 +37,8 @@
 
 (defwindow notificationlog 
   :geometry (geometry
-              :x -10 
-              :y 10 
+              :x -20 
+              :y 20 
               :width 420 
               :height 320
               :anchor "top right")
@@ -58,11 +58,13 @@
       :reveal revealnotificationlog
       :transition "slideleft"
       :duration {picomrunning ? 500 : 0}
-      (box 
-        :width 420 
-        :height 320 
-        :class "popup ${picomrunning ? '': 'square'}"
-        :style "padding-right: 0px;"
-        (notiflogwid)))))
+      (eventbox
+        :onhoverlost "./scripts/hackslide.sh notificationlog revealnotificationlog close &"
+        (box 
+          :width 420 
+          :height 320 
+          :class "popup ${picomrunning ? '': 'square'}"
+          :style "padding-right: 0px;"
+          (notiflogwid))))))
         
                      
