@@ -91,7 +91,7 @@
       :class "widget"
       :orientation "v"
       (sysslide 
-        :path "./assets/icons/volumemid.svg"
+        :path "./assets/icons/volume${volumemute == true ? 'mute' : volume < 15 ? 'mid' : 'full'}.svg"
         :val volume
         :tooltip "${volume}%"
         :onchange "pamixer --set-volume {} & ${EWW_CMD} update volume={} &")
