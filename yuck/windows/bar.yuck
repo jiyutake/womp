@@ -10,6 +10,7 @@
   :exclusive true 
   :monitor 0 
   :wm-ignore false 
+  :windowtype "dock"
   :reserve (struts :distance "60px" :side "left")
   (barstruct))
 

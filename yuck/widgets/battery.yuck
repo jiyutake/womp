@@ -18,6 +18,7 @@
           :hexpand true
           :vexpand true
           :class "batscale"
+          :css {bat0 >= 90 ? "trough slider {background-image: none;}" : ""}
           :value bat0 
           :min 0 
           :max 100 

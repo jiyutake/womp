@@ -16,8 +16,9 @@ Under the `bin` directory is where you will find useful scripts that interact wi
 
 | Script | Function | 
 |---|---|
-| start.sh | Launches the shell properly |
-| toggle_applauncher.sh | Toggles app launcher |
-| settheme.sh | Set a theme. Only available themes (as of now) is `rosepine`, `rosepine_dawn`, and `rosepine_moon` |
-| picomcheck.sh | Enable/Disable transparency options based on whether picom is running |
-| picomcheckpoll.sh | Polls picom status. Enables/Disables transparency options accordingly |
+| `start.sh` | Launches the shell properly |
+| `toggle_applauncher.sh` | Toggles app launcher |
+| `settheme.sh` | Set a theme. Only available themes (as of now) is `rosepine`, `rosepine_dawn`, and `rosepine_moon` |
+| `picomcheck.sh` | Enable/disable transparency options based on whether picom is running |
+| `picomcheckpoll.sh` | Polls picom status. Enables/disables transparency options accordingly |
+| `fullscreencheck.sh` | Hides/opens shell based on whether a window is fullscreened. Should be called whenever a window toggles fullscreen |

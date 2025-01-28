@@ -8,6 +8,9 @@
   &:hover {
     @extend .widget;
     margin-right: 15px;
+    label {
+      font-weight: 500;
+    }
   }
 }
 
