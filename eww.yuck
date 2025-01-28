@@ -16,7 +16,7 @@
 
 (defpoll bat0 :initial "0" :interval "30s" "./scripts/sys_info.sh --bat")
 
-(deflisten theme :initial '{}' "./scripts/parsetheme.py")
+; (deflisten theme :initial '{}' "./scripts/parsetheme.py")
 
 (deflisten pcover "./scripts/pollcover.sh")
 (deflisten playerctl :initial '{"song": "", "artist": "", "status": "Stopped"}' "playerctl metadata --format '{\"song\": \"{{title}}\",\"artist\": \"{{artist}}\", \"status\": \"{{status}}\"}' -F")

@@ -96,6 +96,7 @@
             :vscroll true 
             (label 
               :yalign 0
+              :xalign 0
               :wrap true 
               :markup {lyricsjson.lyrics})))
         (box 
