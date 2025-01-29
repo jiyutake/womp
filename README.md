@@ -14,4 +14,24 @@ git clone https://github.com/jiyutake/womp ~/.config/eww/womp
 
 `./bin/womp.sh` is a CLI tool for you to interact with Womp. It must stay in this directory when you run it, but you can alias it in your shell config. Run `./bin/womp.sh help` to see all the commands and options.
 
-To properly launch Womp, we highly recommend you run `./bin/womp.sh start`. Place this command somewhere in your `bspwmrc` config.
+To properly launch Womp, we highly recommend you run `womp.sh start`. Place this command somewhere in your `bspwmrc` config.
+
+### Recommended set up
+
+After cloning the repository: 
+1. Under `bspwmrc`, add 
+```
+$HOME/.config/eww/womp/bin/womp.sh start &
+```
+2. Under `sxhkdrc`, add 
+```
+# toggles applauncher
+super + d
+    $HOME/.config/eww/womp/bin/womp.sh window toggle applauncher &
+
+# toggles picom
+super + p
+    $HOME/.config/eww/womp/bin/womp.sh compositor toggle &
+```
+
+More possibilities can be found by checking `womp.sh help`.
