@@ -2,7 +2,6 @@
 
 EWW_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/.."
 
-
 update () {
     STAT=`eww -c $EWW_DIR active-windows | grep bar`
 

@@ -13,9 +13,12 @@
         :reveal {!revealdigitaltime}
         :transition "slidedown"
         (overlay
-          (box
-            :height 28
-            :class "clock")
+          (image 
+            :image-height 28
+            :path "./assets/icons/clockframe.svg")
+          ; (box
+          ;   :height 28
+          ;   :class "clock")
           (transform
             :transform-origin-x "50%"
             :transform-origin-y "50%"
