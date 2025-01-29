@@ -43,5 +43,4 @@
     :orientation "v"
     :space-evenly false 
     (batteryscale)
-    (hamburg)
-    (keepupdate)))
+    (hamburg)))

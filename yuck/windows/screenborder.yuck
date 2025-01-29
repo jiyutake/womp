@@ -10,4 +10,4 @@
   :stacking "bg"
   :windowtype "desktop"
   (box 
-    :class "screenborder"))
+    :class "screenborderwin"))

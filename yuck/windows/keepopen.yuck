@@ -1,0 +1,14 @@
+
+(defwindow keepopen 
+  :geometry (geometry 
+              :x 0 
+              :y 0 
+              :width 0 
+              :height 0 
+              :anchor "top left")
+  :stacking "bg"
+  :windowtype "desktop"
+  (scroll 
+    (label 
+      :visible false 
+      :text "${notifications} ${playerctl}")))

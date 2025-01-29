@@ -41,6 +41,7 @@
 (include "./yuck/windows/notifications.yuck")
 (include "./yuck/windows/recordplayer.yuck")
 (include "./yuck/windows/systemctl.yuck")
+(include "./yuck/windows/keepopen.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/workspaces.yuck")
@@ -49,6 +50,5 @@
 (include "./yuck/widgets/system.yuck")
 (include "./yuck/widgets/applauncher.yuck")
 (include "./yuck/widgets/notifications.yuck")
-(include "./yuck/widgets/keepopen.yuck")
 (include "./yuck/widgets/systray.yuck")
 (include "./yuck/widgets/recordplayer.yuck")
