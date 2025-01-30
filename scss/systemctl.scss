@@ -19,4 +19,7 @@
       border-radius: $round;
     }
   }
+  &.red trough highlight {
+    background-color: $love;
+  }
 }

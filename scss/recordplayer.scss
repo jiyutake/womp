@@ -8,6 +8,18 @@
   opacity: 1.0;
   margin: 10px;
   &.unround {
+    border: solid 1px $muted;
+    border-radius: $round;
+    margin: 0px;
+  }
+}
+
+.recordshadow {
+  margin: 10px;
+  transition: 500ms;
+  border-radius: 500px;
+  box-shadow: 5px 5px 4px black;
+  &.unround {
     border-radius: $round;
     margin: 0px;
   }

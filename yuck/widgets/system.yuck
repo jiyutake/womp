@@ -91,29 +91,38 @@
       :class "widget"
       :orientation "v"
       (sysslide 
-        :path "./assets/icons/volume${volumemute == true ? 'mute' : volume < 15 ? 'mid' : 'full'}.svg"
+        :path "./assets/icons/volume${volumemute == true ? 'mute' : volume < 15 ? 'mid' : 'full'}"
         :val volume
         :tooltip "${volume}%"
+        :maxcond {volumemute == false && volume >= 70}
         :onchange "pamixer --set-volume {} & ${EWW_CMD} update volume={} &")
       (sysslide 
-        :path "./assets/icons/brightness.svg"
+        :path "./assets/icons/brightness"
         :val brightness
         :tooltip "${brightness}%"
+        :maxcond {brightness >= 70}
         :onchange "brightnessctl set {}% & ${EWW_CMD} update brightness={} &"))))
 
-(defwidget sysslide [path val onchange ?tooltip]
+(defwidget sysslide [path val onchange ?tooltip maxcond]
   (box 
     :class "widget transparent bar"
     :orientation "h"
     :space-evenly false 
     :tooltip tooltip
     :spacing 10
-    (image 
-      :path path
-      :image-height 24) 
+    (overlay
+      (image 
+        :path "${path}.svg"
+        :image-height 24) 
+      ;; prevents the error of not finding path
+      (image 
+        :visible maxcond
+        :path {maxcond ? "${path}max.svg" : "${path}.svg"}
+        :style "opacity: ${min(max((val - 70)/30 , 0), 1)};"
+        :image-height 24)) 
     (scale 
       :hexpand true 
-      :class "sysslide"
+      :class "sysslide ${val >= 70 ? 'red' : ''}"
       :value val 
       :min 0 
       :max 100 

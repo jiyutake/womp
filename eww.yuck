@@ -42,6 +42,7 @@
 (include "./yuck/windows/recordplayer.yuck")
 (include "./yuck/windows/systemctl.yuck")
 (include "./yuck/windows/keepopen.yuck")
+(include "./yuck/windows/osd.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/workspaces.yuck")

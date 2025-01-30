@@ -54,6 +54,21 @@ help() {
             poll 
                 continuously checks picom status and enables/disbles transparency accordingly
 
+    \e[1mvolume\e[22m
+        \e[4mUsage\e[24m: womp.sh volume <OPTION>
+        Control system volume, also opens an indicator popup window
+        \e[1mOPTION\e[22m
+            increase
+            decrease
+            toggle
+
+    \e[1mbrightness\e[22m
+        \e[4mUsage\e[24m: womp.sh brightness <OPTION>
+        Control system brightness, also opens an indicator popup window
+        \e[1mOPTION\e[22m
+            increase
+            decrease
+
 '   
 }
 
@@ -130,6 +145,26 @@ case $1 in
             ;;
         esac
         
+    ;;
+    volume) 
+        case "$2" in
+            increase|decrease|toggle) 
+                $EWW_DIR/bin/osd.sh volume $2 &
+            ;;
+            *) 
+                help
+            ;;
+        esac
+    ;;
+    brightness) 
+        case "$2" in
+            increase|decrease) 
+                $EWW_DIR/bin/osd.sh brightness $2 &
+            ;;
+            *) 
+                help
+            ;;
+        esac
     ;;
     help|*) 
         help

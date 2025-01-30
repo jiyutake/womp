@@ -5,6 +5,15 @@ This config is made for bspwm, and will only work for bspwm. No it will not work
 
 That said, we only provide a shell, so you will have to set up a bspwm, sxhkd, and picom config yourself. This is done purposefully to ensure that you actually know how your system work.
 
+### Dependencies
+
+- pamixer 
+- brightnessctl
+- playerctl
+- python gobject, dbus
+
+### Installation
+
 To install, clone this folder anywhere, preferably in a directory under `~/.config/eww/`. Then run `./bin/womp.sh start`
 ```
 mkdir -p ~/.config/eww/womp

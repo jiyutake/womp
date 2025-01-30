@@ -48,6 +48,10 @@
       animation-iteration-count: infinite;
     }
   }
+  &.noanim trough slider {
+    animation-name: none;
+    background-image: none;
+  }
 }
 
 @keyframes waveanim {

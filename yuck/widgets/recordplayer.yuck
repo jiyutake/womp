@@ -11,13 +11,18 @@
     (box 
       :orientation "v"
       :space-evenly false
-      (dischand)
+      ;; Crazy method to force element to not render when it doesn't need to
+      (box
+        (for i in {powersaving ? [0] : []}
+          (normalcover))
+        (for i in {powersaving ? [] : [0]}
+          (dischand)))
       (box
         :orientation "v"
         :vexpand true
         (box 
           :orientation "v"
-          :valign "start"
+          :valign "center"
           :halign "center"
           :width 240
           (scroll
@@ -108,12 +113,30 @@
           :valign "end"
           :class "trickcoverround")))))
 
+(defwidget normalcover [] 
+  (box 
+    :width 300 
+    :height 300
+    (box
+      :halign "center"
+      :valign "center"
+      :class "recordcover unround"
+      :width  280
+      :height 280
+      :style "background-image: url('${pcover}');")))
+    
 
 (defwidget dischand [] 
   (overlay 
     (box 
       :width 300 
       :height 300)
+    (box
+      :halign "center"
+      :valign "center"
+      :class "recordshadow"
+      :width 250
+      :height 250) 
     (transform
       :transform-origin-x "50%"
       :transform-origin-y "50%"
@@ -124,7 +147,6 @@
         :class "recordcover ${powersaving ? 'unround' : ''}"
         :width  250
         :height 250
-        :valign "center"
         :style "background-image: url('${pcover}');"))
     (box 
       :style {powersaving ? "opacity: 0;" : ""}

@@ -15,7 +15,8 @@ tooltip {
   background-color: $base;
   padding: $padding;
   border: solid 1px $highlight-med;
-  border-radius: $round;
+  // why doesn't this work?
+  // border-radius: $round;
 }
 
 .popup {
