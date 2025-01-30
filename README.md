@@ -12,9 +12,16 @@ git clone https://github.com/jiyutake/womp ~/.config/eww/womp
 ~/.config/eww/womp/bin/womp.sh start
 ```
 
-`./bin/womp.sh` is a CLI tool for you to interact with Womp. It must stay in this directory when you run it, but you can alias it in your shell config. Run `./bin/womp.sh help` to see all the commands and options.
+`./bin/womp.sh` is a CLI tool for you to interact with Womp, run `./bin/womp.sh help` to see all the commands and options.
 
-To properly launch Womp, we highly recommend you run `womp.sh start`. Place this command somewhere in your `bspwmrc` config.
+> [!TIP]
+> The script must stay in this directory when you run it, but you can symlink the script for convenience 
+> ```
+> ln -s ~/.config/eww/womp/bin/womp.sh ~/.local/bin/womp.sh
+> ```
+
+> [!IMPORTANT]
+> To properly launch Womp, we highly recommend you use `womp.sh start`. Place this command somewhere in your `bspwmrc` config.
 
 ### Recommended set up
 
