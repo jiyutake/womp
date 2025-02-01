@@ -11,6 +11,7 @@ That said, we only provide a shell, so you will have to set up a bspwm, sxhkd, a
 - brightnessctl
 - playerctl
 - python gobject, dbus
+- jq
 
 ### Installation
 

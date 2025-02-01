@@ -1,6 +1,6 @@
 (defwidget singlenotif [noti]
   (revealer 
-    :transition "slideup"
+    :transition {matches(notificationsanchor, "top") ? "slidedown" : "slideup"}
     :reveal {noti.id != -727}
     :duration {picomrunning ? 500 : 0}
     (button 

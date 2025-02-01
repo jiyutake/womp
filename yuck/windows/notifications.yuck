@@ -1,3 +1,4 @@
+(deflisten notificationsanchor "jq -r '.notifications' ~/.cache/eww/winpositions.json")
 
 (defwindow notifications 
   :geometry (geometry 
@@ -11,27 +12,30 @@
   :monitor 0 
   :wm-ignore false 
   :windowtype "dock"
-  (box 
-    :valign "end"
+  (box
     :orientation "v"
-    :space-evenly false 
-    ; :spacing 10
-    (for i in {picomrunning ? [0, 1, 2] : [0]}
-      (singlenotif 
-        :noti {
-               i < arraylength(notifications.popups)
-               ? notifications.popups[i]
-               : '{
-                   "id": -727, 
-                   "app": "",
-                   "summary": "",
-                   "body": "",
-                   "time": "07:27",
-                   "actions": [],
-                   "icon": null,
-                   "image": null, 
-                   "tleft": 0}
-               '}))))
+    :space-evenly false
+    :valign {matches(notificationsanchor, "top") ? "start" : "end"}
+    (box 
+      :orientation "v"
+      :space-evenly false 
+      ; :spacing 10
+      (for i in {picomrunning ? [0, 1, 2] : [0]}
+        (singlenotif 
+          :noti {
+                 i < arraylength(notifications.popups)
+                 ? notifications.popups[i]
+                 : '{
+                     "id": -727, 
+                     "app": "",
+                     "summary": "",
+                     "body": "",
+                     "time": "07:27",
+                     "actions": [],
+                     "icon": null,
+                     "image": null, 
+                     "tleft": 0}
+                 '})))))
 
 ; (defvar revealnotificationlog false)
 
