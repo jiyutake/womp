@@ -35,19 +35,30 @@ git clone https://github.com/jiyutake/womp ~/.config/eww/womp
 ### Recommended set up
 
 After cloning the repository: 
-1. Under `bspwmrc`, add 
+1. Symlink `womp.sh` for convenience. Make sure the paths are correct
 ```
-$HOME/.config/eww/womp/bin/womp.sh start &
+ln -s ~/.config/eww/womp/bin/womp.sh ~/.local/bin/womp.sh
 ```
-2. Under `sxhkdrc`, add 
+
+2. Under `bspwmrc`, add 
+```
+womp.sh start &
+```
+3. Under `sxhkdrc`, add 
 ```
 # toggles applauncher
 super + d
-    $HOME/.config/eww/womp/bin/womp.sh window toggle applauncher &
+    womp.sh window toggle applauncher &
 
-# toggles picom
-super + p
-    $HOME/.config/eww/womp/bin/womp.sh compositor toggle &
+# volume control
+XF86AudioRaiseVolume
+    womp.sh volume increase
+
+XF86AudioLowerVolume
+    womp.sh volume decrease
+
+XF86AudioMute
+    womp.sh volume toggle
 ```
 
 More possibilities can be found by checking `womp.sh help`.

@@ -69,6 +69,23 @@ help() {
             increase
             decrease
 
+    \e[1manchor\e[22m
+        \e[4mUsage\e[24m: womp.sh anchor <WINDOW> <ANCHOR>
+        Set the anchor of a popup window
+        \e[1mWINDOW\e[22m
+            osd
+            notifications
+            recordplayer
+            notificationlog
+            applauncher
+        \e[1mANCHOR\e[22m
+            top left
+            top center
+            top right
+            center
+            bottom left
+            bottom center
+            bottom right
 '   
 }
 
@@ -78,31 +95,10 @@ case $1 in
     ;;
     window)
         case "$3" in
-            applauncher|notificationlog|systemctl) 
+            applauncher|notificationlog|systemctl|bar|screenborder|recordplayer) 
                 case "$2" in
-                    open|toggle)
-                        $EWW_DIR/scripts/hackslide.sh $3 reveal$3 &> /dev/null &
-                    ;;
-                    close)
-                        $EWW_DIR/scripts/hackslide.sh $3 reveal$3 close &> /dev/null &
-                    ;;
-                    *) 
-                        help
-                        exit 1
-                    ;;
-                esac
-                
-            ;;
-            bar|screenborder|recordplayer) 
-                case "$2" in
-                    open)
-                        eww -c $EWW_DIR open $3
-                    ;;
-                    toggle)
-                        eww -c $EWW_DIR open $3 --toggle
-                    ;;
-                    close)
-                        eww -c $EWW_DIR close $3
+                    open|toggle|close)
+                        $EWW_DIR/scripts/winpos.sh $3 $2
                     ;;
                     *) 
                         help
@@ -165,6 +161,33 @@ case $1 in
                 help
             ;;
         esac
+    ;;
+    anchor)
+        case "$2" in
+            notifications|osd|recordplayer|notificationlog|applauncher) 
+                WIN=$2
+                POSCONFIG="$HOME/.cache/eww/winpositions.json"
+                shift 2
+                case "$*" in 
+                    "top left"| \
+                    "top right"| \
+                    "top center"| \
+                    "center"| \
+                    "bottom left"| \
+                    "bottom right"| \
+                    "bottom center") 
+                        echo $(jq ".$WIN = \"$*\"" $POSCONFIG) > $POSCONFIG
+                    ;;
+                    *)
+                        help
+                    ;;
+                esac
+            ;;
+            *) 
+                help
+            ;;
+        esac
+        
     ;;
     help|*) 
         help

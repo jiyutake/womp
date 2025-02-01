@@ -1,15 +1,12 @@
 
-(defvar osdanchory "top")
-(defvar osdanchorx "center")
-
 (defvar osdstack 0)
 (defvar osdcount 0)
-(defvar osdreveal false)
+; (defvar revealosd false)
 
 (defwindow osd 
   :geometry (geometry
               :x 0 
-              :y 10
+              :y 20
               :width 300
               :height 0 
               :anchor "top center")
@@ -18,28 +15,28 @@
   :monitor 0 
   :wm-ignore false 
   :windowtype "dock"
-  (box 
-    :orientation "v"
-    :space-evenly false 
-    (revealer 
-      :valign {osdanchory == 'top' ? "start" : 'end'}
-      :reveal osdreveal 
-      :transition "slide${osdanchory == 'top' ? 'down' : 'up'}"
-      :duration {picomrunning ? 500 : 0}
-      (box
-        :class "popup ${picomrunning ? '' : 'square'}"
-        (stack 
-          :selected osdstack
-          :transition "none"
-          (sysslide 
-            :path "./assets/icons/volume${volumemute == true ? 'mute' : volume < 15 ? 'mid' : 'full'}"
-            :val volume
-            :tooltip "${volume}%"
-            :maxcond {volumemute == false && volume >= 70}
-            :onchange "pamixer --set-volume {} & ${EWW_CMD} update volume={} &")
-          (sysslide 
-            :path "./assets/icons/brightness"
-            :val brightness
-            :tooltip "${brightness}%"
-            :maxcond {brightness >= 70}
-            :onchange "brightnessctl set {}% & ${EWW_CMD} update brightness={} &"))))))
+  ; (box 
+  ;   :orientation "v"
+  ;   :space-evenly false 
+  ;   (revealer 
+  ;     :valign {osdanchory == 'top' ? "start" : 'end'}
+  ;     :reveal revealosd
+  ;     :transition "slide${osdanchory == 'top' ? 'down' : 'up'}"
+  ;     :duration {picomrunning ? 500 : 0})
+  (box
+    :class "popup ${picomrunning ? '' : 'square'}"
+    (stack 
+      :selected osdstack
+      :transition "none"
+      (sysslide 
+        :path "./assets/icons/volume${volumemute == true ? 'mute' : volume < 15 ? 'mid' : 'full'}"
+        :val volume
+        :tooltip "${volume}%"
+        :maxcond {volumemute == false && volume >= 70}
+        :onchange "pamixer --set-volume {} & ${EWW_CMD} update volume={} &")
+      (sysslide 
+        :path "./assets/icons/brightness"
+        :val brightness
+        :tooltip "${brightness}%"
+        :maxcond {brightness >= 70}
+        :onchange "brightnessctl set {}% & ${EWW_CMD} update brightness={} &"))))

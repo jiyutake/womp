@@ -210,7 +210,7 @@ class NotificationDaemon(dbus.service.Object):
     def hackslide(self, close=False):
         global popup
         if not close: 
-            subprocess.Popen(["eww", "-c", eww_dir, "open", "notifications"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            subprocess.Popen(["./scripts/winpos.sh", "notifications", "open"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         else:
             if popup:
                 return

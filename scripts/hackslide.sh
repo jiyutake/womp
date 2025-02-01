@@ -1,21 +1,35 @@
 #!/bin/bash
 
+# Usage: hackslide <window> <open/close/toggle>
+
 PWD="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/.."
 
+STAT="$(eww -c $PWD get reveal$1)"
+WINDOW=$1
+ACTION=$2
 
-STAT="$(eww -c $PWD get $2)"
-if [[ $STAT == "true" || $3 == "close" ]]; then
-    eww -c $PWD update "$2"=false
+close()  {
+    eww -c $PWD update reveal$WINDOW=false
     if pidof picom; then
         sleep 0.5
     fi
-    STAT="$(eww -c $PWD get $2)"
-    OPEN="$(eww -c $PWD active-windows | grep $1)"
+    STAT="$(eww -c $PWD get reveal$WINDOW)"
+    OPEN="$(eww -c $PWD active-windows | grep $WINDOW)"
     if [[ $STAT == "false" && $OPEN ]]; then 
-        eww -c $PWD close $1
+        eww -c $PWD close $WINDOW
     fi
-else
-    eww -c $PWD open $1
-    eww -c $PWD update "$2"=true
+}
+
+open()  {
+    $PWD/scripts/winpos.sh $WINDOW open
+    eww -c $PWD update reveal$WINDOW=true
+}
+
+if [[ $ACTION == "close" && $STAT == "true" ]]; then
+    close
+elif [[ $ACTION == "open" && $STAT == "false" ]]; then
+    open
+elif [[ $ACTION == "toggle" ]]; then
+    [ $STAT == "true" ] && close || open
 fi
 

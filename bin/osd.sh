@@ -7,7 +7,7 @@ popup() {
     count=$(eww -c $EWW_DIR get osdcount)
     
     if [ $count == 0 ]; then 
-        $EWW_DIR/scripts/hackslide.sh osd osdreveal &
+        $EWW_DIR/scripts/winpos.sh osd open &
     fi
 
     eww -c $EWW_DIR update osdcount=$((count+1))
@@ -17,7 +17,7 @@ popup() {
     count=$(eww -c $EWW_DIR get osdcount)
     eww -c $EWW_DIR update osdcount=$((count-1))
     if [ $count == 1 ]; then 
-        $EWW_DIR/scripts/hackslide.sh osd osdreveal close &
+        $EWW_DIR/scripts/winpos.sh osd close &
     fi
 }
 

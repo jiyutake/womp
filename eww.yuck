@@ -3,10 +3,9 @@
 (defpoll tmin :initial "0" :interval "60s" "date +'%M'")
 (defpoll tpm :initial "0" :interval "60s" "date +'%p'")
 
-;; TODO increase polling time after adding osd
-(defpoll brightness :initial "0" :interval "2s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
-(defpoll volumemute :initial "false" :interval "2s" "pamixer --get-mute")
-(defpoll volume :initial "0" :interval "2s" "pamixer --get-volume")
+(defpoll brightness :initial "0" :interval "30s" "brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
+(defpoll volumemute :initial "false" :interval "30s" "pamixer --get-mute")
+(defpoll volume :initial "0" :interval "30s" "pamixer --get-volume")
 
 (defpoll wifiessid :initial "" :interval "30s" "./scripts/sys_info.sh --wifi")
 (defpoll wifiradio :initial "off" :interval "2s" "nmcli radio wifi")

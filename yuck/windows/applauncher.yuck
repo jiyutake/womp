@@ -1,4 +1,4 @@
-(defvar revealapplauncher false)
+; (defvar revealapplauncher false)
 
 (defwindow applauncher 
   :geometry (geometry 
@@ -13,18 +13,18 @@
   :wm-ignore false
   :windowtype "dialog"
   :focusable true
-  (box 
-    :orientation "v"
-    :space-evenly false
-    (revealer
-      :valign "start"
-      :reveal revealapplauncher
-      :transition "slidedown"
-      :duration {picomrunning ? 500 : 0}
-      (eventbox
-        :onhoverlost "./scripts/hackslide.sh applauncher revealapplauncher close &"
-        (box 
-          :width 300 
-          :height 220
-          :class "popup ${picomrunning ? '' : 'square'}"
-          (applauncherwid))))))
+  ; (box 
+  ;   :orientation "v"
+  ;   :space-evenly false
+    ; (revealer
+    ;   :valign "start"
+    ;   :reveal revealapplauncher
+    ;   :transition "slidedown"
+    ;   :duration {picomrunning ? 500 : 0}
+  (eventbox
+    :onhoverlost "./scripts/winpos.sh applauncher close &"
+    (box 
+      :width 300 
+      :height 220
+      :class "popup ${picomrunning ? '' : 'square'}"
+      (applauncherwid))))

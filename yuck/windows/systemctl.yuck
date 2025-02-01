@@ -1,4 +1,4 @@
-(defvar revealsystemctl false)
+; (defvar revealsystemctl false)
 
 (defwindow systemctl 
   :geometry (geometry 
@@ -17,13 +17,13 @@
     :space-evenly false 
     (box 
       :vexpand true)
-    (revealer 
-      :valign "end"
-      :reveal revealsystemctl
-      :transition "slideup"
-      :duration {picomrunning ? 500 : 0}
-      (eventbox
-        :onhoverlost "./scripts/hackslide.sh systemctl revealsystemctl close &"
-        (box 
-          :class "popup ${picomrunning ? '' : 'square'}"
-          (systemctlwid))))))
+    ; (revealer 
+    ;   :valign "end"
+    ;   :reveal revealsystemctl
+    ;   :transition "slideup"
+    ;   :duration {picomrunning ? 500 : 0}
+    (eventbox
+      :onhoverlost "./scripts/winpos.sh systemctl close &"
+      (box 
+        :class "popup ${picomrunning ? '' : 'square'}"
+        (systemctlwid)))))

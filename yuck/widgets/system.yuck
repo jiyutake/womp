@@ -22,18 +22,18 @@
             :transition "slidedown"
             :reveal {scrolliconsindex == 0}
             (buttonicons 
-              :path "./assets/icons/search${revealapplauncher ? '' : 'off'}.svg"
+              :path "./assets/icons/searchoff.svg"
               :onclick "./bin/toggle_applauncher.sh &"))
           (buttonicons 
             :path "./assets/icons/bell${notifications.dnd ? 'off' : ''}.svg"
             :onrightclick "./scripts/notifmanage.sh --toggle"
-            :onclick "./scripts/hackslide.sh notificationlog revealnotificationlog &")
+            :onclick "./scripts/winpos.sh notificationlog toggle &")
           (revealer
             :transition "slideup"
             :reveal {scrolliconsindex == 1}
             (buttonicons 
               :path "./assets/icons/music${playerctl.song == '' ? 'off' : ''}.svg"
-              :onclick {playerctl.song == '' ? '' : "${EWW_CMD} open recordplayer --toggle"}))))
+              :onclick {playerctl.song == '' ? '' : "./scripts/winpos.sh recordplayer toggle"}))))
       (box
         :vexpand true
         :halign "end"
@@ -60,7 +60,7 @@
 (defwidget hamburg [] 
   (button 
     :class "widget bar"
-    :onclick "./scripts/hackslide.sh systemctl revealsystemctl &"
+    :onclick "./scripts/winpos.sh systemctl toggle &"
     (image 
       :image-width 24
       :style "margin: 2px;"
