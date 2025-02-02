@@ -12,8 +12,10 @@ update () {
     fi
 }
 
-bspc subscribe node_state | while read -r _ _ _ _ type state; do 
-    if [[ $type == "fullscreen" ]]; then 
+PRIMARY=$(bspc query -M -m primary)
+
+bspc subscribe node_state | while read -r _ monitor _ _ type state; do 
+    if [[ $type == "fullscreen" && $monitor == $PRIMARY ]]; then 
         update $state
     fi
 done

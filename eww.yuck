@@ -1,5 +1,5 @@
 
-(defpoll thour :initial "0" :interval "60s" "date +'%I'")
+(defpoll thour :initial "0" :interval "60s" "date +'%H'")
 (defpoll tmin :initial "0" :interval "60s" "date +'%M'")
 (defpoll tpm :initial "0" :interval "60s" "date +'%p'")
 
