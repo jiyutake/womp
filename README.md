@@ -51,6 +51,10 @@ womp.sh start &
 super + d
     womp.sh window toggle applauncher &
 
+# toggles picom
+super + p
+    womp.sh compositor toggle &
+
 # volume control
 XF86AudioRaiseVolume
     womp.sh volume increase

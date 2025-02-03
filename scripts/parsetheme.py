@@ -2,12 +2,13 @@
 import json
 import os
 
-line = open("./theme.scss").read().strip()
+eww_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), ".."))
+line = open(os.path.join(eww_dir, "theme.scss")).read().strip()
 file = line.split("\"")[1]
 
 theme = {}
 
-for line in open(file).readlines(): 
+for line in open(os.path.join(eww_dir, file)).readlines(): 
     line = line.strip()
     if line == "":
         continue
@@ -25,11 +26,13 @@ for line in open(file).readlines():
 
 # recolor the svgs
 
-for file in os.listdir("./assets/iconstemplate"): 
-    f = open(f"./assets/iconstemplate/{file}")
+templatedir = os.path.join(eww_dir, "assets/iconstemplate")
+iconsdir = os.path.join(eww_dir, "assets/icons")
+for file in os.listdir(templatedir): 
+    f = open(os.path.join(templatedir, file))
     content = f.read()
     f.close()
-    f = open(f"./assets/icons/{file}", "w")
+    f = open(os.path.join(iconsdir, file), "w")
     for k, v in theme.items():
         content = content.replace(f"parse({k})", v)
     f.write(content)

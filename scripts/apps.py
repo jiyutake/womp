@@ -52,7 +52,7 @@ def get_desktop_entries(app_info, app_count):
     app_name = app_info.get_name()
     
     icon = app_info.get_icon()
-    if icon and icon.get_names():
+    if icon:
         icon_name = icon.to_string()
         icon_path = fetch(icon_name) or fetch("unknown")
     else: 
