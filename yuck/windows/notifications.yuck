@@ -4,7 +4,7 @@
   :geometry (geometry 
               :x 0 
               :y -10 
-              :width 250 
+              :width 300 
               :height 0
               :anchor "bottom center")
   :stacking "fg"
@@ -20,22 +20,27 @@
       :orientation "v"
       :space-evenly false 
       ; :spacing 10
-      (for i in {picomrunning ? [0, 1, 2] : [0]}
+      ; (for i in {picomrunning ? [0, 1, 2] : [0]}
+      ;   (singlenotif 
+      ;     :noti {
+      ;            i < arraylength(notifications.popups)
+      ;            ? notifications.popups[i]
+      ;            : '{
+      ;                "id": -727, 
+      ;                "app": "",
+      ;                "summary": "",
+      ;                "body": "",
+      ;                "time": "07:27",
+      ;                "actions": [],
+      ;                "icon": null,
+      ;                "image": null, 
+      ;                "tleft": 0}
+      ;            '})))))
+      (for n in {picomrunning ? notifications.popups : 
+                 arraylength(notifications.popups) > 0 ?
+                 [notifications.popups[0]] : []}
         (singlenotif 
-          :noti {
-                 i < arraylength(notifications.popups)
-                 ? notifications.popups[i]
-                 : '{
-                     "id": -727, 
-                     "app": "",
-                     "summary": "",
-                     "body": "",
-                     "time": "07:27",
-                     "actions": [],
-                     "icon": null,
-                     "image": null, 
-                     "tleft": 0}
-                 '})))))
+          :noti n)))))
 
 ; (defvar revealnotificationlog false)
 

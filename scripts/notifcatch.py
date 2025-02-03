@@ -261,11 +261,12 @@ class NotificationDaemon(dbus.service.Object):
             self.DismissPopup(oldest_popup["id"])
 
         current["popups"].insert(0, notification)
+        self.write_log_file(current)
 
         popup_id = notification["id"]
-        active_popups[popup_id] = (GLib.timeout_add_seconds(6, self.DismissPopup, popup_id), datetime.datetime.now().timestamp()+6)
+        # active_popups[popup_id] = (GLib.timeout_add_seconds(6, self.DismissPopup, popup_id), datetime.datetime.now().timestamp()+6)
+        active_popups[popup_id] = GLib.timeout_add_seconds(6, self.DismissPopup, popup_id)
 
-        self.write_log_file(current)
         
 
     @dbus.service.method("org.freedesktop.Notifications", in_signature="u", out_signature="")
