@@ -16,6 +16,9 @@ That said, we only provide a shell, so you will have to set up a bspwm, sxhkd, a
 
 ### Installation
 
+> [!WARNING]
+> Running the config will override `~/.Xresources`, back it up if you would like to keep your current xresources safe.
+
 To install, clone this folder anywhere, preferably in a directory under `~/.config/eww/`. Then run `./bin/womp.sh start`
 ```
 mkdir -p ~/.config/eww/womp

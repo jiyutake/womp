@@ -1,0 +1,39 @@
+! special
+*.foreground:   parse(text)
+*.background:   parse(base)
+*.cursorColor:  parse(text)
+
+! black
+*.color0:       parse(surface)
+*.color8:       parse(overlay)
+
+! red
+*.color1:       parse(love)
+*.color9:       parse(love)
+
+! green
+*.color2:       parse(gold)
+*.color10:      parse(gold)
+
+! yellow
+*.color3:       parse(rose)
+*.color11:      parse(rose)
+
+! blue
+*.color4:       parse(pine)
+*.color12:      parse(pine)
+
+! magenta
+*.color5:       parse(iris)
+*.color13:      parse(iris)
+
+! cyan
+*.color6:       parse(foam)
+*.color14:      parse(foam)
+
+! white
+*.color7:       parse(muted)
+*.color15:      parse(subtle)
+
+st.font: UbuntuMono Nerd Font Mono:size=14
+st.borderpx: 14

@@ -26,16 +26,23 @@ for line in open(os.path.join(eww_dir, file)).readlines():
 
 # recolor the svgs
 
-templatedir = os.path.join(eww_dir, "assets/iconstemplate")
-iconsdir = os.path.join(eww_dir, "assets/icons")
-for file in os.listdir(templatedir): 
-    f = open(os.path.join(templatedir, file))
+def parse(template, target): 
+    f = open(template)
     content = f.read()
     f.close()
-    f = open(os.path.join(iconsdir, file), "w")
+    f = open(target, "w")
     for k, v in theme.items():
         content = content.replace(f"parse({k})", v)
     f.write(content)
     f.close()
+
+
+templatedir = os.path.join(eww_dir, "assets/iconstemplate")
+iconsdir = os.path.join(eww_dir, "assets/icons")
+for file in os.listdir(templatedir): 
+    parse(os.path.join(templatedir, file), os.path.join(iconsdir, file))
+
+# Override Xresources
+parse(os.path.join(eww_dir, "assets/Xresources"), os.path.expanduser("~/.Xresources"))
 
 print(json.dumps(theme))

@@ -194,10 +194,11 @@ class NotificationDaemon(dbus.service.Object):
             popup = True
         else:
             popup = False
-            if not picomrunning: 
-                self.hackslide(True)
-            else:
-                Timer(0.5, self.hackslide, args=(True,)).start()
+            self.hackslide(True)
+            # if not picomrunning: 
+            #     self.hackslide(True)
+            # else:
+            #     Timer(0.5, self.hackslide, args=(True,)).start()
 
         output_json = json.dumps(data)
         print (output_json, flush=True)
