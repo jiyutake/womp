@@ -15,7 +15,7 @@
         (box 
           :halign "start"
           :valign "center"
-          ; :visible {noti.image != "null"}
+          :visible {noti.image != "null"}
           :class "notiimage"
           :width 60 
           :height 60 

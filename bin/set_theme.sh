@@ -10,5 +10,8 @@ case "$1" in
         bspc config active_border_color $(echo $THEME | jq -r  '."highlight-med"')
         eww -c $EWW_DIR reload
     ;;
+    *)
+        echo "Theme not yet added :despair:"
+    ;;
 esac
 
