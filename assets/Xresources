@@ -8,28 +8,28 @@
 *.color8:       parse(overlay)
 
 ! red
-*.color1:       parse(love)
-*.color9:       parse(love)
+*.color1:       parse(base08)
+*.color9:       parse(base08)
 
 ! green
-*.color2:       parse(gold)
-*.color10:      parse(gold)
+*.color2:       parse(base09)
+*.color10:      parse(base09)
 
 ! yellow
-*.color3:       parse(rose)
-*.color11:      parse(rose)
+*.color3:       parse(base0A)
+*.color11:      parse(base0A)
 
 ! blue
-*.color4:       parse(pine)
-*.color12:      parse(pine)
+*.color4:       parse(base0B)
+*.color12:      parse(base0B)
 
 ! magenta
-*.color5:       parse(iris)
-*.color13:      parse(iris)
+*.color5:       parse(base0D)
+*.color13:      parse(base0D)
 
 ! cyan
-*.color6:       parse(foam)
-*.color14:      parse(foam)
+*.color6:       parse(base0C)
+*.color14:      parse(base0C)
 
 ! white
 *.color7:       parse(muted)

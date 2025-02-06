@@ -1,5 +1,13 @@
 @import "./theme.scss";
 
+$base: $base00;
+$surface: $base01;
+$overlay: $base02;
+$muted: $base03;
+$subtle: $base04;
+$text: $base05;
+$highlight: $base07;
+
 $round: 10px; // widget rounding
 $padding: 5px; 
 $margin: 5px; 
@@ -14,7 +22,7 @@ $margin: 5px;
 tooltip {
   background-color: $base;
   padding: $padding;
-  border: solid 1px $highlight-med;
+  border: solid 1px $highlight;
   // why doesn't this work?
   // border-radius: $round;
 }
@@ -22,7 +30,7 @@ tooltip {
 .popup {
   background-color: $base;
   padding: 2 * $padding;
-  border: solid 1px $highlight-med;
+  border: solid 1px $highlight;
   border-radius: $round;
   &.square {
     border-radius: 0;

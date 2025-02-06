@@ -12,13 +12,13 @@
 
 .shorthand {
   margin: 6px 13px 13px 13px;
-  background-color: $red;
+  background-color: $accent2;
   border-radius: $round;
 }
 
 .longhand {
   margin: 4px 13px 13px 13px;
-  background-color: $green;
+  background-color: $accent;
   border-radius: $round;
 }
 
@@ -28,7 +28,7 @@
     min-height: 40px;
     min-width: 32px;
     border-radius: $round - 3px;
-    background-color: $highlight-med;
+    background-color: $highlight;
 
     highlight {
       background-color: $accent;
@@ -77,7 +77,7 @@
 }
 
 .fakescrollbar {
-  background-color: $highlight-med;
+  background-color: $highlight;
   border-radius: $round;
   margin: 13px 4px 13px -7px;
 }
@@ -102,13 +102,13 @@
 
   &.focused {
     background-color: $accent;
-    border-color: $text;
+    border-color: $subtle;
     padding: 20px 0px;
   }
 
   &.urgent {
-    background-color: $red;
-    border-color: $text;
+    background-color: $base08;
+    border-color: $subtle;
     padding: 15px 0px;
   }
 

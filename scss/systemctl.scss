@@ -2,7 +2,7 @@
 .sysslide {
   all: unset;
   trough {
-    background-color: $highlight-med;
+    background-color: $highlight;
     border-radius: $round;
     margin : $margin;
     min-height: 12px;
@@ -20,6 +20,6 @@
     }
   }
   &.red trough highlight {
-    background-color: $red;
+    background-color: $base08;
   }
 }

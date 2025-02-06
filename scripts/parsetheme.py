@@ -24,6 +24,20 @@ for line in open(os.path.join(eww_dir, file)).readlines():
         if v in theme: 
             theme[k] = theme[v]
 
+translate = {
+    "base": "base00",
+    "surface": "base01",
+    "overlay": "base01",
+    "muted": "base03",
+    "subtle": "base04",
+    "text": "base05",
+    "highlight": "base07"
+}
+
+for k, v in translate.items():
+    if v in theme:
+        theme[k] = theme[v]
+
 # recolor the svgs
 
 def parse(template, target): 

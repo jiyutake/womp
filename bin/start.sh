@@ -4,7 +4,7 @@ EWW_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/..
 
 THEME=$($EWW_DIR/scripts/parsetheme.py)
 bspc config normal_border_color $(echo $THEME | jq -r '.muted')
-bspc config active_border_color $(echo $THEME | jq -r  '."highlight-med"')
+bspc config active_border_color $(echo $THEME | jq -r  '."highlight"')
 
 # remove border from all eww windows
 bspc rule -a Eww border=off state=floating

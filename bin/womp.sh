@@ -39,6 +39,7 @@ help() {
             rosepine
             rosepine_dawn
             rosepine_moon
+            oxocarbon
     \e[1mcompositor\e[22m
         \e[4mUsage\e[24m: womp.sh compositor <OPTION>
         Start/ends picom, will also Enables/disables transparency options based on this. 
