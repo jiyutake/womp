@@ -2,16 +2,13 @@
 
 EWW_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/.."
 
-case "$1" in
-    rosepine|rosepine_dawn|rosepine_moon|oxocarbon) 
-        echo @import \"./themes/$1.scss\" > $EWW_DIR/theme.scss
-        THEME=$($EWW_DIR/scripts/parsetheme.py)
-        bspc config normal_border_color $(echo $THEME | jq -r '.muted')
-        bspc config active_border_color $(echo $THEME | jq -r  '."highlight"')
-        eww -c $EWW_DIR reload
-    ;;
-    *)
-        echo "Theme not yet added :despair:"
-    ;;
-esac
+if [ -f $EWW_DIR/themes/$1.scss ]; then
+    echo @import \"./themes/$1.scss\" > $EWW_DIR/theme.scss
+    THEME=$($EWW_DIR/scripts/parsetheme.py)
+    bspc config normal_border_color $(echo $THEME | jq -r '.muted')
+    bspc config active_border_color $(echo $THEME | jq -r  '."highlight"')
+    eww -c $EWW_DIR reload
+else
+    echo "Theme not yet added :despair:"
+fi
 
