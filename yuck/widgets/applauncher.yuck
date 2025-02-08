@@ -6,7 +6,7 @@
     (box 
       :class "widget"
       (input 
-        :onchange "./scripts/apps.py --query {}"
+        :onchange "./scripts/apps.py --query {} &"
         :onaccept "
           ${ arraylength(appsjson.apps) > 0 ? "(${appsjson.apps[0].desktop}) & ./scripts/apps.py --increase '${appsjson.apps[0].name}' &" : ''}
           ./scripts/winpos.sh applauncher close &"))

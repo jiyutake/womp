@@ -30,6 +30,9 @@ eww_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__
 jsonPath = os.path.expanduser("/tmp/eww/apps.json")
 countPath = os.path.expanduser("~/.cache/eww/appcount.json")
 
+os.makedirs(os.path.dirname(jsonPath), exist_ok=True)
+os.makedirs(os.path.dirname(countPath), exist_ok=True)
+
 def cache_count(): 
     if os.path.exists(countPath):
         with open(countPath, "r") as file:
