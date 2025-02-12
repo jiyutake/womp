@@ -17,17 +17,17 @@ for line in open(os.path.join(eww_dir, file)).readlines():
     k, v = line.split(":")
     k = k.strip()[1:]
     v = v.strip()[:-1]
-    if v[0] == "#":
-        theme[k] = v
-    else:
+    if v[0] == "$":
         v = v[1:]
         if v in theme: 
             theme[k] = theme[v]
+    else:
+        theme[k] = v
 
 translate = {
     "base": "base00",
     "surface": "base01",
-    "overlay": "base01",
+    "overlay": "base02",
     "muted": "base03",
     "subtle": "base04",
     "text": "base05",

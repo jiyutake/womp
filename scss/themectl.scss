@@ -1,0 +1,21 @@
+.colorbox {
+  border: solid 1px $highlight;
+  border-radius: $round;
+  colorswatch {
+    border-radius: $round;
+  }
+}
+
+.solid-csd {
+  @extend tooltip;
+}
+
+.combo {
+  arrow {
+    min-width: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("./assets/icons/chevrondown.svg");
+  }
+}

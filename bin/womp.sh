@@ -31,6 +31,7 @@ help() {
             recordplayer
             notificationlog
             systemctl
+            themectl
 
     \e[1mtheme\e[22m
         \e[4mUsage\e[24m: womp.sh theme <THEME>
@@ -79,6 +80,7 @@ help() {
             recordplayer
             notificationlog
             applauncher
+            themectl
         \e[1mANCHOR\e[22m
             top left
             top center
@@ -96,7 +98,7 @@ case $1 in
     ;;
     window)
         case "$3" in
-            applauncher|notificationlog|systemctl|bar|screenborder|recordplayer) 
+            applauncher|notificationlog|systemctl|bar|screenborder|recordplayer|themectl) 
                 case "$2" in
                     open|toggle|close)
                         $EWW_DIR/scripts/winpos.sh $3 $2
@@ -165,7 +167,7 @@ case $1 in
     ;;
     anchor)
         case "$2" in
-            notifications|osd|recordplayer|notificationlog|applauncher) 
+            notifications|osd|recordplayer|notificationlog|applauncher|themectl) 
                 WIN=$2
                 POSCONFIG="$HOME/.cache/eww/winpositions.json"
                 shift 2

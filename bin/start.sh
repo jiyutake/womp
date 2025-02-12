@@ -8,6 +8,7 @@ bspc config active_border_color $(echo $THEME | jq -r  '."highlight"')
 
 # remove border from all eww windows
 bspc rule -a Eww border=off state=floating
+bspc rule -a zenity border=off state=floating
 
 eww -c $EWW_DIR open-many bar screenborder keepopen
 

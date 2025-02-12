@@ -1,0 +1,15 @@
+
+(defwindow themectl
+  :geometry (geometry 
+              :x 0 
+              :y 0 
+              :width 400 
+              :height 300 
+              :anchor "center")
+  :stacking "fg"
+  :monitor 0 
+  :windowtype "normal"
+  (box 
+    :class "popup"
+    (themectlwid)))
+  

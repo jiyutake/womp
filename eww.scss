@@ -15,7 +15,7 @@ $margin: 5px;
 * {
   all: unset;
   color: $text; 
-  font-family: "Ubuntu";
+  font-family: $font;
   font-size: 20px;
 }
 
@@ -116,3 +116,4 @@ entry {
 @import "./scss/notifications.scss";
 @import "./scss/recordplayer.scss";
 @import "./scss/systemctl.scss";
+@import "./scss/themectl.scss";

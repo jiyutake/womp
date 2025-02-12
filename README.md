@@ -12,6 +12,7 @@ That said, we only provide a shell, so you will have to set up a bspwm, sxhkd, a
 - playerctl
 - python gobject, dbus
 - jq
+- zenity
 - Ubuntu font
 
 ### Installation
