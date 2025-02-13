@@ -1,5 +1,6 @@
-(deflisten presetthemes :initial "[]" "./scripts/themectl.py get_themes")
-(deflisten presetfonts :initial "[]" "./scripts/themectl.py get_fonts")
+(deflisten presetthemes :initial "[]" "./scripts/colormap.py get_themes")
+(deflisten presetcolorkeys :initial "[]" "./scripts/colormap.py get_keys")
+(defvar colorjson '{"key": "", "val": "?", "hex": "#ffffff"}')
 
 (defwidget themectlwid [] 
   (box 
@@ -7,64 +8,21 @@
     :orientation "v"
     :space-evenly false 
     :spacing 10
-    (box 
-      :orientation "v" 
-      :space-evenly false
+    (label 
+      :xalign 0
+      :markup "<span size='large' weight='bold'>Theme file</span>")
+    (label 
+      :xalign 0
+      :wrap true
+      :markup "Selects a Base16 file from <span background='${theme.overlay}'>./themes/</span> and applies the colors from that file.")
+    (box
+      :class "widget"
+      :style "margin: 0px;"
       :halign "start"
-      (label 
-        :xalign 0
-        :markup "<span size='large'>Theme</span>")
-      (label 
-        :xalign 0
-        :markup "<span size='small'>customize the appearance of your desktop</span>")
-      (box 
-        :hexpand true 
-        :height 2
-        :style "background-color: ${theme.muted};"))
-    (box
-      :orientation "h"
-      :space-evenly false
-      (label 
-        :hexpand true
-        :xalign 0
-        :markup "Saved theme: ") 
-      (box
-        :class "widget"
-        :style "margin-right: 0px;"
-        (combo-box-text
-          :items presetthemes
-          :onchange "./scripts/themectl.py reset {}")))
-    (box
-      :orientation "h"
-      :space-evenly false
-      (label 
-        :hexpand true
-        :xalign 0
-        :markup "Font: ") 
-      (box
-        :class "widget"
-        :style "margin-right: 0px;"
-        (combo-box-text
-          :items presetfonts
-          :onchange "./scripts/themectl.py set_font {}")))
-    (themecolors)
-    (box 
-      :orientation "h"
-      (button 
-        :class "widget"
-        :onclick "./scripts/themectl.py save_theme"
-        (label 
-          :markup "Save"))
-      (button 
-        :class "widget"
-        :onclick "./scripts/themectl.py apply"
-        (label 
-          :markup "Apply"))
-      (button 
-        :class "widget"
-        :onclick "${EWW_CMD} close themectl"
-        (label 
-          :markup "Ok")))))
+      (combo-box-text
+        :items presetthemes
+        :onchange "./bin/set_theme.sh {}"))
+    (themecolors)))
 
 (defwidget themecolors [] 
   (box 
@@ -72,29 +30,29 @@
     :space-evenly false 
     (label 
       :xalign 0
-      :markup "Colors")
+      :markup "<span size='large' weight='bold'>Colors</span>")
     (box 
       :orientation "h"
-      :class "widget"
-      :style "margin-left: 0px; margin-right: 0px;"
+      :space-evenly false 
       (box 
         :orientation "v"
-        :spacing 10
-        (themecolorpick :type "base") 
-        (themecolorpick :type "surface") 
-        (themecolorpick :type "overlay")) 
-      (box 
-        :orientation "v"
-        :spacing 10
-        (themecolorpick :type "muted") 
-        (themecolorpick :type "subtle") 
-        (themecolorpick :type "text")) 
-      (box 
-        :orientation "v"
-        :spacing 10
-        (themecolorpick :type "highlight") 
-        (themecolorpick :type "accent") 
-        (themecolorpick :type "accent2"))))) 
+        :hexpand true
+        (box
+          :class "widget"
+          :style "margin-left: 0px;"
+          (combo-box-text 
+            :items {presetcolorkeys}
+            :onchange "./scripts/colormap.py update {}"))
+        (box
+          :class "widget"
+          :style "margin-left: 0px;"
+          (input 
+            :value {colorjson.val}
+            :onaccept "./scripts/colormap.py set ${colorjson.key} '{}'")))
+      (box
+        :width 120 
+        :class "colorbox"
+        :style "background-color: ${colorjson.hex};"))))
 
 (defwidget themecolorpick [type]
   (box 

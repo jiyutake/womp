@@ -1,12 +1,5 @@
 @import "./theme.scss";
-
-$base: $base00;
-$surface: $base01;
-$overlay: $base02;
-$muted: $base03;
-$subtle: $base04;
-$text: $base05;
-$highlight: $base07;
+@import "./color_map.scss";
 
 $round: 10px; // widget rounding
 $padding: 5px; 

@@ -8,7 +8,5 @@ if [ -f $EWW_DIR/themes/$1.scss ]; then
     bspc config normal_border_color $(echo $THEME | jq -r '.muted')
     bspc config active_border_color $(echo $THEME | jq -r  '."highlight"')
     eww -c $EWW_DIR reload
-else
-    echo "Theme not yet added :despair:"
 fi
 

@@ -8,7 +8,7 @@ file = line.split("\"")[1]
 
 theme = {}
 
-for line in open(os.path.join(eww_dir, file)).readlines(): 
+for line in open(os.path.join(eww_dir, file)).readlines() + open(os.path.join(eww_dir, "color_map.scss")).readlines(): 
     line = line.strip()
     if line == "":
         continue
@@ -23,20 +23,6 @@ for line in open(os.path.join(eww_dir, file)).readlines():
             theme[k] = theme[v]
     else:
         theme[k] = v
-
-translate = {
-    "base": "base00",
-    "surface": "base01",
-    "overlay": "base02",
-    "muted": "base03",
-    "subtle": "base04",
-    "text": "base05",
-    "highlight": "base07"
-}
-
-for k, v in translate.items():
-    if v in theme:
-        theme[k] = theme[v]
 
 # recolor the svgs
 
