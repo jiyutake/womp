@@ -89,7 +89,16 @@ help() {
             bottom left
             bottom center
             bottom right
-'   
+
+    \e[1mwallpaper\e[22m
+        \e[4mUsage\e[24m: womp.sh wallpaper <OPTION> [FILE]
+        Wallpaper options
+        \e[1mOPTION\e[22m
+            set 
+            get
+            pick
+            restore
+'           
 }
 
 case $1 in 
@@ -190,7 +199,9 @@ case $1 in
                 help
             ;;
         esac
-        
+    ;;
+    wallpaper)
+        $EWW_DIR/bin/wallset.sh $2 $3
     ;;
     help|*) 
         help

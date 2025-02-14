@@ -10,6 +10,6 @@
   :monitor 0 
   :windowtype "normal"
   (box 
-    :class "popup"
+    :class "popup ${picomrunning ? '' : 'square'}"
     (themectlwid)))
   

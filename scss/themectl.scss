@@ -1,7 +1,7 @@
 .colorbox {
   border: solid 1px $highlight;
   border-radius: $round;
-  margin: $margin;
+  margin: $margin + 3px;
   colorswatch {
     border-radius: $round;
   }
@@ -19,6 +19,33 @@
     background-repeat: no-repeat;
     background-image: url("./assets/icons/chevrondown.svg");
   }
+  label {
+    opacity: 0;
+  }
 }
 
+.solidlabelcover {
+  margin-right: 20px;
+  margin-left: $margin - 2px;
+  background-color: $overlay;
+}
 
+.wallpaperbox {
+  margin: $margin 0px;
+  border-radius: $round;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: $overlay;
+  border: solid 1px $muted;
+}
+
+.urgentwid {
+  @extend .widget;
+  background-color: rgba($urgent, 0.8);
+  border: solid 1px $urgent;
+  padding: $padding * 2;
+  label {
+    color: $surface;
+  }
+}

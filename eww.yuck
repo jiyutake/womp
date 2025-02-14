@@ -31,7 +31,7 @@
     "./scripts/notifcatch.py")
 
 (defvar powersaving false)
-(deflisten picomrunning :initial true "if pidof picom &> /dev/null; then echo true; else echo false; fi")
+(deflisten picomrunning :initial true "bash -c 'if pidof picom &> /dev/null; then echo true; else echo false; fi'")
 
 ;; Windows
 (include "./yuck/windows/bar.yuck")

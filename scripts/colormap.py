@@ -41,7 +41,7 @@ def is_hex(str):
     return True
 
 def set_var(k, v): 
-    if k == "": 
+    if k == "" or v == "": 
         return
     if not is_hex(v) and v[1:].strip() not in theme:
         return

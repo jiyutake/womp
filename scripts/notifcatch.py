@@ -213,8 +213,8 @@ class NotificationDaemon(dbus.service.Object):
         if not close: 
             subprocess.Popen(["./scripts/winpos.sh", "notifications", "open"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         else:
-            if popup:
-                return
+            # if popup:
+            #     return
             subprocess.Popen(["eww", "-c", eww_dir, "close", "notifications"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     def read_log_file(self):

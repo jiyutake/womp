@@ -11,4 +11,4 @@
   (scroll 
     (label 
       :visible false 
-      :text "${notifications} ${playerctl}")))
+      :text "${notifications} ${playerctl} ${picomrunning} ${theme}")))

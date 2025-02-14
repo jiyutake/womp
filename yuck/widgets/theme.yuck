@@ -1,6 +1,7 @@
 (deflisten presetthemes :initial "[]" "./scripts/colormap.py get_themes")
 (deflisten presetcolorkeys :initial "[]" "./scripts/colormap.py get_keys")
-(defvar colorjson '{"key": "", "val": "?", "hex": "#ffffff"}')
+(deflisten colorjson :initial '{"key": "", "val": "?", "hex": "#ffffff"}' "./scripts/colormap.py update base")
+(deflisten wallpaperpath "./bin/wallset.sh get")
 
 (defwidget themectlwid [] 
   (box 
@@ -15,14 +16,41 @@
       :xalign 0
       :wrap true
       :markup "Selects a Base16 file from <span background='${theme.overlay}'>./themes/</span> and applies the colors from that file.")
-    (box
-      :class "widget"
-      :style "margin: 0px;"
-      :halign "start"
-      (combo-box-text
-        :items presetthemes
-        :onchange "./bin/set_theme.sh {}"))
+    (combobox
+      :text {theme.name}
+      :items {presetthemes}
+      :onchange "./bin/set_theme.sh {}")
+    (wallwidget)
     (themecolors)))
+
+(defwidget wallwidget []
+  (box 
+    :orientation "v"
+    :space-evenly "false"
+    (label
+      :xalign 0 
+      :markup "<span size='large' weight='bold'>Wallpaper</span>")
+    (box 
+      :class "wallpaperbox"
+      :style 'background-image: url("${wallpaperpath}");'
+      :height 196)
+    (box 
+      :halign "start"
+      :orientation "h"
+      (button 
+        :class "widget"
+        :style "margin-left: 0;"
+        :onclick "${EWW_CMD} update wallpaperpath=$(zenity --file-selection --title 'Select Wallpaper' --file-filter='Image files (png, jpg) | *.png *.jpg *.jpeg') &"
+        (label 
+          :style "margin: 0 15px;"
+          :markup "Select"))
+      (button 
+        :class "urgentwid"
+        :style "margin-right: 0;"
+        :onclick "./bin/wallset.sh set ${wallpaperpath}"
+        (label 
+          :markup "Apply")))))
+      
 
 (defwidget themecolors [] 
   (box 
@@ -37,12 +65,10 @@
       (box 
         :orientation "v"
         :hexpand true
-        (box
-          :class "widget"
-          :style "margin-left: 0px;"
-          (combo-box-text 
-            :items {presetcolorkeys}
-            :onchange "./scripts/colormap.py update {}"))
+        (combobox 
+          :text {colorjson.key} 
+          :items {presetcolorkeys}
+          :onchange "./scripts/colormap.py update {}")
         (box
           :class "widget"
           :style "margin-left: 0px;"
@@ -50,9 +76,23 @@
             :value {colorjson.val}
             :onaccept "./scripts/colormap.py set ${colorjson.key} '{}'")))
       (box
-        :width 120 
+        :width 118 
         :class "colorbox"
         :style "background-color: ${colorjson.hex};"))))
+
+(defwidget combobox [text items onchange]
+  (box
+    :class "widget"
+    :style "margin-left: 0px;"
+    (overlay 
+      (combo-box-text 
+        :items items 
+        :onchange onchange)
+      (label 
+        :hexpand true 
+        :xalign 0
+        :class "solidlabelcover"
+        :markup text))))
 
 (defwidget themecolorpick [type]
   (box 

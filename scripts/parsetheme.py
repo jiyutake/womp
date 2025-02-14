@@ -6,7 +6,7 @@ eww_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__
 line = open(os.path.join(eww_dir, "theme.scss")).read().strip()
 file = line.split("\"")[1]
 
-theme = {}
+theme = {"name": file.split("/")[-1][:-5]}
 
 for line in open(os.path.join(eww_dir, file)).readlines() + open(os.path.join(eww_dir, "color_map.scss")).readlines(): 
     line = line.strip()

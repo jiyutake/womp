@@ -11,6 +11,7 @@ bspc rule -a Eww border=off state=floating
 bspc rule -a zenity border=off state=floating
 
 eww -c $EWW_DIR open-many bar screenborder keepopen
+$EWW_DIR/bin/wallset.sh restore
 
 pkill -f fullscreen_check_listen.sh 
 $EWW_DIR/bin/fullscreen_check_listen.sh &
