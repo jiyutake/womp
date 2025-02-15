@@ -1,6 +1,7 @@
 
 (defwidget batteryscale [] 
   (box 
+    :visible { EWW_BATTERY != ""}
     :orientation "v"
     :space-evenly false
     (box 
