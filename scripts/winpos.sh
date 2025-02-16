@@ -46,9 +46,15 @@ OPEN="$(eww -c $EWW_DIR active-windows | grep $1)"
 if [[ $2 == "open" && !$OPEN ]]; then 
     open $1
 elif [[ $2 == "close" && $OPEN ]]; then 
-    eww -c $EWW_DIR close $1
-else 
-    if [[ $OPEN ]]; then 
+    if [[ $1 == "applauncher" ]]; then
+        #echo "hi eww logs"
+        sleep 5
+        eww -c $EWW_DIR close $1
+    else
+        eww -c $EWW_DIR close $1
+    fi
+else
+    if [[ $OPEN ]]; then
         eww -c $EWW_DIR close $1
     else
         open $1
