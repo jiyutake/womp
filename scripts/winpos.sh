@@ -47,8 +47,7 @@ if [[ $2 == "open" && !$OPEN ]]; then
     open $1
 elif [[ $2 == "close" && $OPEN ]]; then 
     if [[ $1 == "applauncher" ]]; then
-        #echo "hi eww logs"
-        sleep 5
+        sleep 1
         eww -c $EWW_DIR close $1
     else
         eww -c $EWW_DIR close $1
