@@ -5,6 +5,8 @@ EWW_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/..
 POSCONFIG="$HOME/.cache/eww/winpositions.json"
 
 # This is the fastest way, trust. And I'm lazy.
+# \i don't trust it
+# \\hi lazy
 declare -A ANCHORS=(
     ["top left"]='--anchor=top left'
     ["top right"]='--anchor=top right'
