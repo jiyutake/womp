@@ -9,7 +9,7 @@
         :onchange "./scripts/apps.py --query {} &"
         :onaccept "
           ${ arraylength(appsjson.apps) > 0 ? "(${appsjson.apps[0].desktop}) & ./scripts/apps.py --increase '${appsjson.apps[0].name}' &" : ''}
-          ./scripts/winpos.sh applauncher close &"))
+          ./scripts/winpos.sh applauncher toggle &"))
     (scroll 
       :class "applist"
       :vexpand true 
@@ -25,7 +25,7 @@
   (button 
     :class "buttonapp"
     :onclick "
-      (${a.desktop}) & ./scripts/apps.py --increase '${a.name}' & ./scripts/winpos.sh applauncher close &
+      (${a.desktop}) & ./scripts/apps.py --increase '${a.name}' & ./scripts/winpos.sh applauncher toggle &
     "
     (box 
       :orientation "h"
