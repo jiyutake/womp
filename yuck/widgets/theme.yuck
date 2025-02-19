@@ -3,12 +3,76 @@
 (deflisten colorjson :initial '{"key": "", "val": "?", "hex": "#ffffff"}' "./scripts/colormap.py update base")
 (deflisten wallpaperpath "./bin/wallset.sh get")
 
-(defwidget themectlwid [] 
+(defvar selectedthememenu 0)
+
+(defwidget themectlwid []
+  (box 
+    :orientation "v"
+    :space-evenly false
+    (box 
+      :orientation "h"
+      :space-evenly false 
+      :class "themeheader"
+      :spacing 10
+      (image 
+        :path "./assets/icons/menu.svg"
+        :image-width 25)
+      (label 
+        :markup "<span size='large' weight='bold'>Options</span>"))
+    (box 
+      :orientation "h"
+      :space-evenly false
+      :vexpand true
+      (box 
+        :width 150
+        :orientation "v"
+        :space-evenly false 
+        :class "leftbar"
+        :spacing 15
+        (sidebarselect 
+          :icon "./assets/icons/pen.svg"
+          :name "Theme"
+          :pos 0)
+        (sidebarselect 
+          :icon "./assets/icons/layout.svg"
+          :name "Layout"
+          :pos 1)
+        (sidebarselect 
+          :icon "./assets/icons/cpu.svg"
+          :name "Performance"
+          :pos 2)
+        (box 
+          :vexpand true)
+        (sidebarselect 
+          :icon "./assets/icons/link.svg"
+          :name "Credits"
+          :pos 3))
+      (scroll
+        :hscroll false 
+        :vscroll true 
+        :vexpand true
+        (themewid)))))
+
+(defwidget sidebarselect [icon name pos]
+  (button
+    :onclick "${EWW_CMD} update selectedthememenu=${pos}"
+    (box 
+      :orientation "h"
+      :spacing 10
+      :space-evenly false 
+      (image 
+        :path icon
+        :image-width 15) 
+      (label 
+        :markup name))))
+
+(defwidget themewid [] 
   (box 
     :class "widget transparent"
     :orientation "v"
     :space-evenly false 
     :spacing 10
+    :hexpand true
     (label 
       :xalign 0
       :markup "<span size='large' weight='bold'>Theme file</span>")

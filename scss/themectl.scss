@@ -49,3 +49,18 @@
     color: $surface;
   }
 }
+
+.themeheader {
+  background-color: $overlay;
+  border: solid 1px $overlay;
+  padding: $padding * 3;
+  border-top-left-radius: $round;
+  border-top-right-radius: $round;
+}
+
+.leftbar {
+  padding: $padding * 3;
+  background-color: $surface;
+  border-right: solid 1px $highlight;
+  border-bottom-left-radius: $round;
+}

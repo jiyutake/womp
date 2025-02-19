@@ -3,13 +3,14 @@
   :geometry (geometry 
               :x 0 
               :y 0 
-              :width 400 
-              :height 300 
+              :width 550 
+              :height 600 
               :anchor "center")
   :stacking "fg"
   :monitor 0 
   :windowtype "normal"
   (box 
     :class "popup ${picomrunning ? '' : 'square'}"
+    :style "padding: 0;"
     (themectlwid)))
   
