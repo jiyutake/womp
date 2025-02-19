@@ -52,7 +52,7 @@
 
 .themeheader {
   background-color: $overlay;
-  border: solid 1px $overlay;
+  border-bottom: solid 1px $highlight;
   padding: $padding * 3;
   border-top-left-radius: $round;
   border-top-right-radius: $round;
