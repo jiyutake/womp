@@ -64,3 +64,31 @@
   border-right: solid 1px $highlight;
   border-bottom-left-radius: $round;
 }
+
+.themebodymin {
+  background-color: $surface;
+  border: solid 1px $highlight;
+  border-radius: $round;
+  margin: $margin 0;
+}
+
+.themeheadmin {
+  background-color: $base;
+  border-bottom: solid 1px $highlight;
+  border-top-left-radius: $round;
+  border-top-right-radius: $round;
+  padding: $padding * 3;
+}
+
+.checkb {
+  transition: 500ms;
+  border-radius: 50px;
+  background-color: $accent;
+  border: solid 1px rgba($accent, 0.5);
+  padding: 12px;
+  &.inactive {
+    background-color: $muted;
+    border-color: $subtle;
+    padding: 4px 12px;
+  }
+}

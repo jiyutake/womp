@@ -135,6 +135,9 @@ class Manager:
         proc = Popen(["playerctl", "status", "-F"], stdout=PIPE, text=True)
         initial = True
         while True: 
+            if getoutput("./bin/performancevar.sh get lyrics").strip() == "false": 
+                continue
+
             out = proc.stdout.readline().strip()
             
             # stupid playerctl bug
@@ -149,6 +152,9 @@ class Manager:
     def listen_metadata(self): 
         proc = Popen(["playerctl", "metadata", "-f", "[ \"{{title}}\", \"{{artist}}\", \"{{playerName}}\" ]", "-F"], stdout=PIPE, text=True)
         while True: 
+            if getoutput("./bin/performancevar.sh get lyrics").strip() == "false": 
+                continue
+
             out = proc.stdout.readline().strip()
             try:
                 self.song = json.loads(out)

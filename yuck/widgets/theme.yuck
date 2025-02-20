@@ -24,34 +24,43 @@
       :space-evenly false
       :vexpand true
       (box 
-        :width 150
+        :width 200
         :orientation "v"
         :space-evenly false 
         :class "leftbar"
         :spacing 15
         (sidebarselect 
-          :icon "./assets/icons/pen.svg"
+          :icon "./assets/icons/tpen"
           :name "Theme"
           :pos 0)
         (sidebarselect 
-          :icon "./assets/icons/layout.svg"
+          :icon "./assets/icons/layout"
           :name "Layout"
           :pos 1)
         (sidebarselect 
-          :icon "./assets/icons/cpu.svg"
+          :icon "./assets/icons/cpu"
           :name "Performance"
           :pos 2)
         (box 
           :vexpand true)
         (sidebarselect 
-          :icon "./assets/icons/link.svg"
+          :icon "./assets/icons/link"
           :name "Credits"
           :pos 3))
       (scroll
         :hscroll false 
         :vscroll true 
         :vexpand true
-        (themewid)))))
+        :hexpand true
+        (stack 
+          :hexpand true
+          :transition "slideright"
+          :selected selectedthememenu
+          :same-size true
+          (themewid)
+          (box) 
+          (performancewid)
+          (box))))))
 
 (defwidget sidebarselect [icon name pos]
   (button
@@ -61,10 +70,103 @@
       :spacing 10
       :space-evenly false 
       (image 
-        :path icon
-        :image-width 15) 
+        :path "${icon}${pos == selectedthememenu ? 'b' : ''}.svg"
+        :image-width 20) 
       (label 
-        :markup name))))
+        :markup {pos == selectedthememenu ? "<span weight='bold'>${name}</span>" : name}))))
+
+(defwidget performancewid []
+  (box 
+    :class "widget transparent"
+    :orientation "v"
+    :space-evenly false 
+    :spacing 10 
+    :hexpand true
+    (label 
+      :xalign 0
+      :markup "<span size='large' weight='bold'>Performance</span>")
+    (label 
+      :xalign 0
+      :wrap true
+      :markup "Disables features that might cause issues and check the system information.")
+    (headcont 
+      :h1 "<b>Variables</b>"
+      (box 
+        :orientation "v"
+        :spacing 15
+
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (label 
+            :hexpand true
+            :xalign 0
+            :text "Compositor")
+          (button
+            :halign "end"
+            :valign "center"
+            :class "checkb ${!picomrunning ? 'inactive' : ''}"
+            :onclick "./bin/performancevar.sh set compositor ${!picomrunning} && ./bin/womp.sh compositor toggle"))
+
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (label 
+            :hexpand true
+            :xalign 0
+            :text "Record player")
+          (button
+            :halign "end"
+            :valign "center"
+            :class "checkb ${!recordplayerenable ? 'inactive' : ''}"
+            :onclick "./bin/performancevar.sh set record_player ${!recordplayerenable} && ${EWW_CMD} update recordplayerenable=${!recordplayerenable}"))
+
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (label 
+            :hexpand true
+            :xalign 0
+            :text "Battery wave animation")
+          (button
+            :halign "end"
+            :valign "center"
+            :class "checkb ${!batanim ? 'inactive' : ''}"
+            :onclick "./bin/performancevar.sh set battery_anim ${!batanim} && ${EWW_CMD} update batanim=${!batanim}"))
+
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (label 
+            :hexpand true
+            :xalign 0
+            :markup "Lyrics <span foreground='${theme.muted}'>(requires picom)</span>")
+          (button
+            :halign "end"
+            :valign "center"
+            :class "checkb ${!lyricsenable ? 'inactive' : ''}"
+            :onclick "./bin/performancevar.sh set lyrics ${!lyricsenable} && ${EWW_CMD} update lyricsenable=${!lyricsenable}"))))))
+
+(defwidget headcont [h1]
+  (box 
+    :class "themebodymin"
+    :orientation "v"
+    :space-evenly false 
+    :hexpand true
+    (box 
+      :orientation "h"
+      :space-evenly false 
+      :class "themeheadmin"
+      :spacing 10
+      (image 
+        :path "./assets/icons/menu.svg"
+        :image-width 20)
+      (label 
+        :markup h1))
+    (box
+      :style "padding: 10px;"
+      (children)))) 
+  
 
 (defwidget themewid [] 
   (box 

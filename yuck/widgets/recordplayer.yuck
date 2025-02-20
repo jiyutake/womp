@@ -13,9 +13,9 @@
       :space-evenly false
       ;; Crazy method to force element to not render when it doesn't need to
       (box
-        (for i in {powersaving ? [0] : []}
+        (for i in {!recordplayerenable ? [0] : []}
           (normalcover))
-        (for i in {powersaving ? [] : [0]}
+        (for i in {!recordplayerenable ? [] : [0]}
           (dischand)))
       (box
         :orientation "v"
@@ -64,7 +64,7 @@
                 :image-height 30
                 :path "./assets/icons/next.svg"))) 
           (revealer
-            :reveal {lyricsjson.found && picomrunning}
+            :reveal {lyricsjson.found && picomrunning && lyricsenable}
             :transition "slideright"
             (box 
               :class "widget"   

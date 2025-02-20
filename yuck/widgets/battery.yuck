@@ -18,7 +18,7 @@
         (scale 
           :hexpand true
           :vexpand true
-          :class "batscale ${powersaving ? 'noanim' : ''}"
+          :class "batscale ${!batanim ? 'noanim' : ''}"
           :css {bat0 >= 90 ? "trough slider {background-image: none;}" : ""}
           :value bat0 
           :min 0 
