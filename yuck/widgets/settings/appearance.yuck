@@ -29,16 +29,19 @@
         ;     :style "margin: 0 15px;"
         ;     :markup "Reload"))))
     
+    (label
+      :xalign 0 
+      :markup "<span size='large' weight='bold'>Wallpaper</span>")
     (wallwidget)
+    (label 
+      :xalign 0
+      :markup "<span size='large' weight='bold'>Colors</span>")
     (themecolors)))
 
 (defwidget wallwidget []
   (box 
     :orientation "v"
     :space-evenly "false"
-    (label
-      :xalign 0 
-      :markup "<span size='large' weight='bold'>Wallpaper</span>")
     (tailcont
       (box 
         :class "wallpaperbox"
@@ -73,29 +76,110 @@
   (box 
     :orientation "v"
     :space-evenly false 
-    (label 
-      :xalign 0
-      :markup "<span size='large' weight='bold'>Colors</span>")
-    (box 
-      :orientation "h"
-      :space-evenly false 
+    (tailcont
       (box 
-        :orientation "v"
-        :hexpand true
-        (combobox 
-          :text {colorjson.key} 
-          :items {presetcolorkeys}
-          :onchange "./scripts/colormap.py update {}")
+        :height 100
+        :style "margin: -10px;"
+        :orientation "h"
+        :space-evenly false
+        (box 
+          :hexpand true
+          :orientation "v"
+          :space-evenly false
+          (box 
+            :orientation "h"
+            (box 
+              :class "colorswidbox bar"
+              :style "background-color: ${theme.base};"
+              (image 
+                :image-width 25
+                :path "./assets/icons/chevrondown.svg"))
+            (box 
+              :class "urgentwid red bar"
+              (image 
+                :image-width 25 
+                :path "./assets/icons/linkw.svg")))
+          (box 
+            :vexpand true
+            :class "colorswidbox bar"
+            :style "background-color: ${theme.base};"
+            (label 
+              :text "text")))
         (box
-          :class "widget"
-          :style "margin-left: 0px;"
-          (input 
-            :value {colorjson.val}
-            :onaccept "./scripts/colormap.py set ${colorjson.key} '{}'")))
-      (box
-        :width 118 
-        :class "colorbox"
-        :style "background-color: ${colorjson.hex};"))))
+          :hexpand true
+          :orientation "v"
+          :space-evenly false
+          (button 
+            :class "urgentwid bar"
+            (label 
+              :text "button"))
+
+          (box 
+            :orientation "h"
+            :space-evenly false
+            :vexpand true
+            :class "colorswidbox bar"
+            :style "background-color: ${theme.surface}; padding: 0;"
+            (box 
+              :width 30 
+              :style "background-color: ${theme.base}; border-right: solid 1px ${theme.overlay}")
+            (box 
+              :hexpand true
+              :class "widget"
+              :style "background-color: ${theme.overlay};")))
+              
+            
+        (box
+          :orientation "h"
+          :space-evenly false
+          :vexpand true
+          (box 
+            :class "colorswidbox bar"
+            :style "background-color: ${theme.surface};"
+            (scroll
+              :hscroll false 
+              :vscroll true 
+              :vexpand true 
+              :active false
+              (label 
+                :angle 270
+                :style "margin: 5px;"
+                :text "Lorem ipsum dolor sit amet."))) 
+          (box 
+            :width 10 
+            :style "
+            background-color: ${theme.highlight}; 
+            border-radius: 10px; 
+            margin: 5px 5px 5px 0px;"
+            (box 
+              :style "
+              background-color: ${theme.subtle};
+              border-radius: 10px;
+              margin-bottom: 80px;
+              "))))
+          
+      (box 
+        :orientation "h"
+        :space-evenly false 
+        :hexpand true
+        (box 
+          :orientation "v"
+          :hexpand true
+          (combobox 
+            :text {colorjson.key} 
+            :items {presetcolorkeys}
+            :onchange "./scripts/colormap.py update {}")
+          (box
+            :class "widget"
+            :style "margin-left: 0px;"
+            (input 
+              :value {colorjson.val}
+              :onaccept "./scripts/colormap.py set ${colorjson.key} '{}'")))
+        (box
+          :width 118 
+          :class "colorbox"
+          :style "margin-right: 0px;"
+          :style "background-color: ${colorjson.hex};")))))
 
 (defwidget combobox [text items onchange]
   (box

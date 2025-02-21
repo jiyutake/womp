@@ -38,7 +38,7 @@
   background-size: cover;
   background-position: center;
   background-color: $overlay;
-  border: solid 1px $muted;
+  // border: solid 1px $muted;
 }
 
 .urgentwid {
@@ -46,8 +46,13 @@
   background-color: rgba($accent, 0.8);
   border: solid 1px $accent;
   padding: $padding * 2;
+  &.red {
+    border: solid 1px $urgent;
+    background-color: rgba($urgent, 0.8);
+  }
   label {
     color: $surface;
+    font-weight: bold;
   }
 }
 
@@ -80,7 +85,7 @@
   border-top-right-radius: $round;
   padding: $padding * 3;
   &.tail {
-    padding: 0 $padding * 3;
+    padding: $padding $padding * 3;
     border: none;
     border-top: solid 1px $highlight;
     border-radius: 0;
@@ -100,4 +105,10 @@
     border-color: $subtle;
     padding: 4px 12px;
   }
+}
+
+.colorswidbox {
+  @extend .widget;
+  background-color: $base;
+  border-color: $overlay;
 }
