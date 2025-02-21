@@ -75,77 +75,6 @@
       (label 
         :markup {pos == selectedthememenu ? "<span weight='bold'>${name}</span>" : name}))))
 
-(defwidget performancewid []
-  (box 
-    :class "widget transparent"
-    :orientation "v"
-    :space-evenly false 
-    :spacing 10 
-    :hexpand true
-    (label 
-      :xalign 0
-      :markup "<span size='large' weight='bold'>Performance</span>")
-    (label 
-      :xalign 0
-      :wrap true
-      :markup "Disables features that might cause issues and check the system information.")
-    (headcont 
-      :h1 "<b>Variables</b>"
-      (box 
-        :orientation "v"
-        :spacing 15
-
-        (box 
-          :orientation "h"
-          :space-evenly false
-          (label 
-            :hexpand true
-            :xalign 0
-            :text "Compositor")
-          (button
-            :halign "end"
-            :valign "center"
-            :class "checkb ${!picomrunning ? 'inactive' : ''}"
-            :onclick "./bin/performancevar.sh set compositor ${!picomrunning} && ./bin/womp.sh compositor toggle"))
-
-        (box 
-          :orientation "h"
-          :space-evenly false
-          (label 
-            :hexpand true
-            :xalign 0
-            :text "Record player")
-          (button
-            :halign "end"
-            :valign "center"
-            :class "checkb ${!recordplayerenable ? 'inactive' : ''}"
-            :onclick "./bin/performancevar.sh set record_player ${!recordplayerenable} && ${EWW_CMD} update recordplayerenable=${!recordplayerenable}"))
-
-        (box 
-          :orientation "h"
-          :space-evenly false
-          (label 
-            :hexpand true
-            :xalign 0
-            :text "Battery wave animation")
-          (button
-            :halign "end"
-            :valign "center"
-            :class "checkb ${!batanim ? 'inactive' : ''}"
-            :onclick "./bin/performancevar.sh set battery_anim ${!batanim} && ${EWW_CMD} update batanim=${!batanim}"))
-
-        (box 
-          :orientation "h"
-          :space-evenly false
-          (label 
-            :hexpand true
-            :xalign 0
-            :markup "Lyrics <span foreground='${theme.muted}'>(requires picom)</span>")
-          (button
-            :halign "end"
-            :valign "center"
-            :class "checkb ${!lyricsenable ? 'inactive' : ''}"
-            :onclick "./bin/performancevar.sh set lyrics ${!lyricsenable} && ${EWW_CMD} update lyricsenable=${!lyricsenable}"))))))
 
 (defwidget headcont [h1]
   (box 
@@ -167,109 +96,17 @@
       :style "padding: 10px;"
       (children)))) 
   
-
-(defwidget themewid [] 
+(defwidget tailcont []
   (box 
-    :class "widget transparent"
+    :class "themebodymin"
     :orientation "v"
     :space-evenly false 
-    :spacing 10
     :hexpand true
-    (label 
-      :xalign 0
-      :markup "<span size='large' weight='bold'>Theme file</span>")
-    (label 
-      :xalign 0
-      :wrap true
-      :markup "Selects a Base16 file from <span background='${theme.overlay}'>./themes/</span> and applies the colors from that file.")
-    (combobox
-      :text {theme.name}
-      :items {presetthemes}
-      :onchange "./bin/set_theme.sh {}")
-    (wallwidget)
-    (themecolors)))
-
-(defwidget wallwidget []
-  (box 
-    :orientation "v"
-    :space-evenly "false"
-    (label
-      :xalign 0 
-      :markup "<span size='large' weight='bold'>Wallpaper</span>")
-    (box 
-      :class "wallpaperbox"
-      :style 'background-image: url("${wallpaperpath}");'
-      :height 196)
-    (box 
-      :halign "start"
-      :orientation "h"
-      (button 
-        :class "widget"
-        :style "margin-left: 0;"
-        :onclick "${EWW_CMD} update wallpaperpath=$(zenity --file-selection --title 'Select Wallpaper' --file-filter='Image files (png, jpg) | *.png *.jpg *.jpeg') &"
-        (label 
-          :style "margin: 0 15px;"
-          :markup "Select"))
-      (button 
-        :class "urgentwid"
-        :style "margin-right: 0;"
-        :onclick "./bin/wallset.sh set ${wallpaperpath}"
-        (label 
-          :markup "Apply")))))
-      
-
-(defwidget themecolors [] 
-  (box 
-    :orientation "v"
-    :space-evenly false 
-    (label 
-      :xalign 0
-      :markup "<span size='large' weight='bold'>Colors</span>")
+    (box
+      :style "padding: 15px;"
+      (children :nth 0)) 
     (box 
       :orientation "h"
       :space-evenly false 
-      (box 
-        :orientation "v"
-        :hexpand true
-        (combobox 
-          :text {colorjson.key} 
-          :items {presetcolorkeys}
-          :onchange "./scripts/colormap.py update {}")
-        (box
-          :class "widget"
-          :style "margin-left: 0px;"
-          (input 
-            :value {colorjson.val}
-            :onaccept "./scripts/colormap.py set ${colorjson.key} '{}'")))
-      (box
-        :width 118 
-        :class "colorbox"
-        :style "background-color: ${colorjson.hex};"))))
-
-(defwidget combobox [text items onchange]
-  (box
-    :class "widget"
-    :style "margin-left: 0px;"
-    (overlay 
-      (combo-box-text 
-        :items items 
-        :onchange onchange)
-      (label 
-        :hexpand true 
-        :xalign 0
-        :class "solidlabelcover"
-        :markup text))))
-
-(defwidget themecolorpick [type]
-  (box 
-    :orientation "h"
-    :space-evenly false 
-    :spacing 10
-    (color-button 
-      :class "colorbox"
-      :style "background-color: ${theme[type]};"
-      :use-alpha false 
-      :onchange "./scripts/themectl.py set_col ${type} '{}'")
-    (label 
-      :markup {type})))
-    
+      :class "themeheadmin tail"
+      (children :nth 1)))) 

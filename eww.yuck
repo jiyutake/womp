@@ -57,3 +57,5 @@
 (include "./yuck/widgets/systray.yuck")
 (include "./yuck/widgets/recordplayer.yuck")
 (include "./yuck/widgets/theme.yuck")
+(include "./yuck/widgets/settings/performance.yuck")
+(include "./yuck/widgets/settings/appearance.yuck")

@@ -1,0 +1,73 @@
+
+(defwidget performancewid []
+  (box 
+    :class "widget transparent"
+    :orientation "v"
+    :space-evenly false 
+    :spacing 10 
+    :hexpand true
+    (label 
+      :xalign 0
+      :markup "<span size='large' weight='bold'>Performance</span>")
+    (label 
+      :xalign 0
+      :wrap true
+      :markup "Disables features that might cause issues and check the system information.")
+    (headcont 
+      :h1 "<b>Variables</b>"
+      (box 
+        :orientation "v"
+        :spacing 15
+
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (label 
+            :hexpand true
+            :xalign 0
+            :text "Compositor")
+          (button
+            :halign "end"
+            :valign "center"
+            :class "checkb ${!picomrunning ? 'inactive' : ''}"
+            :onclick "./bin/performancevar.sh set compositor ${!picomrunning} && ./bin/womp.sh compositor toggle"))
+
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (label 
+            :hexpand true
+            :xalign 0
+            :text "Record player")
+          (button
+            :halign "end"
+            :valign "center"
+            :class "checkb ${!recordplayerenable ? 'inactive' : ''}"
+            :onclick "./bin/performancevar.sh set record_player ${!recordplayerenable} && ${EWW_CMD} update recordplayerenable=${!recordplayerenable}"))
+
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (label 
+            :hexpand true
+            :xalign 0
+            :text "Battery wave animation")
+          (button
+            :halign "end"
+            :valign "center"
+            :class "checkb ${!batanim ? 'inactive' : ''}"
+            :onclick "./bin/performancevar.sh set battery_anim ${!batanim} && ${EWW_CMD} update batanim=${!batanim}"))
+
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (label 
+            :hexpand true
+            :xalign 0
+            :markup "Lyrics <span foreground='${theme.muted}'>(requires picom)</span>")
+          (button
+            :halign "end"
+            :valign "center"
+            :class "checkb ${!lyricsenable ? 'inactive' : ''}"
+            :onclick "./bin/performancevar.sh set lyrics ${!lyricsenable} && ${EWW_CMD} update lyricsenable=${!lyricsenable}"))))))
+

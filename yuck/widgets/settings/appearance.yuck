@@ -1,0 +1,125 @@
+(defvar themefiletmp "")
+
+(defwidget themewid [] 
+  (box 
+    :class "widget transparent"
+    :orientation "v"
+    :space-evenly false 
+    :spacing 10
+    :hexpand true
+    (label 
+      :xalign 0
+      :markup "<span size='large' weight='bold'>Theme</span>")
+    (tailcont
+      (label 
+        :xalign 0
+        :wrap true
+        :markup "Selects a file from <span background='${theme.overlay}'>./themes/</span> and applies the colors from that file.")
+      (box
+        :orientation "h"
+        :space-evenly false
+        (combobox
+          :text {theme.name}
+          :items {presetthemes}
+          :onchange "./bin/set_theme.sh {}")))
+        ; (button 
+        ;   :class "urgentwid"
+        ;   :onclick {themefiletmp != "" ? "./bin/set_theme.sh ${themefiletmp}" : ""}
+        ;   (label 
+        ;     :style "margin: 0 15px;"
+        ;     :markup "Reload"))))
+    
+    (wallwidget)
+    (themecolors)))
+
+(defwidget wallwidget []
+  (box 
+    :orientation "v"
+    :space-evenly "false"
+    (label
+      :xalign 0 
+      :markup "<span size='large' weight='bold'>Wallpaper</span>")
+    (tailcont
+      (box 
+        :class "wallpaperbox"
+        :style 'background-image: url("${wallpaperpath}");'
+        :height 175)
+      (box
+        :orientation "v"
+        :space-evenly false
+        :hexpand true
+        (label
+          :style "margin: 5px;"
+          :markup "<b>${search(wallpaperpath, '[^\\/]+$')[0]}</b>")
+        (box 
+          :halign "center"
+          :orientation "h"
+          (button 
+            :class "widget"
+            :style "margin-left: 0;"
+            :onclick "${EWW_CMD} update wallpaperpath=$(zenity --file-selection --title 'Select Wallpaper' --file-filter='Image files (png, jpg) | *.png *.jpg *.jpeg') &"
+            (label 
+              :style "margin: 0 15px;"
+              :markup "Select"))
+          (button 
+            :class "urgentwid"
+            :style "margin-right: 0;"
+            :onclick "./bin/wallset.sh set ${wallpaperpath}"
+            (label 
+              :markup "Apply")))))))
+      
+
+(defwidget themecolors [] 
+  (box 
+    :orientation "v"
+    :space-evenly false 
+    (label 
+      :xalign 0
+      :markup "<span size='large' weight='bold'>Colors</span>")
+    (box 
+      :orientation "h"
+      :space-evenly false 
+      (box 
+        :orientation "v"
+        :hexpand true
+        (combobox 
+          :text {colorjson.key} 
+          :items {presetcolorkeys}
+          :onchange "./scripts/colormap.py update {}")
+        (box
+          :class "widget"
+          :style "margin-left: 0px;"
+          (input 
+            :value {colorjson.val}
+            :onaccept "./scripts/colormap.py set ${colorjson.key} '{}'")))
+      (box
+        :width 118 
+        :class "colorbox"
+        :style "background-color: ${colorjson.hex};"))))
+
+(defwidget combobox [text items onchange]
+  (box
+    :class "widget"
+    :style "margin-left: 0px;"
+    (overlay 
+      (combo-box-text 
+        :items items 
+        :onchange onchange)
+      (label 
+        :hexpand true 
+        :xalign 0
+        :class "solidlabelcover"
+        :markup text))))
+
+(defwidget themecolorpick [type]
+  (box 
+    :orientation "h"
+    :space-evenly false 
+    :spacing 10
+    (color-button 
+      :class "colorbox"
+      :style "background-color: ${theme[type]};"
+      :use-alpha false 
+      :onchange "./scripts/themectl.py set_col ${type} '{}'")
+    (label 
+      :markup {type})))
