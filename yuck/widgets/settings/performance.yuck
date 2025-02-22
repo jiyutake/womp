@@ -14,7 +14,15 @@
       :wrap true
       :markup "Disables features that might cause issues and check the system information.")
     (headcont 
-      :h1 "<b>Variables</b>"
+      (box
+        :orientation "h"
+        :space-evenly false
+        :spacing 10
+        (image 
+          :path "./assets/icons/menu.svg"
+          :image-width 20)
+        (label 
+          :markup "<b>Variables</b>"))
       (box 
         :orientation "v"
         :spacing 15

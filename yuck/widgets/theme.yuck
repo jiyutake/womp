@@ -47,20 +47,15 @@
           :icon "./assets/icons/link"
           :name "Credits"
           :pos 3))
-      (scroll
-        :hscroll false 
-        :vscroll true 
-        :vexpand true
+      (stack 
         :hexpand true
-        (stack 
-          :hexpand true
-          :transition "slideright"
-          :selected selectedthememenu
-          :same-size true
-          (themewid)
-          (box) 
-          (performancewid)
-          (box))))))
+        :transition "slideright"
+        :selected selectedthememenu
+        :same-size true
+        (themewid)
+        (box) 
+        (performancewid)
+        (box)))))
 
 (defwidget sidebarselect [icon name pos]
   (button
@@ -76,7 +71,7 @@
         :markup {pos == selectedthememenu ? "<span weight='bold'>${name}</span>" : name}))))
 
 
-(defwidget headcont [h1]
+(defwidget headcont []
   (box 
     :class "themebodymin"
     :orientation "v"
@@ -87,14 +82,10 @@
       :space-evenly false 
       :class "themeheadmin"
       :spacing 10
-      (image 
-        :path "./assets/icons/menu.svg"
-        :image-width 20)
-      (label 
-        :markup h1))
+      (children :nth 0))
     (box
       :style "padding: 10px;"
-      (children)))) 
+      (children :nth 1)))) 
   
 (defwidget tailcont []
   (box 

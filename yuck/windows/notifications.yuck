@@ -73,7 +73,7 @@
         :width 420 
         :height 320 
         :class "popup ${picomrunning ? '': 'square'}"
-        :style "padding-right: 0px;"
+        :style "padding: 0px;"
         (notiflogwid)))))
         
                      

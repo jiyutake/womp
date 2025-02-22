@@ -185,6 +185,8 @@ case $1 in
                     "top right"| \
                     "top center"| \
                     "center"| \
+                    "center left"| \
+                    "center right"| \
                     "bottom left"| \
                     "bottom right"| \
                     "bottom center") 

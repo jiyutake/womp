@@ -38,21 +38,29 @@
             :visible {noti.body != "null"}
             :markup {noti.body}))))))
         
+
+;; Why the fuck does using an external widget fuck shit up??? Is eww stupid???
 (defwidget notiflogwid [] 
   (box 
     :orientation "v"
     :space-evenly false
     (box 
+      :class "themeheader"
       :orientation "h"
       :space-evenly false 
-      (label 
-        :class "widget transparent"
-        :xalign 0
+      (box 
+        :orientation "h"
+        :space-evenly false 
+        :spacing 10
         :hexpand true
-        :markup "Notifications")
+        (image 
+          :path "./assets/icons/menu.svg"
+          :image-width 25)
+        (label 
+          :markup "<span size='large' weight='bold'>Notifications</span>"))
       (button 
-        :class "widget"
-        :style "margin-right: 25px;"
+        :class "urgentwid red bar"
+        :style "margin: -5px;"
         :onclick "./scripts/notifmanage.sh --clear"
         (box 
           :orientation "h"
@@ -62,7 +70,7 @@
             :image-height 24)
           (label 
             :style "margin: 0px 5px;"
-            :text "Delete"))))
+            :text "Delete All"))))
     (scroll 
       :class "notilog"
       :vexpand true 
@@ -77,33 +85,38 @@
 (defwidget singlenotiflog [noti] 
   (button 
     :onclick "./scripts/notifmanage.sh --close ${noti.id}"
-    (box 
-      :class "widget"
+    (box
       :style "margin-right: 25px;"
-      :orientation "h"
-      :space-evenly false
       (box 
-        :halign "start"
-        :valign "center"
-        :visible {noti.image != "null"}
-        :class "notiimage"
-        :width 70 
-        :height 70 
-        :style "background-image: url('${noti.image}')")
-      (box 
+        :class "themebodymin"
         :orientation "v"
-        :valign "center"
+        :space-evenly false 
         :hexpand true
-        :space-evenly false
-        (scroll 
-          :height 20 
-          :hscroll true 
-          :vscroll false 
+        (box 
+          :orientation "h"
+          :space-evenly false 
+          :class "themeheadmin"
+          :spacing 10
+          (box 
+            :orientation "h"
+            :space-evenly false 
+            :spacing 20
+            (box 
+              :halign "start"
+              :valign "center"
+              :visible {noti.image != "null"}
+              :class "notiimagemini"
+              :width 20 
+              :height 20 
+              :style "background-image: url('${noti.image}')")
+            (label 
+              :hexpand true
+              :truncate true
+              :xalign 0 
+              :markup "<b>${noti.summary}</b>"))) 
+        (box 
+          :style "padding: 20px;"
           (label 
-            :xalign "0"
-            :markup "<b>${noti.summary}</b>"))
-        (label 
-          :xalign "0"
-          :wrap true 
-          :visible {noti.body != "null"}
-          :markup {noti.body})))))
+            :xalign 0 
+            :wrap true 
+            :markup {noti.body != "" ? noti.body : ""}))))))

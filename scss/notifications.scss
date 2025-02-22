@@ -9,6 +9,20 @@
   opacity: 1.0;
 }
 
+.notiimagemini {
+  transition: 500ms ease;
+  border-radius: $round;
+  border: solid 1px $muted;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: $padding * -2;
+  opacity: 1.0;
+}
+
+.notilog {
+  margin: 3*$margin;
+}
 .notilog > scrollbar {
   background-color: $highlight;
   transition: 500ms;

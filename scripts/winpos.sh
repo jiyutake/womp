@@ -12,6 +12,8 @@ declare -A ANCHORS=(
     ["top right"]='--anchor=top right'
     ["top center"]='--anchor=top center'
     ["center"]='--anchor=center'
+    ["center left"]='--anchor=center left'
+    ["center right"]='--anchor=center right'
     ["center center"]='--anchor=center'
     ["bottom left"]='--anchor=bottom left'
     ["bottom right"]='--anchor=bottom right'
@@ -22,7 +24,9 @@ declare -A POSITIONS=(
     ["top right"]='--pos=-20x20'
     ["top center"]='--pos=0x20'
     ["center"]='--pos=0x0'
-    ["center center"]='--pos=0x0'
+    ["center left"]='--pos=80x0'
+    ["center right"]='--pos=80x0'
+    ["center center"]='--pos=-20x0'
     ["bottom left"]='--pos=80x-20'
     ["bottom right"]='--pos=-20x-20'
     ["bottom center"]='--pos=0x-20'
@@ -54,6 +58,8 @@ elif [[ $2 == "close" && $OPEN ]]; then
     else
         eww -c $EWW_DIR close $1
     fi
+elif [[ $2 == "get" ]]; then 
+    echo $VAL
 else
     if [[ $OPEN ]]; then
         eww -c $EWW_DIR close $1

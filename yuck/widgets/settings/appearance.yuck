@@ -1,42 +1,48 @@
 (defvar themefiletmp "")
 
 (defwidget themewid [] 
-  (box 
-    :class "widget transparent"
-    :orientation "v"
-    :space-evenly false 
-    :spacing 10
+  (scroll
+    :hscroll false 
+    :vscroll true 
+    :vexpand true
     :hexpand true
-    (label 
-      :xalign 0
-      :markup "<span size='large' weight='bold'>Theme</span>")
-    (tailcont
+    (box 
+      :class "widget transparent"
+      :orientation "v"
+      :space-evenly false 
+      :spacing 10
+      :hexpand true
       (label 
         :xalign 0
-        :wrap true
-        :markup "Selects a file from <span background='${theme.overlay}'>./themes/</span> and applies the colors from that file.")
-      (box
-        :orientation "h"
-        :space-evenly false
-        (combobox
-          :text {theme.name}
-          :items {presetthemes}
-          :onchange "./bin/set_theme.sh {}")))
-        ; (button 
-        ;   :class "urgentwid"
-        ;   :onclick {themefiletmp != "" ? "./bin/set_theme.sh ${themefiletmp}" : ""}
-        ;   (label 
-        ;     :style "margin: 0 15px;"
-        ;     :markup "Reload"))))
-    
-    (label
-      :xalign 0 
-      :markup "<span size='large' weight='bold'>Wallpaper</span>")
-    (wallwidget)
-    (label 
-      :xalign 0
-      :markup "<span size='large' weight='bold'>Colors</span>")
-    (themecolors)))
+        :markup "<span size='large' weight='bold'>Theme</span>")
+      (tailcont
+        (label 
+          :xalign 0
+          :wrap true
+          :markup "Selects a file from <span background='${theme.overlay}'>./themes/</span> and applies the colors from that file.")
+        (box
+          :orientation "h"
+          :space-evenly false
+          :hexpand true
+          (combobox
+            :text {theme.name}
+            :items {presetthemes}
+            :onchange "./bin/set_theme.sh {}")))
+          ; (button 
+          ;   :class "urgentwid"
+          ;   :onclick {themefiletmp != "" ? "./bin/set_theme.sh ${themefiletmp}" : ""}
+          ;   (label 
+          ;     :style "margin: 0 15px;"
+          ;     :markup "Reload"))))
+      
+      (label
+        :xalign 0 
+        :markup "<span size='large' weight='bold'>Wallpaper</span>")
+      (wallwidget)
+      (label 
+        :xalign 0
+        :markup "<span size='large' weight='bold'>Colors</span>")
+      (themecolors))))
 
 (defwidget wallwidget []
   (box 
@@ -183,6 +189,7 @@
 
 (defwidget combobox [text items onchange]
   (box
+    :hexpand true
     :class "widget"
     :style "margin-left: 0px;"
     (overlay 

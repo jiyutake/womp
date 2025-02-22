@@ -84,7 +84,7 @@
         :tooltip bluetoothdevice)
       (buttonicons 
         :class "widget"
-        :onclick "./scripts/winpos.sh themectl &"
+        :onclick "./scripts/winpos.sh themectl toggle &"
         :path "./assets/icons/pen.svg"
         :tooltip "theme"))
     (box 
