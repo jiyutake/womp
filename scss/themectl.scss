@@ -37,8 +37,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  padding: $padding;
   background-color: $overlay;
   // border: solid 1px $muted;
+  &.tail {
+    border-radius: 0;
+    border-bottom-left-radius: $round;
+    border-bottom-right-radius: $round;
+  }
 }
 
 .urgentwid {
@@ -83,7 +89,7 @@
   border-bottom: solid 1px $highlight;
   border-top-left-radius: $round;
   border-top-right-radius: $round;
-  padding: $padding * 3;
+  padding: $padding $padding * 3;
   &.tail {
     padding: $padding $padding * 3;
     border: none;
@@ -111,4 +117,36 @@
   @extend .widget;
   background-color: $base;
   border-color: $overlay;
+}
+
+.anchorbox {
+  background-color: $surface; 
+  border: solid 1px $highlight; 
+  border-radius: $round;
+  opacity: 0.5;
+  margin: $margin;
+  min-width: 40px;
+  min-height: 40px;
+  &.active {
+    background-color: rgba($accent, 0.8);
+    border: solid 1px $accent;
+    opacity: 1;
+  }
+}
+
+.pfpbox {
+  margin: $margin;
+  border-radius: $round;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: solid 1px $muted;
+}
+
+.clinks {
+  background-color: $surface;
+  border: solid 1px $highlight;
+  border-radius: $round;
+  margin: $margin;
+  padding: $padding * 2;
 }

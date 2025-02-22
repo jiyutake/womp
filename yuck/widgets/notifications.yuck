@@ -96,6 +96,7 @@
           :orientation "h"
           :space-evenly false 
           :class "themeheadmin"
+          :style "padding: 15px;"
           :spacing 10
           (box 
             :orientation "h"

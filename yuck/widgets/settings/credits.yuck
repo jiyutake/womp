@@ -1,0 +1,216 @@
+
+(defwidget creditswid [] 
+  (scroll 
+    :hscroll false 
+    :vscroll true 
+    :vexpand true 
+    :hexpand true 
+    (box 
+      :class "widget transparent"
+      :orientation "v"
+      :space-evenly false 
+      :spacing 10 
+      :hexpand true 
+      (label 
+        :xalign 0 
+        :markup "<span size='large' weight='bold'>Layout</span>")
+      (label 
+        :xalign 0
+        :wrap true
+        :markup "Some information about this project and who made it.")
+      (headcont 
+        (box
+          :orientation "h"
+          :space-evenly false
+          :spacing 10
+          (image 
+            :path "./assets/icons/menu.svg"
+            :image-width 20)
+          (label 
+            :style "margin: 10px 0;"
+            :markup "<b>People</b>"))
+        (box 
+          :orientation "v"
+          :space-evenly false 
+          :spacing 20
+          (label 
+            :wrap true
+            :text "Yea, we only have 2 contributers. We're very tired so if you come across any issues, please fix it yourself.")
+          (tailcont 
+            (box 
+              :orientation "h"
+              :class "wallpaperbox"
+              :style 'background-image: url("./assets/fwall.png");'
+              :space-evenly false
+              (box 
+                :class "pfpbox"
+                :style 'background-image: url("./assets/fpfp.png");'
+                :height 100
+                :width 100)
+              (box 
+                :class "widget transparent" 
+                :orientation "v"
+                :space-evenly false 
+                (label 
+                  :xalign 0
+                  :style "font-size: 25px; font-weight: bold;"
+                  :text "Failed")
+                (label 
+                  :xalign 0
+                  :text "@failed.sh")
+                (label 
+                  :xalign 0
+                  :text "code and widgets")))
+            (box 
+              :orientation "h"
+              :hexpand true
+              (box
+                :halign "center"
+                :width 220
+                (button 
+                  :class "widget"
+                  :onclick "xdg-open https://github.com/failedex"
+                  (image 
+                    :image-width 25
+                    :path "./assets/icons/github.svg"))
+                (button 
+                  :class "widget"
+                  :onclick "xdg-open https://failedex.github.io/"
+                  (image 
+                    :image-width 25
+                    :path "./assets/icons/linkb.svg")))))
+          (tailcont 
+            (box 
+              :orientation "h"
+              :class "wallpaperbox"
+              :style 'background-image: url("./assets/kwall.png");'
+              :space-evenly false
+              (box 
+                :class "pfpbox"
+                :style 'background-image: url("./assets/kpfp.png"); border-color: #B4637A;'
+                :height 100
+                :width 100)
+              (box 
+                :class "widget transparent" 
+                :orientation "v"
+                :space-evenly false 
+                (label 
+                  :xalign 0
+                  :style "font-size: 25px; font-weight: bold; color: #B4637A;"
+                  :text "Kate")
+                (label 
+                  :xalign 0
+                  :text "@jiyutake")
+                (label 
+                  :xalign 0
+                  :text "design and ideas")))
+            (box 
+              :orientation "h"
+              :hexpand true
+              (box
+                :halign "center"
+                :width 220
+                (button 
+                  :class "widget"
+                  :onclick "xdg-open https://github.com/jiyutake"
+                  (image 
+                    :image-width 25
+                    :path "./assets/icons/github.svg"))
+                (button 
+                  :class "widget"
+                  (image 
+                    :image-width 25
+                    :path "./assets/icons/linkb.svg")))))))
+      (headcont 
+        (box
+          :orientation "h"
+          :space-evenly false
+          :spacing 10
+          (image 
+            :path "./assets/icons/menu.svg"
+            :image-width 20)
+          (label 
+            :style "margin: 10px 0;"
+            :markup "<b>Links</b>"))
+        (box 
+          :orientation "v"
+          :space-evenly false 
+          (clinks 
+            :text "Feather Icons"
+            :link "https://feathericons.com/")
+          (box
+            :style "margin: 5px;"
+            (tailcont 
+              (box 
+                :class "wallpaperbox"
+                :style 'background-image: url("./assets/womp.png");'
+                :height 80)
+              (box 
+                :orientation "h"
+                :spacing 10 
+                :space-evenly false
+                :style "padding: 5px 0;"
+                (image 
+                  :style "margin-left: -5px;"
+                  :image-width 20 
+                  :path "./assets/icons/star.svg")
+                (button 
+                  :onclick "xdg-open https://github.com/jiyutake/womp"
+                  (label 
+                    :markup "<span foreground='#ea9d34' weight='bold'>Star</span> <u>the project!</u>")))))
+          (ghissues)
+          (clinks 
+            :text "Rosé Pine"
+            :link "https://rosepinetheme.com/")
+          (clinks 
+            :text "The r/unixporn Discord"
+            :link "https://discord.gg/TnJ4h5K")
+          (clinks 
+            :text "Ubuntu font"
+            :link "https://design.ubuntu.com/font"))))))
+                
+(defwidget clinks [text link]
+  (box 
+    :orientation "h"
+    :space-evenly false 
+    :class "clinks"
+    :spacing 10
+    (image 
+      :image-width 20
+      :path "./assets/icons/linkb.svg")
+    (button 
+      :onclick "xdg-open ${link}"
+      (label 
+        :markup "<u>${text}</u>"))))
+  
+(defvar runimmediately false)
+(defwidget ghissues [] 
+  (overlay
+    (box
+      :orientation "v"
+      :space-evenly false
+      (revealer 
+        :reveal runimmediately
+        :transition "slidedown"
+        (box 
+          :height 55
+          ""))
+      (box 
+        :orientation "h"
+        :space-evenly false 
+        :class "clinks"
+        :spacing 10
+        :hexpand true
+        (image 
+          :image-width 20
+          :path "./assets/icons/linkb.svg")
+        (button
+          :onclick "xdg-open https://github.com/jiyutake/womp/issues"
+          (label 
+            :markup "<u>Womp GitHub Issues</u>"))))
+    (eventbox 
+      :valign "start"
+      :height 55
+      :hexpand true
+      :onhover "${EWW_CMD} update runimmediately=true"
+      :onhoverlost "${EWW_CMD} update runimmediately=false")))

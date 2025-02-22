@@ -1,0 +1,65 @@
+(defvar presetwindowanc '["osd","notifications","recordplayer","notificationlog","applauncher","themectl"]')
+(defvar selectedwindowanc "notifications")
+(deflisten selectedwindowanchor "./scripts/winpos.sh notifications get")
+
+(defwidget layoutwid []
+  (scroll 
+    :hscroll false 
+    :vscroll true 
+    :vexpand true 
+    :hexpand true 
+    (box 
+      :class "widget transparent"
+      :orientation "v"
+      :space-evenly false 
+      :spacing 10 
+      :hexpand true 
+      (label 
+        :xalign 0 
+        :markup "<span size='large' weight='bold'>Layout</span>")
+      (label 
+        :xalign 0
+        :wrap true
+        :markup "Choose a place for widgets to be displayed through modifying the corner it is anchored.")
+      (headcont 
+        (box 
+          :orientation "h" 
+          :hexpand true 
+          :space-evenly false 
+          (combobox
+            :text {selectedwindowanc}
+            :items {presetwindowanc}
+            :onchange "bash -c '${EWW_CMD} update selectedwindowanc={} selectedwindowanchor=\"$(./scripts/winpos.sh {} get)\"'")
+          (button 
+            :onclick "./bin/womp.sh anchor ${selectedwindowanc} ${selectedwindowanchor}"
+            :class "urgentwid"
+            (label 
+              :text "Save")))
+        (box 
+          :class "wallpaperbox tail"
+          :style 'background-image: url("${wallpaperpath}")'
+          :height 175
+          (centerbox 
+            :orientation "v"
+            (centerbox 
+              :orientation "h"
+              (ancbox :anc "top left") 
+              (ancbox :anc "top center") 
+              (ancbox :anc "top right")) 
+            (centerbox 
+              :orientation "h"
+              (ancbox :anc "center left") 
+              (ancbox :anc "center") 
+              (ancbox :anc "center right")) 
+            (centerbox 
+              :orientation "h"
+              (ancbox :anc "bottom left") 
+              (ancbox :anc "bottom center") 
+              (ancbox :anc "bottom right")))))))) 
+            
+(defwidget ancbox [anc]
+  (button
+    :halign {matches(anc, "left") ? "start" : matches(anc, "right") ? "end" : "center"}
+    :valign {matches(anc, "top") ? "start" : matches(anc, "bottom") ? "end" : "center"}
+    :onclick "${EWW_CMD} update selectedwindowanchor='${anc}'"
+    :class "anchorbox ${anc == selectedwindowanchor ? 'active' : ''}"))

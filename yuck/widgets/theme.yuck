@@ -53,9 +53,9 @@
         :selected selectedthememenu
         :same-size true
         (themewid)
-        (box) 
+        (layoutwid) 
         (performancewid)
-        (box)))))
+        (creditswid)))))
 
 (defwidget sidebarselect [icon name pos]
   (button
@@ -84,7 +84,7 @@
       :spacing 10
       (children :nth 0))
     (box
-      :style "padding: 10px;"
+      :style "padding: 15px;"
       (children :nth 1)))) 
   
 (defwidget tailcont []

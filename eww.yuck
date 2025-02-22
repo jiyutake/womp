@@ -59,3 +59,5 @@
 (include "./yuck/widgets/theme.yuck")
 (include "./yuck/widgets/settings/performance.yuck")
 (include "./yuck/widgets/settings/appearance.yuck")
+(include "./yuck/widgets/settings/layout.yuck")
+(include "./yuck/widgets/settings/credits.yuck")
