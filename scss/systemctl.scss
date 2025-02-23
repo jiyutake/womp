@@ -22,4 +22,7 @@
   &.red trough highlight {
     background-color: $urgent;
   }
+  &.accent trough highlight {
+    background-color: $accent;
+  }
 }

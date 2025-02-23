@@ -53,13 +53,15 @@
                 :space-evenly false 
                 (label 
                   :xalign 0
-                  :style "font-size: 25px; font-weight: bold;"
+                  :style "font-size: 25px; font-weight: bold; color: #575279;"
                   :text "Failed")
                 (label 
                   :xalign 0
+                  :style "color: #575279;"
                   :text "@failed.sh")
                 (label 
                   :xalign 0
+                  :style "color: #575279;"
                   :text "code and widgets")))
             (box 
               :orientation "h"
@@ -100,9 +102,11 @@
                   :text "Kate")
                 (label 
                   :xalign 0
+                  :style "color: #575279;"
                   :text "@jiyutake")
                 (label 
                   :xalign 0
+                  :style "color: #575279;"
                   :text "design and ideas")))
             (box 
               :orientation "h"
@@ -118,6 +122,7 @@
                     :path "./assets/icons/github.svg"))
                 (button 
                   :class "widget"
+                  :onclick "xdg-open https://rick.nerial.uk/video.mp4"
                   (image 
                     :image-width 25
                     :path "./assets/icons/linkb.svg")))))))
@@ -192,6 +197,7 @@
       (revealer 
         :reveal runimmediately
         :transition "slidedown"
+        :duration 100
         (box 
           :height 55
           ""))

@@ -10,6 +10,11 @@ bspc config active_border_color $(echo $THEME | jq -r  '."highlight"')
 bspc rule -a Eww border=off state=floating
 bspc rule -a zenity border=off state=floating
 
+if pidof picom; then 
+    eww -c $EWW_DIR open-many bar screenborder keepopen
+else
+    eww -c $EWW_DIR open-many bar keepopen
+fi
 eww -c $EWW_DIR open-many bar screenborder keepopen
 $EWW_DIR/bin/wallset.sh restore
 

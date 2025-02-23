@@ -18,70 +18,165 @@
         :xalign 0
         :wrap true
         :markup "Disables features that might cause issues and check the system information.")
-      (headcont 
-        (box
-          :orientation "h"
-          :space-evenly false
-          :spacing 10
-          (image 
-            :path "./assets/icons/menu.svg"
-            :image-width 20)
-          (label 
-            :style "margin: 10px 0;"
-            :markup "<b>Variables</b>"))
-        (box 
-          :orientation "v"
-          :spacing 15
+      (presources)
+      (pvariables)
+      (pbattery))))
 
-          (box 
-            :orientation "h"
-            :space-evenly false
-            (label 
-              :hexpand true
-              :xalign 0
-              :text "Compositor")
-            (button
-              :halign "end"
-              :valign "center"
-              :class "checkb ${!picomrunning ? 'inactive' : ''}"
-              :onclick "./bin/performancevar.sh set compositor ${!picomrunning} && ./bin/womp.sh compositor toggle"))
+(defwidget presources [] 
+  (box 
+    :class "themebodymin"
+    :orientation "v"
+    :space-evenly false
+    :style "padding: 15px;"
+    :spacing 10
+    (box 
+      :orientation "h"
+      :spacing 10
+      :space-evenly false
+      :style "padding: 0px 5px;"
+      (image 
+        :image-width 20 
+        :path "./assets/icons/cpub.svg")
+      (label 
+        :style "margin: 10px 0;"
+        :markup "<b>Resources</b>"))
+    (pslides 
+      :text "CPU"
+      :val {round(EWW_CPU.avg, 0)})
+    (pslides 
+      :text "Memory"
+      :val {round(EWW_RAM.used_mem_perc, 0)})))
 
-          (box 
-            :orientation "h"
-            :space-evenly false
-            (label 
-              :hexpand true
-              :xalign 0
-              :text "Record player")
-            (button
-              :halign "end"
-              :valign "center"
-              :class "checkb ${!recordplayerenable ? 'inactive' : ''}"
-              :onclick "./bin/performancevar.sh set record_player ${!recordplayerenable} && ${EWW_CMD} update recordplayerenable=${!recordplayerenable}"))
+(defpoll acpiinfo :interval "30s" "acpi -b")
 
-          (box 
-            :orientation "h"
-            :space-evenly false
-            (label 
-              :hexpand true
-              :xalign 0
-              :text "Battery wave animation")
-            (button
-              :halign "end"
-              :valign "center"
-              :class "checkb ${!batanim ? 'inactive' : ''}"
-              :onclick "./bin/performancevar.sh set battery_anim ${!batanim} && ${EWW_CMD} update batanim=${!batanim}"))
+(defwidget pbattery []
+  (tailcont 
+    (box 
+      :orientation "v"
+      :space-evenly false 
+      :spacing 10
+      :visible {EWW_BATTERY != ""}
+      (box 
+        :orientation "h"
+        :spacing 10 
+        :space-evenly false 
+        :style "padding: 0px 5px;"
+        (image 
+          :image-width 20 
+          :path "./assets/icons/battery.svg")
+        (label 
+          :style "margin: 10px 0;"
+          :markup "<b>Power</b>"))
+      (for bat in {EWW_BATTERY != "" ? jq(EWW_BATTERY, "del(.total_avg) | keys") : []} 
+        (pslides 
+          :text bat
+          :class "accent"
+          :val {EWW_BATTERY[bat].capacity})))
+    (box
+      :orientation "h"
+      :space-evenly false
+      :spacing 10
+      :hexpand true
+      (image 
+        :path "./assets/icons/menu.svg"
+        :image-width 20)
+      (label 
+        :style "margin: 10px 0;"
+        :markup "<b>Time left</b>")
+      (box 
+        :hexpand true)
+      (label 
+        :text {arraylength(captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")) == 0 ? "" : 
+                             "${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][1]}h ${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][2]}min"}))))
+        
 
-          (box 
-            :orientation "h"
-            :space-evenly false
-            (label 
-              :hexpand true
-              :xalign 0
-              :markup "Lyrics <span foreground='${theme.muted}'>(requires picom)</span>")
-            (button
-              :halign "end"
-              :valign "center"
-              :class "checkb ${!lyricsenable ? 'inactive' : ''}"
-              :onclick "./bin/performancevar.sh set lyrics ${!lyricsenable} && ${EWW_CMD} update lyricsenable=${!lyricsenable}")))))))
+(defwidget pslides [text val ?class]
+  (box 
+    :orientation "v"
+    :space-evenly false 
+    (box 
+      :orientation "h"
+      :style "padding: 5px;"
+      (label 
+        :xalign 0
+        :text text)
+      (label 
+        :xalign 1 
+        :text "${val}%"))
+    (scale 
+      :hexpand true 
+      :class "sysslide ${val >= 70 ? 'red' : ''} ${class}"
+      :value val 
+      :min 0 
+      :max 100 
+      :orientation "h"
+      :active false)))
+
+(defwidget pvariables [] 
+  (headcont 
+    (box
+      :orientation "h"
+      :space-evenly false
+      :spacing 10
+      (image 
+        :path "./assets/icons/menu.svg"
+        :image-width 20)
+      (label 
+        :style "margin: 10px 0;"
+        :markup "<b>Variables</b>"))
+    (box 
+      :orientation "v"
+      :spacing 15
+
+      (box 
+        :orientation "h"
+        :space-evenly false
+        (label 
+          :hexpand true
+          :xalign 0
+          :text "Compositor")
+        (button
+          :halign "end"
+          :valign "center"
+          :class "checkb ${!picomrunning ? 'inactive' : ''}"
+          :onclick "./bin/performancevar.sh set compositor ${!picomrunning} && ./bin/womp.sh compositor toggle"))
+
+      (box 
+        :orientation "h"
+        :space-evenly false
+        (label 
+          :hexpand true
+          :xalign 0
+          :text "Record player")
+        (button
+          :halign "end"
+          :valign "center"
+          :class "checkb ${!recordplayerenable ? 'inactive' : ''}"
+          :onclick "./bin/performancevar.sh set record_player ${!recordplayerenable} && ${EWW_CMD} update recordplayerenable=${!recordplayerenable}"))
+
+      (box 
+        :orientation "h"
+        :space-evenly false
+        (label 
+          :hexpand true
+          :xalign 0
+          :text "Battery wave animation")
+        (button
+          :halign "end"
+          :valign "center"
+          :class "checkb ${!batanim ? 'inactive' : ''}"
+          :onclick "./bin/performancevar.sh set battery_anim ${!batanim} && ${EWW_CMD} update batanim=${!batanim}"))
+
+      (box 
+        :orientation "h"
+        :space-evenly false
+        (label 
+          :hexpand true
+          :xalign 0
+          :markup "Lyrics <span foreground='${theme.muted}'>(requires picom)</span>")
+        (button
+          :halign "end"
+          :valign "center"
+          :class "checkb ${!lyricsenable ? 'inactive' : ''}"
+          :onclick "./bin/performancevar.sh set lyrics ${!lyricsenable} && ${EWW_CMD} update lyricsenable=${!lyricsenable}")))))
 

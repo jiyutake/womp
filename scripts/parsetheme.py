@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+from sys import argv
 
 eww_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), ".."))
 line = open(os.path.join(eww_dir, "theme.scss")).read().strip()
@@ -33,16 +34,17 @@ def parse(template, target):
     f = open(target, "w")
     for k, v in theme.items():
         content = content.replace(f"parse({k})", v)
+    print(target)
     f.write(content)
     f.close()
 
+if not (len(argv) > 1 and argv[1] == "norecolor"):
+    templatedir = os.path.join(eww_dir, "assets/iconstemplate")
+    iconsdir = os.path.join(eww_dir, "assets/icons")
+    for file in os.listdir(templatedir): 
+        parse(os.path.join(templatedir, file), os.path.join(iconsdir, file))
 
-templatedir = os.path.join(eww_dir, "assets/iconstemplate")
-iconsdir = os.path.join(eww_dir, "assets/icons")
-for file in os.listdir(templatedir): 
-    parse(os.path.join(templatedir, file), os.path.join(iconsdir, file))
-
-# Override Xresources
-parse(os.path.join(eww_dir, "assets/Xresources"), os.path.expanduser("~/.Xresources"))
+    # Override Xresources
+    parse(os.path.join(eww_dir, "assets/Xresources"), os.path.expanduser("~/.Xresources"))
 
 print(json.dumps(theme))
