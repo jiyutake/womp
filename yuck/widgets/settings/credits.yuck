@@ -118,6 +118,7 @@
                     :path "./assets/icons/github.svg"))
                 (button 
                   :class "widget"
+                  :onclick "xdg-open https://youtu.be/dQw4w9WgXcQ" ; we're no strangers to love
                   (image 
                     :image-width 25
                     :path "./assets/icons/linkb.svg")))))))
@@ -191,9 +192,10 @@
       :space-evenly false
       (revealer 
         :reveal runimmediately
+        :class "ghissues"
         :transition "slidedown"
         (box 
-          :height 55
+          :height 95
           ""))
       (box 
         :orientation "h"
