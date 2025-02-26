@@ -49,7 +49,7 @@
               :x -20 
               :y 20 
               :width 420 
-              :height 500
+              :height 490
               :anchor "top right")
   :stacking "fg"
   :exclusive false 

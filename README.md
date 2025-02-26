@@ -14,6 +14,7 @@ That said, we only provide a shell, so you will have to set up a bspwm, sxhkd, a
 - jq
 - zenity
 - Ubuntu font
+- acpi
 
 ### Installation
 

@@ -34,7 +34,6 @@ def parse(template, target):
     f = open(target, "w")
     for k, v in theme.items():
         content = content.replace(f"parse({k})", v)
-    print(target)
     f.write(content)
     f.close()
 

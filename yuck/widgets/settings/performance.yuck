@@ -178,5 +178,18 @@
           :halign "end"
           :valign "center"
           :class "checkb ${!lyricsenable ? 'inactive' : ''}"
-          :onclick "./bin/performancevar.sh set lyrics ${!lyricsenable} && ${EWW_CMD} update lyricsenable=${!lyricsenable}")))))
+          :onclick "./bin/performancevar.sh set lyrics ${!lyricsenable} && ${EWW_CMD} update lyricsenable=${!lyricsenable}"))
+
+      (box 
+        :orientation "h"
+        :space-evenly false
+        (label 
+          :hexpand true
+          :xalign 0
+          :markup "News")
+        (button
+          :halign "end"
+          :valign "center"
+          :class "checkb ${!newsenable ? 'inactive' : ''}"
+          :onclick "./bin/performancevar.sh set news ${!newsenable} && ${EWW_CMD} update newsenable=${!newsenable}")))))
 
