@@ -65,7 +65,7 @@ ln -s ~/.config/eww/womp/bin/womp.sh ~/.local/bin/womp.sh
 womp.sh start &
 ```
 3. Under `sxhkdrc`, add 
-```toml
+```yaml
 # toggles applauncher
 super + d
     womp.sh window toggle applauncher &
