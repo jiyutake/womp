@@ -1,3 +1,4 @@
+⁠# Hi, this is the news ticker file. You probably don't want to read this to not spoil yourself, but if you don't like waiting for the next one or got too many repeating stuff, go ahead. Wait, if it starts with an "⁠#" it does not appear on the ticker right? AAAAAAHH GET ME OUT OF THIS WIDGET!!
 What exactly is a news ticker? Some phrase that scrolls through the screen, she said.
 How many time do you have to productive today? Aparently, a new update on the famous wayland compositor [REDACTED] added to minimize productivity: slooooooow animations.
 “hi hello hello h” - Zooter
@@ -15,3 +16,36 @@ Quitting! It's like trying, but easier!
 The risk I took was calculated but man am I bad at math.
 If you're gonna do something stupid be smart about it.
 A rice becomes shit after you post it for the second time.
+This is not perfect, but at least it is usable, right? 1 GNU C Library update later...
+What is the chance to get the same message twice?                          What is the chance to get the same me- GET FOOLED HAAHAHAHA
+Today my procrastination menu is so nice! I have a lot of options including but not limited to: Procrastinating writing this very news you are currently reading, procrastinating on polishing this rice's designs, procrastinating on studying, procrastinating on reading books, procrastinating on practicing typing, procrastinating on making the worse code ever to commit and give failed an heada- my computer advised me not to continue writing this to not slow down your Womp(tm) experience. If you want to continue reading the hottest news, type 1. For help, type 2. If you are confused, press 1tg35p5p8ug. If you are experiencing an display manager freeze with an touch of no input detection, don't press anything and reboot your computer immediately. Alternatively, downgrade your GNU C Library version. Not that it guarantees that you will not get errors because of versioning. This also does not mean you will be able to even boot your computer, even. Is this long enough? Are you fond of this message? Do you even know how to call such "messages"? I've decided this(didn't) and previously discussed(doing it right now) that since the feature itself is called "News Ticker", it would be fair to call this either "Newses" or "Tickers", but i am not sure on what to call it... On the next episode of absolute slop writing (100% human writing, by the way) have a feast of misinformation with a "funny quotes" sauce and a seasoning of "meta-jokes about the r/Unixporn official Discord server" See you there!
+Oh my god can you jump at the line 20 of newsline.txt? what the absolute nightmare is that message. who thought it was a good idea to write something this big?? Is it even supported by the widget to scroll this far? Someone has to get it though, and that is going to be YOU! Good luck going through all of that text.
+smiley face!! :)
+Whoever is reading this, you have to uninstall hyprland in the next 24 hours, or your rice carreer will be ruined forever.
+All of this meta-joking it and no one has talked about The Game yet? Surprising.
+Hi @Stella i know you will see this
+Paypall me $30,000 USD
+news.nvim: fetches a random line of the news ticker in your nearest running Neovim instance! Download now at: https://127.0.0.1
+You don't like news ticers?       lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 noqueue state UNKNOWN group default qlen 1000 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00 inet 127.0.0.1/8 scope host lo valid_lft forever preferred_lft forever inet6 ::1/128 scope host noprefixroute valid_lft forever preferred_lft forever
+Failed is probably going to be mad when he sees this file. -Kate                          Or will he? -The voices
+"There is no "thing as "lisp "with "quotes "right?""""""    <- oh i wish.
+⁠#If not running interactively, don't do anything [[ $- != *i* ]] && return
+"Years of development, yet no use for the Nix programming language" - Clueless person that does not know how it's package managing works, not even what is considered to be "declarative" when it comes to programming.
+fish: Unknown command: nix-cleanup-garbage
+Welcome to fish, the friendly interactive shell. Type help for instructions on how to use fish.
+"based" -Vixima
+Hii moderators! I would like to clarify that this post does not break any of the server rules, nor does it break the Discord platform's Terms of Services.
+Is this feature force-feeding its users with dopamine? Shocking if true. Beware.
+Could i uhh ummm could i get a heart emoji in this rice please chat...
+Foreign languages are not allowed. Please only talk in english on this chat.
+I was going to write something but let keep this so called news safe for everyone right? Anxious people shivering their timbers right now about it..
+"Is this enough news or do i have to write more for you to free me?" -Person on my basement, several times.
+No, a collective of two (2) users will not be able to simply write two thousand and five hundred unique news, but we silently agreed to not use AI generated content on the text, so have this short but guaranteed glorious slop.
+E492: Not an editor command: neovim-please-get-me-good-at-programming
+Vim stands for Vi IMproved. Most of Vim was made by Bram Moolenaar, but only through the help of many others. See credits. Do the Vim tutor, a 30-minute interactive course for the basic commands, see :vimtutor. Read the user manual from start to end: :help usr_01.txt. For searching for help, type "help <word>:", then hit C d to see matching help entries for <word>. Oh i'm sorry, this is not Emacs, i meant CTRL-d.
+E5108: Error executing lua: ....local/share/really/big/path/that/does/not/really/matter/for/the/debugging/except/for/the/last/folder/bindings.lua:23561: attempt to index field 'really_big_variable_that_is_probably_not_practical_to_write_specially_considering_that_it_uses_underscores' (a nil value)
+This "News ticker" thing is really stable and will not interrupt abruptly any of i
+Nix be like: {html = {div = {h1 = {text = "title"; class = "header-one pre-paragraph text-big text-bold"} div.div.li.text = "list"; div.div.li.class = "text-regular text-font-paragraph-width"}}}
+Some jokes are too long of a joke to make fun, the fun part of it is lost through time and so, the so said joke should not be too long. *proceeds to write the most meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-jokes ever*
+Remember to rm -rf ~/.cache/* today!
+So... How am i supposed to fix this "GNU C Library" issue?
