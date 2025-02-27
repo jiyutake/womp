@@ -49,3 +49,4 @@ Nix be like: {html = {div = {h1 = {text = "title"; class = "header-one pre-parag
 Some jokes are too long of a joke to make fun, the fun part of it is lost through time and so, the so said joke should not be too long. *proceeds to write the most meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-meta-jokes ever*
 Remember to rm -rf ~/.cache/* today!
 So... How am i supposed to fix this "GNU C Library" issue?
+Mods, give this two ricers a certain role with a rainbow star on it.
