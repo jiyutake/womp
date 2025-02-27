@@ -7,7 +7,7 @@ CONF="$HOME/.cache/eww/performance.json"
 if [[ ! -f $CONF ]]; then 
     mkdir -p $(dirname $CONF)
     touch $CONF
-    echo '{"compositor": true, "fullscreen_check": true, "lyrics": true, "record_player": true, "battery_anim": true}' > $CONF
+    echo '{"compositor": true, "fullscreen_check": true, "lyrics": true, "record_player": true, "battery_anim": true, "news": false}' > $CONF
 fi
 
 if [[ $1 == "get" ]]; then 

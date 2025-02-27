@@ -99,5 +99,6 @@
     (box 
       :orientation "h"
       :space-evenly false 
+      :hexpand true
       :class "themeheadmin tail"
       (children :nth 1)))) 

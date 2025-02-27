@@ -36,49 +36,53 @@
           (label 
             :wrap true
             :text "Yea, we only have 2 contributers. We're very tired so if you come across any issues, please fix it yourself.")
-          (tailcont 
-            (box 
-              :orientation "h"
-              :class "wallpaperbox"
-              :style 'background-image: url("./assets/fwall.png");'
-              :space-evenly false
+          (eventbox
+            :class "schrodinger"
+            (tailcont 
               (box 
-                :class "pfpbox"
-                :style 'background-image: url("./assets/fpfp.png");'
-                :height 100
-                :width 100)
+                :orientation "h"
+                :class "wallpaperbox"
+                :style 'background-image: url("./assets/fwall.png");'
+                :space-evenly false
+                (box 
+                  :class "pfpbox"
+                  :style 'background-image: url("./assets/fpfp.png");'
+                  :height 100
+                  :width 100)
+                (box 
+                  :class "widget transparent" 
+                  :orientation "v"
+                  :space-evenly false 
+                  (label 
+                    :xalign 0
+                    :style "font-size: 25px; font-weight: bold; color: #575279;"
+                    :text "Failed")
+                  (label 
+                    :xalign 0
+                    :style "color: #575279;"
+                    :text "@failed.sh")
+                  (label 
+                    :xalign 0
+                    :style "color: #575279;"
+                    :text "code and widgets")))
               (box 
-                :class "widget transparent" 
-                :orientation "v"
-                :space-evenly false 
-                (label 
-                  :xalign 0
-                  :style "font-size: 25px; font-weight: bold;"
-                  :text "Failed")
-                (label 
-                  :xalign 0
-                  :text "@failed.sh")
-                (label 
-                  :xalign 0
-                  :text "code and widgets")))
-            (box 
-              :orientation "h"
-              :hexpand true
-              (box
-                :halign "center"
-                :width 220
-                (button 
-                  :class "widget"
-                  :onclick "xdg-open https://github.com/failedex"
-                  (image 
-                    :image-width 25
-                    :path "./assets/icons/github.svg"))
-                (button 
-                  :class "widget"
-                  :onclick "xdg-open https://failedex.github.io/"
-                  (image 
-                    :image-width 25
-                    :path "./assets/icons/linkb.svg")))))
+                :orientation "h"
+                :hexpand true
+                (box
+                  :halign "center"
+                  :width 220
+                  (button 
+                    :class "widget"
+                    :onclick "xdg-open https://github.com/failedex"
+                    (image 
+                      :image-width 25
+                      :path "./assets/icons/github.svg"))
+                  (button 
+                    :class "widget"
+                    :onclick "xdg-open https://failedex.github.io/"
+                    (image 
+                      :image-width 25
+                      :path "./assets/icons/linkb.svg"))))))
           (tailcont 
             (box 
               :orientation "h"
@@ -100,9 +104,11 @@
                   :text "Kate")
                 (label 
                   :xalign 0
+                  :style "color: #575279;"
                   :text "@jiyutake")
                 (label 
                   :xalign 0
+                  :style "color: #575279;"
                   :text "design and ideas")))
             (box 
               :orientation "h"
@@ -118,7 +124,7 @@
                     :path "./assets/icons/github.svg"))
                 (button 
                   :class "widget"
-                  :onclick "xdg-open https://youtu.be/dQw4w9WgXcQ" ; we're no strangers to love
+                  :onclick "xdg-open https://rick.nerial.uk/video.mp4"
                   (image 
                     :image-width 25
                     :path "./assets/icons/linkb.svg")))))))
@@ -194,6 +200,7 @@
         :reveal runimmediately
         :class "ghissues"
         :transition "slidedown"
+        :duration 100
         (box 
           :height 95
           ""))

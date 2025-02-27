@@ -80,7 +80,8 @@
         :orientation "v"
         :space-evenly false 
         (for n in {notifications.notifications}
-          (singlenotiflog :noti n))))))
+          (singlenotiflog :noti n))))
+    (newswid)))
   
 (defwidget singlenotiflog [noti] 
   (button 
@@ -121,3 +122,32 @@
             :xalign 0 
             :wrap true 
             :markup {noti.body != "" ? noti.body : ""}))))))
+
+(deflisten newsline "./scripts/news.py")
+
+(defwidget newswid [] 
+  (box
+    :class "widget transparent"
+    :style "margin-top: 0;"
+    :visible newsenable
+    (headcont 
+      (box 
+        :orientation "h"
+        :space-evenly false 
+        :spacing 10 
+        (image 
+          :path "./assets/icons/menu.svg"
+          :image-width 20) 
+        (label 
+          :style "margin: 10px 0;"
+          :markup "<b>News</b>"))
+      (box 
+        (scroll
+          :height 28
+          :hexpand true
+          :hscroll true
+          :vscroll false 
+          :active false
+          (label 
+            :xalign 0
+            :markup "<span size='large'><b>${newsline}</b></span>"))))))

@@ -128,7 +128,7 @@
             :style "background-color: ${theme.surface}; padding: 0;"
             (box 
               :width 30 
-              :style "background-color: ${theme.base}; border-right: solid 1px ${theme.overlay}")
+              :style "background-color: ${theme.base}; border-right: solid 1px ${theme.overlay}; border-radius: 10px 0 0 10px;")
             (box 
               :hexpand true
               :class "widget"
