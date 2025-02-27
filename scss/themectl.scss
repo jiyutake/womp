@@ -150,3 +150,11 @@
   margin: $margin;
   padding: $padding * 2;
 }
+
+.schrodinger {
+  transition: opacity 60s; 
+  opacity: 1;
+  &:hover {
+    opacity: 0;
+  }
+}
