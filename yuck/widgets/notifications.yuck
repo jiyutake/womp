@@ -143,11 +143,11 @@
           :markup "<b>News</b>"))
       (box 
         (scroll
-          :height 20
+          :height 28
           :hexpand true
           :hscroll true
           :vscroll false 
           :active false
           (label 
             :xalign 0
-            :text newsline))))))
+            :markup "<span size='large'><b>${newsline}</b></span>"))))))
