@@ -158,3 +158,13 @@
     opacity: 0;
   }
 }
+
+.looneytoons {
+  transition: margin 200ms;
+  margin-top: 0;
+  margin-bottom: -55px;
+  &:active {
+    margin-top: -55px;
+    margin-bottom: 0;
+  }
+}
