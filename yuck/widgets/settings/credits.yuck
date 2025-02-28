@@ -165,7 +165,7 @@
                   :onclick "xdg-open https://github.com/jiyutake/womp"
                   (label 
                     :markup "<span foreground='#ea9d34' weight='bold'>Star</span> <u>the project!</u>")))))
-          (ghissues)
+          (looneytoons)
           (clinks 
             :text "Rosé Pine"
             :link "https://rosepinetheme.com/")
@@ -198,12 +198,12 @@
       :space-evenly false
       (revealer 
         :reveal runimmediately
-        :class "ghissues"
         :transition "slidedown"
         :duration 100
         (box 
-          :height 95
-          ""))
+          :height 55
+          (label 
+            :text "Woops! You missed! :P")))
       (box 
         :orientation "h"
         :space-evenly false 
@@ -223,3 +223,23 @@
       :hexpand true
       :onhover "${EWW_CMD} update runimmediately=true"
       :onhoverlost "${EWW_CMD} update runimmediately=false")))
+
+(defwidget looneytoons [] 
+  (scroll 
+    :hexpand true
+    :height 55 
+    :vscroll true 
+    :hscroll false 
+    (button
+      :class "looneytoons"
+      (box
+        :orientation "v"
+        :space-evenly false
+        (clinks 
+          :text "Womp GitHub Issues"
+          :link "https://github.com/jiyutake/womp/issues")
+        (box
+          :class "clinks"
+          (label
+            :xalign 0
+            :markup "Woops! You missed! :P"))))))
