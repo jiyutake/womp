@@ -230,16 +230,18 @@
     :height 55 
     :vscroll true 
     :hscroll false 
-    (button
-      :class "looneytoons"
-      (box
-        :orientation "v"
-        :space-evenly false
-        (clinks 
-          :text "Womp GitHub Issues"
-          :link "https://github.com/jiyutake/womp/issues")
+    (eventbox
+      :cursor "default"
+      (button
+        :class "looneytoons"
         (box
-          :class "clinks"
-          (label
-            :xalign 0
-            :markup "Woops! You missed! :P"))))))
+          :orientation "v"
+          :space-evenly false
+          (clinks 
+            :text "Womp GitHub Issues"
+            :link "https://github.com/jiyutake/womp/issues")
+          (box
+            :class "clinks"
+            (label
+              :xalign 0
+              :markup "Woops! You missed! :P")))))))
