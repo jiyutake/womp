@@ -123,7 +123,9 @@
             :wrap true 
             :markup {noti.body != "" ? noti.body : ""}))))))
 
-(deflisten newsline "./scripts/news.py")
+(deflisten newsjson 
+  :initial '{"line": "", "translate": 0}'
+  "./scripts/news.py")
 
 (defwidget newswid [] 
   (box
@@ -146,8 +148,9 @@
           :height 28
           :hexpand true
           :hscroll true
-          :vscroll false 
-          :active false
-          (label 
-            :xalign 0
-            :markup "<span size='large'><b>${newsline}</b></span>"))))))
+          :vscroll false
+          (transform
+            :translate-x "${newsjson.translate}%"
+            (label 
+              :xalign 0
+              :markup "<span size='large'><b>${newsjson.line}</b></span>")))))))
