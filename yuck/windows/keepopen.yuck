@@ -11,4 +11,4 @@
   (scroll 
     (label 
       :visible false 
-      :text "${notifications} ${playerctl} ${picomrunning} ${theme} ${colorjson} ${wallpaperpath}")))
+      :text "${notifications} ${playerctl} ${picomrunning} ${theme} ${colorjson} ${wallpaperpath} ${fullscreencheck}")))

@@ -50,44 +50,46 @@
 (defpoll acpiinfo :interval "30s" "acpi -b")
 
 (defwidget pbattery []
-  (tailcont 
-    (box 
-      :orientation "v"
-      :space-evenly false 
-      :spacing 10
-      :visible {EWW_BATTERY != ""}
+  (box
+    :visible {EWW_BATTERY != ""}
+    (tailcont 
       (box 
-        :orientation "h"
-        :spacing 10 
+        :orientation "v"
         :space-evenly false 
-        :style "padding: 0px 5px;"
+        :spacing 10
+        :visible {EWW_BATTERY != ""}
+        (box 
+          :orientation "h"
+          :spacing 10 
+          :space-evenly false 
+          :style "padding: 0px 5px;"
+          (image 
+            :image-width 20 
+            :path "./assets/icons/battery.svg")
+          (label 
+            :style "margin: 10px 0;"
+            :markup "<b>Power</b>"))
+        (for bat in {EWW_BATTERY != "" ? jq(EWW_BATTERY, "del(.total_avg) | keys") : []} 
+          (pslides 
+            :text bat
+            :class "accent"
+            :val {EWW_BATTERY[bat].capacity})))
+      (box
+        :orientation "h"
+        :space-evenly false
+        :spacing 10
+        :hexpand true
         (image 
-          :image-width 20 
-          :path "./assets/icons/battery.svg")
+          :path "./assets/icons/menu.svg"
+          :image-width 20)
         (label 
           :style "margin: 10px 0;"
-          :markup "<b>Power</b>"))
-      (for bat in {EWW_BATTERY != "" ? jq(EWW_BATTERY, "del(.total_avg) | keys") : []} 
-        (pslides 
-          :text bat
-          :class "accent"
-          :val {EWW_BATTERY[bat].capacity})))
-    (box
-      :orientation "h"
-      :space-evenly false
-      :spacing 10
-      :hexpand true
-      (image 
-        :path "./assets/icons/menu.svg"
-        :image-width 20)
-      (label 
-        :style "margin: 10px 0;"
-        :markup "<b>Time left</b>")
-      (box 
-        :hexpand true)
-      (label 
-        :text {arraylength(captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")) == 0 ? "" : 
-                             "${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][1]}h ${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][2]}min"}))))
+          :markup "<b>Time left</b>")
+        (box 
+          :hexpand true)
+        (label 
+          :text {arraylength(captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")) == 0 ? "" : 
+                               "${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][1]}h ${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][2]}min"})))))
         
 
 (defwidget pslides [text val ?class]

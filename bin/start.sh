@@ -18,6 +18,3 @@ fi
 
 $EWW_DIR/bin/wallset.sh restore
 
-pkill -f fullscreen_check_listen.sh 
-$EWW_DIR/bin/fullscreen_check_listen.sh &
-
