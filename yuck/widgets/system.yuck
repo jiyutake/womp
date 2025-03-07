@@ -11,7 +11,7 @@
         :style "margin-right: -5px;"
         :height 78)
       (eventbox
-        :onscroll "./scripts/scrollicons.sh {} 2"
+        :onscroll "./scripts/scrollicons.sh {} 3"
         (box 
           :width 40
           :halign "start"
@@ -22,18 +22,27 @@
             :transition "slidedown"
             :reveal {scrolliconsindex == 0}
             (buttonicons 
-              :path "./assets/icons/searchoff.svg"
+              :path "./assets/icons/search.svg"
               :onclick "./bin/toggle_applauncher.sh &"))
-          (buttonicons 
-            :path "./assets/icons/bell${notifications.dnd ? 'off' : ''}.svg"
-            :onrightclick "./scripts/notifmanage.sh --toggle"
-            :onclick "./scripts/winpos.sh notificationlog toggle &")
+          (revealer 
+            :transition "slidedown"
+            :reveal {scrolliconsindex == 1 || scrolliconsindex == 0}
+            (buttonicons 
+              :path "./assets/icons/bell${notifications.dnd ? 'off' : ''}.svg"
+              :onrightclick "./scripts/notifmanage.sh --toggle"
+              :onclick "./scripts/winpos.sh notificationlog toggle &"))
           (revealer
             :transition "slideup"
-            :reveal {scrolliconsindex == 1}
+            :reveal {scrolliconsindex == 1 || scrolliconsindex == 2}
             (buttonicons 
               :path "./assets/icons/music${playerctl.song == '' ? 'off' : ''}.svg"
-              :onclick {playerctl.song == '' ? '' : "./scripts/winpos.sh recordplayer toggle"}))))
+              :onclick {playerctl.song == '' ? '' : "./scripts/winpos.sh recordplayer toggle"}))
+          (revealer
+            :transition "slideup"
+            :reveal {scrolliconsindex == 2 || scrolliconsindex == 3}
+            (buttonicons 
+              :path "./assets/icons/settingsb.svg"
+              :onclick "./scripts/winpos.sh themectl toggle &"))))
       (box
         :vexpand true
         :halign "end"
@@ -41,8 +50,8 @@
         (box 
           :class "fakescrollhighlight"
           :style "
-            margin-top: ${scrolliconsindex * 52 / 2}px;
-            margin-bottom: ${(1-scrolliconsindex) * 52 / 2}px;
+            margin-top: ${scrolliconsindex * 52 / 3}px;
+            margin-bottom: ${(2-scrolliconsindex) * 52 / 3}px;
           ")))))
 
 (defwidget buttonicons [path onclick ?onrightclick ?class ?tooltip ?size]
@@ -85,7 +94,7 @@
       (buttonicons 
         :class "widget"
         :onclick "./scripts/winpos.sh themectl toggle &"
-        :path "./assets/icons/pen.svg"
+        :path "./assets/icons/settings.svg"
         :tooltip "theme"))
     (box 
       :class "widget"

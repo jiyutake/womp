@@ -40,6 +40,7 @@ def parse(template, target):
 if not (len(argv) > 1 and argv[1] == "norecolor"):
     templatedir = os.path.join(eww_dir, "assets/iconstemplate")
     iconsdir = os.path.join(eww_dir, "assets/icons")
+    os.makedirs(iconsdir, exist_ok=True)
     for file in os.listdir(templatedir): 
         parse(os.path.join(templatedir, file), os.path.join(iconsdir, file))
 
