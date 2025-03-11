@@ -9,9 +9,9 @@
   :stacking "bg"
   :exclusive true 
   :monitor 0 
-  :wm-ignore false 
+  :wm-ignore true
   :windowtype "dock"
-  :reserve (struts :distance "60px" :side "left")
+  ; :reserve (struts :distance "60px" :side "left")
   (barstruct))
 
 (defwidget barstruct [] 
@@ -27,7 +27,7 @@
     :orientation "v"
     :space-evenly false 
     (clock)
-    (scrollableicons)
+    (unscrollableicons)
     (John)))
 
 (defwidget middle [] 

@@ -4,21 +4,21 @@
     :visible { EWW_BATTERY != ""}
     :orientation "v"
     :space-evenly false
-    (box 
-      :halign "center"
-      :width 16 
-      :height 4
-      :class "batnub")
+    ; (box 
+    ;   :halign "center"
+    ;   :width 16 
+    ;   :height 4
+    ;   :class "batnub")
     (box 
       :class "widget bar"
       :style "padding: 3px;"
-      :height 55
+      :height 70
       :tooltip "${bat0}%"
       (overlay
         (scale 
           :hexpand true
           :vexpand true
-          :class "batscale ${!batanim ? 'noanim' : ''}"
+          :class "batscale ${!batanim ? 'noanim' : ''} ${EWW_BATTERY?.BAT0.status == 'Charging' ? 'charging' : ''}"
           :css {bat0 >= 90 ? "trough slider {background-image: none;}" : ""}
           :value bat0 
           :min 0 
@@ -26,9 +26,9 @@
           :orientation "v"
           :flipped true
           :active false)
-        (image 
-          :visible {EWW_BATTERY?.BAT0.status == "Charging"}
-          :image-height 16
-          :path "./assets/icons/bolt.svg")
+        ; (image 
+        ;   :visible {EWW_BATTERY?.BAT0.status == "Charging"}
+        ;   :image-height 16
+        ;   :path "./assets/icons/bolt.svg")
         (box 
           :class "batoverlay")))))

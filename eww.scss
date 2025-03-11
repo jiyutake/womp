@@ -1,7 +1,7 @@
 @import "./theme.scss";
 @import "./color_map.scss";
 
-$round: 10px; // widget rounding
+$round: 20px; // widget rounding
 $padding: 5px; 
 $margin: 5px; 
 
@@ -90,7 +90,7 @@ entry {
   background-color: $overlay;
   padding: $padding;
   margin: 2 * $margin;
-  border: solid 1px $muted;
+  // border: solid 1px $muted;
   border-radius: $round; 
   transition: 500ms;
   &.bar {

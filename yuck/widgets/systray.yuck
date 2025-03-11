@@ -4,23 +4,23 @@
 ; Elkowar told me to name this width "John"
 (defwidget John [] 
   (box 
+    :class "widget bar"
     :orientation "v"
     :space-evenly false
     (revealer 
       :reveal revealsystray
       :transition "slidedown"
-      (box 
-        :class "widget transparent bar"
-        (systray
-          :orientation "v"
-          :icon-size 25)))
+      (systray
+        :orientation "v"
+        :icon-size 24))
     (button
+      :height 28
       :onclick "${EWW_CMD} update revealsystray=${!revealsystray}"
       (transform
         :transform-origin-x "50%"
         :transform-origin-y "50%"
         :rotate {revealsystray ? 0 : 50}
         (image 
-          :class "widget transparent bar"
+          :image-width 24
           :path "./assets/icons/chevron.svg")))))
    

@@ -2,6 +2,8 @@
 .barbg {
   background-color: $base;
   padding: $padding;
+  margin: 2*$margin;
+  border-radius: $round + $padding;
 }
 
 .clock {
@@ -11,13 +13,13 @@
 }
 
 .shorthand {
-  margin: 6px 13px 13px 13px;
+  margin: 2px 12px 13px 12px;
   background-color: $accent2;
   border-radius: $round;
 }
 
 .longhand {
-  margin: 4px 13px 13px 13px;
+  margin: 0px 12px 13px 12px;
   background-color: $accent;
   border-radius: $round;
 }
@@ -52,6 +54,11 @@
     animation-name: none;
     background-image: none;
   }
+  &.charging trough highlight {
+      background-image: url("./assets/icons/bolt.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+  }
 }
 
 @keyframes waveanim {
@@ -65,7 +72,8 @@
 
 .batoverlay {
   border-radius: $round - 3px;
-  box-shadow: 0px 0px 0px 3px $overlay;
+  box-shadow: 0px 0px 0px 10px $base
+    ,0px 0px 0px 3px $overlay;
 }
 
 .batnub {
@@ -97,7 +105,7 @@
   &.occupied {
     background-color: $muted;
     border-color: $subtle;
-    padding: 10px 0px;
+    padding: 8px 0px;
   }
 
   &.focused {

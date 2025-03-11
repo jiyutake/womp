@@ -54,6 +54,48 @@
             margin-bottom: ${(2-scrolliconsindex) * 52 / 3}px;
           ")))))
 
+(defvar revealunscrollicons false)
+
+(defwidget unscrollableicons []
+  (box 
+    :class "widget bar"
+    :orientation "v"
+    :halign "start"
+    :space-evenly false 
+    (eventbox 
+      :onhover "${EWW_CMD} update revealunscrollicons=true"
+      :onhoverlost "${EWW_CMD} update revealunscrollicons=false"
+      (box 
+        :orientation "v"
+        :space-evenly false
+        (revealer 
+          :reveal {!revealunscrollicons}
+          :transition "slidedown"
+          (box 
+            :height 28
+            :width 28 
+            :halign "center"
+            :valign "center"
+            :style "border: solid 2px ${theme.text}; border-radius: 15px; margin: 3px;"))
+        (revealer 
+          :reveal {revealunscrollicons}
+          :transition "slideup"
+          (box 
+            :orientation "v"
+            (buttonicons 
+              :path "./assets/icons/search.svg"
+              :onclick "./bin/toggle_applauncher.sh &")
+            (buttonicons 
+              :path "./assets/icons/bell${notifications.dnd ? 'off' : ''}.svg"
+              :onrightclick "./scripts/notifmanage.sh --toggle"
+              :onclick "./scripts/winpos.sh notificationlog toggle &")
+            (buttonicons 
+              :path "./assets/icons/music${playerctl.song == '' ? 'off' : ''}.svg"
+              :onclick {playerctl.song == '' ? '' : "./scripts/winpos.sh recordplayer toggle"})
+            (buttonicons 
+              :path "./assets/icons/settingsb.svg"
+              :onclick "./scripts/winpos.sh themectl toggle &")))))))
+
 (defwidget buttonicons [path onclick ?onrightclick ?class ?tooltip ?size]
   (button 
     :class class
