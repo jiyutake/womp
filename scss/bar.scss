@@ -100,12 +100,12 @@
   border-radius: 10px;
   margin: $margin;
   transition: 500ms;
-  border: solid 1px;
+  // border: solid 1px;
 
   &.occupied {
-    background-color: $muted;
+    background-color: $text;
     border-color: $subtle;
-    padding: 8px 0px;
+    padding: 10px 0px;
   }
 
   &.focused {
@@ -121,8 +121,8 @@
   }
 
   &.empty {
-    background-color: $overlay;
+    background-color: $muted;
     border-color: $muted;
-    padding: 8px 0px;
+    padding: 10px 0px;
   }
 }

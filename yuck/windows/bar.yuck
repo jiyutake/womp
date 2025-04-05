@@ -27,7 +27,7 @@
     :orientation "v"
     :space-evenly false 
     (clock)
-    (unscrollableicons)
+    (mainicon)
     (John)))
 
 (defwidget middle [] 

@@ -14,7 +14,7 @@
         :transition "slidedown"
         (overlay
           (box
-            :height 30)
+            :height 28)
           ; (image 
           ;   :image-height 28
           ;   :path "./assets/icons/clockframe.svg")

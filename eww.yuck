@@ -48,6 +48,7 @@
 (include "./yuck/windows/keepopen.yuck")
 (include "./yuck/windows/osd.yuck")
 (include "./yuck/windows/themectl.yuck")
+(include "./yuck/windows/winlaunch.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/workspaces.yuck")
