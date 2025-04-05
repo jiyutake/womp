@@ -149,6 +149,44 @@
         :maxcond {brightness >= 70}
         :onchange "brightnessctl set {}% & ${EWW_CMD} update brightness={} &"))))
 
+(defwidget sliderctlwidtog [] 
+  (button 
+    :class "widget bar"
+    :onclick "${EWW_CMD} open sliderctl --toggle"
+    (image 
+      :image-width 24
+      :style "margin: 2px;"
+      :path "./assets/icons/sliders.svg")))
+
+(defwidget tridots [] 
+  (button 
+    :class "widget bar"
+    :onclick ""
+    (image 
+      :image-width 24
+      :style "margin: 2px;"
+      :path "./assets/icons/dots.svg")))
+
+(defwidget sliderctlwid [] 
+  (box 
+    :orientation "v"
+    (box 
+      :class "widget"
+      (sysslide 
+        :path "./assets/icons/volume${volumemute == true ? 'mute' : volume < 15 ? 'mid' : 'full'}"
+        :val volume
+        :tooltip "${volume}%"
+        :maxcond {volumemute == false && volume >= 70}
+        :onchange "pamixer --set-volume {} & ${EWW_CMD} update volume={} &"))
+    (box 
+      :class "widget"
+      (sysslide 
+        :path "./assets/icons/brightness"
+        :val brightness
+        :tooltip "${brightness}%"
+        :maxcond {brightness >= 70}
+        :onchange "brightnessctl set {}% & ${EWW_CMD} update brightness={} &"))))
+
 (defwidget sysslide [path val onchange ?tooltip maxcond]
   (box 
     :class "widget transparent bar"

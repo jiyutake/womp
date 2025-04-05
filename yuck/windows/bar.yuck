@@ -43,4 +43,5 @@
     :orientation "v"
     :space-evenly false 
     (batteryscale)
-    (hamburg)))
+    (sliderctlwidtog)
+    (tridots)))

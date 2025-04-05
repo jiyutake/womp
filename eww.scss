@@ -22,9 +22,9 @@ tooltip {
 
 .popup {
   background-color: $base;
-  padding: 2 * $padding;
+  padding: $padding;
   border: solid 1px $highlight;
-  border-radius: $round;
+  border-radius: $round + $padding + $margin;
   &.square {
     border-radius: 0;
   }
@@ -89,7 +89,7 @@ entry {
 .widget {
   background-color: $overlay;
   padding: $padding;
-  margin: 2 * $margin;
+  margin: $margin;
   // border: solid 1px $muted;
   border-radius: $round; 
   transition: 500ms;

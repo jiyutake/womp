@@ -27,3 +27,31 @@
       (box 
         :class "popup ${picomrunning ? '' : 'square'}"
         (systemctlwid)))))
+
+(defwindow sliderctl 
+  :geometry (geometry 
+              :x 80
+              :y -150 
+              :width 280 
+              :height 0 
+              :anchor "bottom left")
+  :stacking "fg"
+  :exclusive false 
+  :monitor 0 
+  :wm-ignore false
+  :windowtype "dock"
+  (box 
+    :orientation "v"
+    :space-evenly false 
+    (box 
+      :vexpand true)
+    ; (revealer 
+    ;   :valign "end"
+    ;   :reveal revealsystemctl
+    ;   :transition "slideup"
+    ;   :duration {picomrunning ? 500 : 0}
+    (eventbox
+      :onhoverlost "${EWW_CMD} close sliderctl"
+      (box 
+        :class "popup ${picomrunning ? '' : 'square'}"
+        (sliderctlwid)))))
