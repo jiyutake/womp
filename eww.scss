@@ -23,7 +23,6 @@ tooltip {
 .popup {
   background-color: $base;
   padding: $padding;
-  border: solid 1px $highlight;
   border-radius: $round + $padding + $margin;
   &.square {
     border-radius: 0;
@@ -100,6 +99,9 @@ entry {
   &.transparent {
     background-color: transparent;
     border: none;
+  }
+  &.thicker {
+    padding: 2*$padding;
   }
 }
 

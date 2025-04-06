@@ -47,17 +47,10 @@
     (box 
       :class "themeheader"
       :orientation "h"
-      :space-evenly false 
-      (box 
-        :orientation "h"
-        :space-evenly false 
-        :spacing 10
+      :space-evenly false
+      (label 
         :hexpand true
-        (image 
-          :path "./assets/icons/menu.svg"
-          :image-width 25)
-        (label 
-          :markup "<span size='large' weight='bold'>Notifications</span>"))
+        :markup "<span size='large' weight='bold'>Notifications</span>")
       (button 
         :class "urgentwid red bar"
         :style "margin: -5px;"
@@ -65,12 +58,12 @@
         (box 
           :orientation "h"
           :space-evenly false
-          (image 
-            :path "./assets/icons/bin.svg"
-            :image-height 24)
           (label 
             :style "margin: 0px 5px;"
-            :text "Delete All"))))
+            :text "Clear")
+          (image 
+            :path "./assets/icons/bin.svg"
+            :image-height 24))))
     (scroll 
       :class "notilog"
       :vexpand true 

@@ -10,16 +10,19 @@
         :onaccept "
           ${ arraylength(appsjson.apps) > 0 ? "(${appsjson.apps[0].desktop}) & ./scripts/apps.py --increase '${appsjson.apps[0].name}' &" : ''}
           ./scripts/winpos.sh applauncher toggle &"))
-    (scroll 
-      :class "applist"
-      :vexpand true 
-      :vscroll true 
-      :hscroll false 
-      (box 
-        :space-evenly false 
-        :orientation "v"
-        (for a in {appsjson.apps}
-          (app :a a))))))
+    (box
+      :class "widget"  
+      :vexpand true
+      (scroll 
+        :class "applist"
+        :vexpand true 
+        :vscroll true 
+        :hscroll false 
+        (box 
+          :space-evenly false 
+          :orientation "v"
+          (for a in {appsjson.apps}
+            (app :a a)))))))
 
 (defwidget app [a]
   (button 

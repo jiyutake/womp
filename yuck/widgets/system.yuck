@@ -74,27 +74,28 @@
       :halign "start"
       :space-evenly false 
       (buttonicons 
-        :class "widget bar"
+        :win "winlaunch"
         :path "./assets/icons/search.svg"
         :onclick "./bin/toggle_applauncher.sh &")
       (buttonicons 
-        :class "widget bar"
+        :win "winlaunch"
         :path "./assets/icons/bell${notifications.dnd ? 'off' : ''}.svg"
         :onrightclick "./scripts/notifmanage.sh --toggle"
         :onclick "./scripts/winpos.sh notificationlog toggle &")
       (buttonicons 
-        :class "widget bar"
+        :win "winlaunch"
         :path "./assets/icons/music${playerctl.song == '' ? 'off' : ''}.svg"
         :onclick {playerctl.song == '' ? '' : "./scripts/winpos.sh recordplayer toggle"})
       (buttonicons 
-        :class "widget bar"
+        :win "winlaunch"
         :path "./assets/icons/settingsb.svg"
         :onclick "./scripts/winpos.sh themectl toggle &"))))
 
-(defwidget buttonicons [path onclick ?onrightclick ?class ?tooltip ?size]
+;; Holy fuck why are there different sizes and padding for different buttons????
+(defwidget buttonicons [path onclick ?win ?onrightclick ?class ?tooltip ?size]
   (button 
-    :class class
-    :onclick '${EWW_CMD} close winlaunch & ${onclick}'
+    :class "widget ${class}"
+    :onclick '${EWW_CMD} close ${win} & ${onclick}'
     :onrightclick onrightclick
     :tooltip tooltip
     (image 
@@ -112,42 +113,6 @@
       :style "margin: 2px;"
       :path "./assets/icons/menu.svg")))
 
-(defwidget systemctlwid [] 
-  (box
-    :orientation "v"
-    :space-evenly false 
-    (box 
-      :orientation "h"
-      (buttonicons 
-        :class "widget"
-        :onclick {wifiradio == "enabled" ? "nmcli radio wifi off" : "nmcli radio wifi on"}
-        :path "./assets/icons/wifi${wifiradio == 'enabled' ? '' : 'off'}.svg"
-        :tooltip wifiessid)
-      (buttonicons 
-        :class "widget"
-        :onclick "./scripts/bluetooth.sh --toggle"
-        :path "./assets/icons/bluetooth${bluetoothstatus == 'connected' ? '' : 'off'}.svg"
-        :tooltip bluetoothdevice)
-      (buttonicons 
-        :class "widget"
-        :onclick "./scripts/winpos.sh themectl toggle &"
-        :path "./assets/icons/settings.svg"
-        :tooltip "theme"))
-    (box 
-      :class "widget"
-      :orientation "v"
-      (sysslide 
-        :path "./assets/icons/volume${volumemute == true ? 'mute' : volume < 15 ? 'mid' : 'full'}"
-        :val volume
-        :tooltip "${volume}%"
-        :maxcond {volumemute == false && volume >= 70}
-        :onchange "pamixer --set-volume {} & ${EWW_CMD} update volume={} &")
-      (sysslide 
-        :path "./assets/icons/brightness"
-        :val brightness
-        :tooltip "${brightness}%"
-        :maxcond {brightness >= 70}
-        :onchange "brightnessctl set {}% & ${EWW_CMD} update brightness={} &"))))
 
 (defwidget sliderctlwidtog [] 
   (button 
@@ -161,7 +126,7 @@
 (defwidget tridots [] 
   (button 
     :class "widget bar"
-    :onclick ""
+    :onclick "${EWW_CMD} open systemctl --toggle"
     (image 
       :image-width 24
       :style "margin: 2px;"
@@ -186,6 +151,70 @@
         :tooltip "${brightness}%"
         :maxcond {brightness >= 70}
         :onchange "brightnessctl set {}% & ${EWW_CMD} update brightness={} &"))))
+
+(defwidget systemctlwid [] 
+  (box
+    :orientation "h"
+    :space-evenly true 
+    (box 
+      :orientation "v"
+      :space-evenly true
+      (button
+        :onclick {wifiradio == "enabled" ? "nmcli radio wifi off" : "nmcli radio wifi on"}
+        (box 
+          :orientation "h"
+          :spacing 10
+          :class "widget thicker"
+          (image 
+            :size 28
+            :path "./assets/icons/wifi.svg")
+          (image 
+            :size 28 
+            :path "./assets/icons/chevronright.svg")))
+      (button
+        :onclick "./scripts/bluetooth.sh --toggle"
+        (box 
+          :orientation "h"
+          :spacing 10
+          :class "widget thicker"
+          (image 
+            :size 28
+            :path "./assets/icons/bluetooth.svg")
+          (image 
+            :size 28 
+            :path "./assets/icons/chevronright.svg"))))
+    (box 
+      :orientation "v"
+      (box 
+        :orientation "h"
+        :space-evenly false
+        (buttonicons 
+          :class "thicker"
+          :win "systemctl"
+          :size 28
+          :onclick "./scripts/winpos.sh themectl toggle &"
+          :path "./assets/icons/settings.svg")
+        (buttonicons 
+          :class "thicker"
+          :win "systemctl"
+          :size 28
+          :onclick ""
+          :path "./assets/icons/power.svg"))
+      (box 
+        :orientation "h"
+        :space-evenly false
+        (buttonicons 
+          :class "thicker"
+          :win "systemctl"
+          :size 28
+          :onclick "./scripts/notifmanage.sh --toggle"
+          :path "./assets/icons/dnd.svg")
+        (buttonicons 
+          :class "thicker"
+          :win "systemctl"
+          :size 28
+          :onclick ""
+          :path "./assets/icons/lock.svg")))))
 
 (defwidget sysslide [path val onchange ?tooltip maxcond]
   (box 

@@ -64,7 +64,7 @@
 
 .themeheader {
   background-color: $overlay;
-  border-bottom: solid 1px $highlight;
+  // border-bottom: solid 1px $highlight;
   padding: $padding * 3;
   border-top-left-radius: $round;
   border-top-right-radius: $round;
@@ -86,7 +86,7 @@
 
 .themeheadmin {
   background-color: $base;
-  border-bottom: solid 1px $highlight;
+  // border-bottom: solid 1px $highlight;
   border-top-left-radius: $round;
   border-top-right-radius: $round;
   padding: $padding $padding * 3;

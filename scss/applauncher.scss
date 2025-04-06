@@ -1,13 +1,14 @@
 
 .buttonapp {
-  margin: 2 * $margin + 1px;
+  @extend .widget;
   margin-right: 15px;
   padding: $padding;
   transition: 500ms;
   border-radius: $round;
   &:hover {
-    @extend .widget;
+    // margin: 2 * $margin + 1px;
     margin-right: 15px;
+    background-color: $highlight;
     label {
       font-weight: 500;
     }
