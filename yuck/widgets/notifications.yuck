@@ -14,11 +14,11 @@
         :spacing 20
         (box 
           :halign "start"
-          :valign "center"
+          :valign "start"
           :visible {noti.image != "null"}
           :class "notiimage"
-          :width 60 
-          :height 60 
+          :width 100 
+          :height 100 
           :style "background-image: url('${noti.image}')")
         (box 
           :orientation "v"

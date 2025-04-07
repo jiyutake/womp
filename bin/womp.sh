@@ -98,6 +98,8 @@ help() {
             get
             pick
             restore
+    \e[1mlock\e[22m
+        \e[4mUsage\e[24m: womp.sh lock
 '           
 }
 
@@ -204,6 +206,9 @@ case $1 in
     ;;
     wallpaper)
         $EWW_DIR/bin/wallset.sh $2 $3
+    ;;
+    lock)
+        $EWW_DIR/bin/lock.sh
     ;;
     help|*) 
         help

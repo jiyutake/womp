@@ -1,3 +1,6 @@
+;; User defined variables
+(defvar userpfp "./assets/cat-explode.png")
+(defvar password "eww")
 
 (defpoll thour :initial "0" :interval "60s" "date +'%H'")
 (defpoll tmin :initial "0" :interval "60s" "date +'%M'")
@@ -49,6 +52,7 @@
 (include "./yuck/windows/osd.yuck")
 (include "./yuck/windows/themectl.yuck")
 (include "./yuck/windows/winlaunch.yuck")
+(include "./yuck/windows/lockscreen.yuck")
 
 ;; Widgets
 (include "./yuck/widgets/workspaces.yuck")

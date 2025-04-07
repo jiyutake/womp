@@ -1,0 +1,44 @@
+.lockbg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.lockblur {
+  background-color: #000000;
+  opacity: 0.5;
+}
+
+.lockpfp {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  margin: $margin;
+}
+
+.shaker {
+  animation-duration: 150ms;
+  animation-iteration-count: 3;
+  animation-timing-function: linear;
+}
+
+@keyframes shakepfp {
+  0% {
+    margin-left: -1*  $margin;
+    margin-right: 3 * $margin;
+  }
+  50% {
+    margin-right: -1*  $margin;
+    margin-left: 3 * $margin;
+  }
+  100% {
+    margin-left: -1*  $margin;
+    margin-right: 3 * $margin;
+  }
+}
+
+.locktime {
+  font-size: 40px;
+  font-weight: bold;
+}

@@ -213,7 +213,7 @@
           :class "thicker"
           :win "systemctl"
           :size 28
-          :onclick ""
+          :onclick "./bin/lock.sh"
           :path "./assets/icons/lock.svg")))))
 
 (defwidget sysslide [path val onchange ?tooltip maxcond]
