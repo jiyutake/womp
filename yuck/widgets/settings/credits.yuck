@@ -19,123 +19,158 @@
         :xalign 0
         :wrap true
         :markup "Some information about this project and who made it.")
-      (headcont 
-        (box
+
+      (box 
+        :class "themebodymin"
+        :orientation "v"
+        :space-evenly false
+        :style "padding: 15px;"
+        :spacing 10
+        (box 
           :orientation "h"
-          :space-evenly false
           :spacing 10
+          :space-evenly false
+          :style "padding: 0px 5px;"
           (image 
-            :path "./assets/icons/menu.svg"
-            :image-width 20)
+            :image-width 20 
+            :path "./assets/icons/people.svg")
           (label 
             :style "margin: 10px 0;"
             :markup "<b>People</b>"))
+        ;; You can change this if you want, my body refuses to type anything cheesy
+        (label 
+          :wrap true
+          :text "Yea, we only have 2 contributers. We're very tired so if you come across any issues, please fix it yourself."))
+      
+      (eventbox 
+        :class "schrodinger"
         (box 
-          :orientation "v"
+          :class "themebodymin"
           :space-evenly false 
-          :spacing 20
-          (label 
-            :wrap true
-            :text "Yea, we only have 2 contributers. We're very tired so if you come across any issues, please fix it yourself.")
-          (eventbox
-            :class "schrodinger"
-            (tailcont 
-              (box 
-                :orientation "h"
-                :class "wallpaperbox"
-                :style 'background-image: url("./assets/fwall.png");'
-                :space-evenly false
-                (box 
-                  :class "pfpbox"
-                  :style 'background-image: url("./assets/fpfp.png");'
-                  :height 100
-                  :width 100)
-                (box 
-                  :class "widget transparent" 
-                  :orientation "v"
-                  :space-evenly false 
-                  (label 
-                    :xalign 0
-                    :style "font-size: 25px; font-weight: bold; color: #575279;"
-                    :text "Failed")
-                  (label 
-                    :xalign 0
-                    :style "color: #575279;"
-                    :text "@failed.sh")
-                  (label 
-                    :xalign 0
-                    :style "color: #575279;"
-                    :text "code and widgets")))
-              (box 
-                :orientation "h"
-                :hexpand true
-                (box
-                  :halign "center"
-                  :width 220
-                  (button 
-                    :class "widget"
-                    :onclick "xdg-open https://github.com/failedex"
-                    (image 
-                      :image-width 25
-                      :path "./assets/icons/github.svg"))
-                  (button 
-                    :class "widget"
-                    :onclick "xdg-open https://failedex.github.io/"
-                    (image 
-                      :image-width 25
-                      :path "./assets/icons/linkb.svg"))))))
-          (tailcont 
+          :orientation "v" 
+          :style "padding: 15px;"
+          :spacing 10
+          (box 
+            :orientation "h"
+            :space-evenly false 
             (box 
-              :orientation "h"
-              :class "wallpaperbox"
-              :style 'background-image: url("./assets/kwall.png");'
-              :space-evenly false
-              (box 
-                :class "pfpbox"
-                :style 'background-image: url("./assets/kpfp.png"); border-color: #B4637A;'
-                :height 100
-                :width 100)
-              (box 
-                :class "widget transparent" 
-                :orientation "v"
-                :space-evenly false 
-                (label 
-                  :xalign 0
-                  :style "font-size: 25px; font-weight: bold; color: #B4637A;"
-                  :text "Kate")
-                (label 
-                  :xalign 0
-                  :style "color: #575279;"
-                  :text "@jiyutake")
-                (label 
-                  :xalign 0
-                  :style "color: #575279;"
-                  :text "design and ideas")))
+              :valign "center"
+              :class "pfpbox"
+              :style 'background-image: url("./assets/fpfp.png");'
+              :height 70
+              :width 70)
             (box 
-              :orientation "h"
-              :hexpand true
-              (box
-                :halign "center"
-                :width 220
-                (button 
-                  :class "widget"
-                  :onclick "xdg-open https://github.com/jiyutake"
-                  (image 
-                    :image-width 25
-                    :path "./assets/icons/github.svg"))
-                (button 
-                  :class "widget"
-                  :onclick "xdg-open https://rick.nerial.uk/video.mp4"
-                  (image 
-                    :image-width 25
-                    :path "./assets/icons/linkb.svg")))))))
+              :class "widget transparent" 
+              :orientation "v"
+              :space-evenly false 
+              (label 
+                :xalign 0
+                :style "font-size: 25px; font-weight: bold; color: #E57474;"
+                :text "Failed")
+              (label 
+                :xalign 0
+                :style "color: ${theme.subtle};"
+                :text "@failed.sh")))
+          (box 
+            :orientation "h"
+            :space-evenly false 
+            (button 
+              :width 48
+              :class "interactive hard"
+              :onclick "xdg-open https://github.com/failedex"
+              (image 
+                :image-width 26
+                :path "./assets/icons/github.svg"))
+            (button 
+              :width 48
+              :class "interactive hard"
+              :onclick "xdg-open https://failedex.github.io/"
+              (image 
+                :image-width 26
+                :path "./assets/icons/linkw.svg"))
+            (box
+              :class "interactive hard"
+              :style "background-color: #67B0E8;"
+              (label 
+                :style "margin: 0px 10px;"
+                :text "Scripting"))
+            (box
+              :class "interactive"
+              (label 
+                :style "margin: 0px 10px;"
+                :markup "<b>Ideas</b>")))))
+      
+      (box 
+        :class "themebodymin"
+        :space-evenly false 
+        :orientation "v" 
+        :style "padding: 15px;"
+        :spacing 10
+        (box 
+          :orientation "h"
+          :space-evenly false 
+          (box 
+            :valign "center"
+            :class "pfpbox"
+            :style 'background-image: url("./assets/kpfp.png");'
+            :height 70
+            :width 70)
+          (box 
+            :class "widget transparent" 
+            :orientation "v"
+            :space-evenly false 
+            (label 
+              :xalign 0
+              :style "font-size: 25px; font-weight: bold; color: #6CBFBF;"
+              :text "Kate")
+            (label 
+              :xalign 0
+              :style "color: ${theme.subtle};"
+              :text "@jiyutake")))
+        (box 
+          :orientation "h"
+          :space-evenly false 
+          (box
+            :class "interactive hard"
+            :style "background-color: #8CCF7E;"
+            (label 
+              :style "margin: 0px 10px;"
+              :text "Interface Design"))
+          (box
+            :class "interactive hard"
+            (label 
+              :style "margin: 0px 10px;"
+              :text "Layout")))
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (box
+            :class "interactive"
+            (label 
+              :style "margin: 0px 10px;"
+              :markup "<b>Ideas</b>"))
+          (button 
+            :width 48
+            :class "interactive hard"
+            :onclick "xdg-open https://github.com/jiyutake"
+            (image 
+              :image-width 26
+              :path "./assets/icons/github.svg"))
+          (button 
+            :width 48
+            :class "interactive hard"
+            :onclick "xdg-open https://rick.nerial.uk/video.mp4"
+            (image 
+              :image-width 26
+              :path "./assets/icons/linkw.svg"))))
+
       (headcont 
         (box
           :orientation "h"
           :space-evenly false
           :spacing 10
           (image 
-            :path "./assets/icons/menu.svg"
+            :path "./assets/icons/link.svg"
             :image-width 20)
           (label 
             :style "margin: 10px 0;"
@@ -143,29 +178,37 @@
         (box 
           :orientation "v"
           :space-evenly false 
+          (box
+            :orientation "h"
+            :space-evenly false
+            (button 
+              :class "clinks"
+              :hexpand true
+              :style "background-color: ${theme.overlay}; border: solid 2px #E5C76B; padding: 8px;"
+              :onclick "xdg-open https://github.com/jiyutake/womp"
+              (box 
+                :orientation "h"
+                :space-evenly false
+                :spacing 10
+                (image 
+                  :image-width 20 
+                  :path "./assets/icons/star.svg")
+                (label 
+                  :style "color: ${theme.text};"
+                  :markup "<span foreground='#E5C76B' weight='bold'>Star</span> <u>the project!</u>")))
+            (button 
+              :width 53
+              :class "clinks"
+              :style "background-color: ${theme.overlay}; border: solid 2px #E57474; padding: 8px;"
+              ;; idk what this is meant to do
+              :onclick ""
+              (image 
+                :image-width 20 
+                :path "./assets/icons/heart.svg")))
+                
           (clinks 
             :text "Feather Icons"
             :link "https://feathericons.com/")
-          (box
-            :style "margin: 5px;"
-            (tailcont 
-              (box 
-                :class "wallpaperbox"
-                :style 'background-image: url("./assets/womp.png");'
-                :height 80)
-              (box 
-                :orientation "h"
-                :spacing 10 
-                :space-evenly false
-                :style "padding: 5px 0;"
-                (image 
-                  :style "margin-left: -5px;"
-                  :image-width 20 
-                  :path "./assets/icons/star.svg")
-                (button 
-                  :onclick "xdg-open https://github.com/jiyutake/womp"
-                  (label 
-                    :markup "<span foreground='#ea9d34' weight='bold'>Star</span> <u>the project!</u>")))))
           (looneytoons)
           (clinks 
             :text "Rosé Pine"
@@ -185,7 +228,7 @@
     :spacing 10
     (image 
       :image-width 20
-      :path "./assets/icons/linkb.svg")
+      :path "./assets/icons/linkw.svg")
     (button 
       :onclick "xdg-open ${link}"
       (label 

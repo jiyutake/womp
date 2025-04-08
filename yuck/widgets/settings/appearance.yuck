@@ -96,10 +96,10 @@
             :items {presetcolorkeys}
             :onchange "./scripts/colormap.py update {}")
           (box
-            :class "widget"
-            :style "margin-left: 0px;"
+            :class "interactive"
             (input 
               :value {colorjson.val}
+              :style "color: ${theme.overlay};"
               :onaccept "./scripts/colormap.py set ${colorjson.key} '{}'")))
         (box
           :width 94

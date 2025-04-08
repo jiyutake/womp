@@ -129,19 +129,20 @@
 
 .pfpbox {
   margin: $margin;
-  border-radius: $round;
+  border-radius: 50%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border: solid 1px $muted;
 }
 
 .clinks {
-  background-color: $surface;
-  border: solid 1px $highlight;
+  background-color: $text;
   border-radius: $round;
   margin: $margin;
   padding: $padding * 2;
+  label {
+    color: $overlay;
+  }
 }
 
 .schrodinger {
