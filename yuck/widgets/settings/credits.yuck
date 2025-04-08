@@ -13,7 +13,7 @@
       :hexpand true 
       (label 
         :xalign 0 
-        :markup "<span size='large' weight='bold'>Layout</span>")
+        :markup "<span size='large' weight='bold'>Credits</span>")
       (label 
         :xalign 0
         :wrap true
