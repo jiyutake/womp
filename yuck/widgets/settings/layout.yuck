@@ -10,6 +10,7 @@
     :hexpand true 
     (box 
       :class "widget transparent"
+      :style "margin: 15px;"
       :orientation "v"
       :space-evenly false 
       :spacing 10 
@@ -32,12 +33,11 @@
             :onchange "bash -c '${EWW_CMD} update selectedwindowanc={} selectedwindowanchor=\"$(./scripts/winpos.sh {} get)\"'")
           (button 
             :onclick "./bin/womp.sh anchor ${selectedwindowanc} ${selectedwindowanchor}"
-            :class "urgentwid"
-            (label 
-              :text "Save")))
+            :class "interactive hard"
+            (image
+              :image-width 28
+              :path "./assets/icons/save.svg")))
         (box 
-          :class "wallpaperbox tail"
-          :style 'background-image: url("${wallpaperpath}")'
           :height 175
           (centerbox 
             :orientation "v"

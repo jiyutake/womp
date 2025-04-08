@@ -27,13 +27,12 @@
 .solidlabelcover {
   margin-right: 20px;
   margin-left: $margin - 2px;
-  background-color: $overlay;
+  background-color: $subtle;
 }
 
 .wallpaperbox {
-  margin: $padding * -3;
-  border-top-left-radius: $round;
-  border-top-right-radius: $round;
+  margin: $padding * -3 + 1;
+  border-radius: $round - 1;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -73,42 +72,40 @@
 .leftbar {
   padding: $padding * 3;
   background-color: $surface;
-  border-right: solid 1px $highlight;
   border-bottom-left-radius: $round;
 }
 
 .themebodymin {
-  background-color: $surface;
-  border: solid 1px $highlight;
+  background-color: $overlay;
+  // border: solid 1px $highlight;
   border-radius: $round;
   margin: $margin 0;
 }
 
-.themeheadmin {
-  background-color: $base;
+.themesubmin {
+  background-color: $surface;
   // border-bottom: solid 1px $highlight;
-  border-top-left-radius: $round;
-  border-top-right-radius: $round;
-  padding: $padding $padding * 3;
-  &.tail {
-    padding: $padding $padding * 3;
-    border: none;
-    border-top: solid 1px $highlight;
-    border-radius: 0;
-    border-bottom-left-radius: $round;
-    border-bottom-right-radius: $round;
-  }
+  border-radius: $round - 1px;
+  margin: 1px;
+  padding: 3 * $padding;
+  // &.tail {
+  //   padding: $padding $padding * 3;
+  //   border: none;
+  //   border-top: solid 1px $highlight;
+  //   border-radius: 0;
+  //   border-bottom-left-radius: $round;
+  //   border-bottom-right-radius: $round;
+  // }
 }
 
 .checkb {
   transition: 500ms;
   border-radius: 50px;
-  background-color: $accent;
-  border: solid 1px rgba($accent, 0.5);
+  background-color: $text;
   padding: 12px;
   &.inactive {
     background-color: $muted;
-    border-color: $subtle;
+    border-color: $overlay;
     padding: 4px 12px;
   }
 }
@@ -120,17 +117,13 @@
 }
 
 .anchorbox {
-  background-color: $surface; 
-  border: solid 1px $highlight; 
+  background-color: $subtle; 
   border-radius: $round;
-  opacity: 0.5;
   margin: $margin;
   min-width: 40px;
   min-height: 40px;
   &.active {
-    background-color: rgba($accent, 0.8);
-    border: solid 1px $accent;
-    opacity: 1;
+    background-color: $text;
   }
 }
 
@@ -166,5 +159,17 @@
   &:active {
     margin-top: -55px;
     margin-bottom: 0;
+  }
+}
+
+.interactive {
+  @extend .widget;
+  background-color: $subtle;
+  label {
+    color: $overlay;
+  }
+  &.hard {
+    background-color: $text;
+    font-weight: bold;
   }
 }

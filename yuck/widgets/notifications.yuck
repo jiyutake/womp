@@ -89,7 +89,6 @@
         (box 
           :orientation "h"
           :space-evenly false 
-          :class "themeheadmin"
           :style "padding: 15px;"
           :spacing 10
           (box 
@@ -110,6 +109,7 @@
               :xalign 0 
               :markup "<b>${noti.summary}</b>"))) 
         (box 
+          :class "themesubmin"
           :style "padding: 20px;"
           (label 
             :xalign 0 

@@ -3,8 +3,7 @@
 
 (defwidget clock [] 
   (eventbox
-    :onhover "${EWW_CMD} update revealdigitaltime=true"
-    :onhoverlost "${EWW_CMD} update revealdigitaltime=false"
+    :onclick "${EWW_CMD} update revealdigitaltime=${!revealdigitaltime}"
     (box 
       :orientation "v"
       :class "widget bar"

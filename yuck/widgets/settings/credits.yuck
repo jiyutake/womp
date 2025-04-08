@@ -7,13 +7,14 @@
     :hexpand true 
     (box 
       :class "widget transparent"
+      :style "padding: 15px;"
       :orientation "v"
       :space-evenly false 
       :spacing 10 
       :hexpand true 
       (label 
         :xalign 0 
-        :markup "<span size='large' weight='bold'>Layout</span>")
+        :markup "<span size='large' weight='bold'>Credits</span>")
       (label 
         :xalign 0
         :wrap true

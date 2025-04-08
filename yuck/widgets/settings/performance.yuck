@@ -7,6 +7,7 @@
     :hexpand true
     (box 
       :class "widget transparent"
+      :style "padding: 15px;"
       :orientation "v"
       :space-evenly false 
       :spacing 10 
@@ -51,45 +52,37 @@
 
 (defwidget pbattery []
   (box
+    :class "widget"
+    :style "padding: 15px;"
     :visible {EWW_BATTERY != ""}
-    (tailcont 
+    (box 
+      :orientation "v"
+      :space-evenly false 
+      :spacing 10
+      :visible {EWW_BATTERY != ""}
       (box 
-        :orientation "v"
-        :space-evenly false 
-        :spacing 10
-        :visible {EWW_BATTERY != ""}
-        (box 
-          :orientation "h"
-          :spacing 10 
-          :space-evenly false 
-          :style "padding: 0px 5px;"
-          (image 
-            :image-width 20 
-            :path "./assets/icons/battery.svg")
-          (label 
-            :style "margin: 10px 0;"
-            :markup "<b>Power</b>"))
-        (for bat in {EWW_BATTERY != "" ? jq(EWW_BATTERY, "del(.total_avg) | keys") : []} 
-          (pslides 
-            :text bat
-            :class "accent"
-            :val {EWW_BATTERY[bat].capacity})))
-      (box
         :orientation "h"
-        :space-evenly false
-        :spacing 10
-        :hexpand true
+        :spacing 10 
+        :space-evenly false 
+        :style "padding: 0px 5px;"
         (image 
-          :path "./assets/icons/menu.svg"
-          :image-width 20)
+          :image-width 20 
+          :path "./assets/icons/battery.svg")
         (label 
           :style "margin: 10px 0;"
-          :markup "<b>Time left</b>")
+          :markup "<b>Power</b>")
         (box 
           :hexpand true)
         (label 
+          :style "color: ${theme.subtle}"
           :text {arraylength(captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")) == 0 ? "" : 
-                               "${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][1]}h ${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][2]}min"})))))
+                               "~ ${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][1]}h ${captures(acpiinfo, "0*(\\d+):0*(\\d+):\\d{2}")[0][2]}min"}))
+
+      (for bat in {EWW_BATTERY != "" ? jq(EWW_BATTERY, "del(.total_avg) | keys") : []} 
+        (pslides 
+          :text bat
+          :class "accent"
+          :val {EWW_BATTERY[bat].capacity})))))
         
 
 (defwidget pslides [text val ?class]

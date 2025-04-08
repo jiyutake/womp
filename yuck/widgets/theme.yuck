@@ -80,11 +80,11 @@
     (box 
       :orientation "h"
       :space-evenly false 
-      :class "themeheadmin"
       :spacing 10
+      :style "padding: 5px 15px;"
       (children :nth 0))
     (box
-      :style "padding: 15px;"
+      :class "themesubmin"
       (children :nth 1)))) 
   
 (defwidget tailcont []
@@ -94,11 +94,11 @@
     :space-evenly false 
     :hexpand true
     (box
-      :style "padding: 15px;"
+      :class "themesubmin"
       (children :nth 0)) 
     (box 
       :orientation "h"
       :space-evenly false 
       :hexpand true
-      :class "themeheadmin tail"
+      :style "padding: 5px 15px;"
       (children :nth 1)))) 

@@ -8,6 +8,7 @@
     :hexpand true
     (box 
       :class "widget transparent"
+      :style "margin: 15px;"
       :orientation "v"
       :space-evenly false 
       :spacing 10
@@ -15,19 +16,19 @@
       (label 
         :xalign 0
         :markup "<span size='large' weight='bold'>Theme</span>")
-      (tailcont
+      (box
+        :orientation "v"
+        :space-evenly false
+        :class "widget"
         (label 
+          :style "margin: 10px;"
           :xalign 0
           :wrap true
           :markup "Selects a file from <span background='${theme.overlay}'>./themes/</span> and applies the colors from that file.")
-        (box
-          :orientation "h"
-          :space-evenly false
-          :hexpand true
-          (combobox
-            :text {theme.name}
-            :items {presetthemes}
-            :onchange "./bin/set_theme.sh {}")))
+        (combobox
+          :text {theme.name}
+          :items {presetthemes}
+          :onchange "./bin/set_theme.sh {}"))
           ; (button 
           ;   :class "urgentwid"
           ;   :onclick {themefiletmp != "" ? "./bin/set_theme.sh ${themefiletmp}" : ""}
@@ -64,14 +65,14 @@
           :halign "center"
           :orientation "h"
           (button 
-            :class "widget"
+            :class "interactive"
             :style "margin-left: 0;"
             :onclick "${EWW_CMD} update wallpaperpath=$(zenity --file-selection --title 'Select Wallpaper' --file-filter='Image files (png, jpg) | *.png *.jpg *.jpeg') &"
             (label 
               :style "margin: 0 15px;"
               :markup "Select"))
           (button 
-            :class "urgentwid"
+            :class "interactive hard"
             :style "margin-right: 0;"
             :onclick "./bin/wallset.sh set ${wallpaperpath}"
             (label 
@@ -82,88 +83,7 @@
   (box 
     :orientation "v"
     :space-evenly false 
-    (tailcont
-      (box 
-        :height 100
-        :style "margin: -10px;"
-        :orientation "h"
-        :space-evenly false
-        (box 
-          :hexpand true
-          :orientation "v"
-          :space-evenly false
-          (box 
-            :orientation "h"
-            (box 
-              :class "colorswidbox bar"
-              :style "background-color: ${theme.base};"
-              (image 
-                :image-width 25
-                :path "./assets/icons/chevrondown.svg"))
-            (box 
-              :class "urgentwid red bar"
-              (image 
-                :image-width 25 
-                :path "./assets/icons/linkw.svg")))
-          (box 
-            :vexpand true
-            :class "colorswidbox bar"
-            :style "background-color: ${theme.base};"
-            (label 
-              :text "text")))
-        (box
-          :hexpand true
-          :orientation "v"
-          :space-evenly false
-          (button 
-            :class "urgentwid bar"
-            (label 
-              :text "button"))
-
-          (box 
-            :orientation "h"
-            :space-evenly false
-            :vexpand true
-            :class "colorswidbox bar"
-            :style "background-color: ${theme.surface}; padding: 0;"
-            (box 
-              :width 30 
-              :style "background-color: ${theme.base}; border-right: solid 1px ${theme.overlay}; border-radius: 10px 0 0 10px;")
-            (box 
-              :hexpand true
-              :class "widget"
-              :style "background-color: ${theme.overlay};")))
-              
-            
-        (box
-          :orientation "h"
-          :space-evenly false
-          :vexpand true
-          (box 
-            :class "colorswidbox bar"
-            :style "background-color: ${theme.surface};"
-            (scroll
-              :hscroll false 
-              :vscroll true 
-              :vexpand true 
-              :active false
-              (label 
-                :angle 270
-                :style "margin: 5px;"
-                :text "Lorem ipsum dolor sit amet."))) 
-          (box 
-            :width 10 
-            :style "
-            background-color: ${theme.highlight}; 
-            border-radius: 10px; 
-            margin: 5px 5px 5px 0px;"
-            (box 
-              :style "
-              background-color: ${theme.subtle};
-              border-radius: 10px;
-              margin-bottom: 80px;
-              "))))
-          
+    (headcont
       (box 
         :orientation "h"
         :space-evenly false 
@@ -182,16 +102,84 @@
               :value {colorjson.val}
               :onaccept "./scripts/colormap.py set ${colorjson.key} '{}'")))
         (box
-          :width 118 
+          :width 94
           :class "colorbox"
           :style "margin-right: 0px;"
-          :style "background-color: ${colorjson.hex};")))))
+          :style "background-color: ${colorjson.hex};"))
+      (box 
+        :height 100
+        :halign "center"
+        (box 
+          :orientation "h"
+          :space-evenly false
+          (box 
+            :hexpand true
+            :orientation "v"
+            :space-evenly false
+            (box 
+              :orientation "h"
+              (box 
+                :class "colorswidbox bar"
+                :style "background-color: ${theme.overlay};"
+                (transform
+                  :transform-origin-x "50%"
+                  :transform-origin-y "50%"
+                  :rotate 25
+                  (image 
+                    :image-width 25
+                    :path "./assets/icons/chevronright.svg")))
+              (box 
+                :class "urgentwid bar"
+                (image 
+                  :image-width 25 
+                  :path "./assets/icons/linkw.svg")))
+            (box 
+              :vexpand true
+              :class "colorswidbox bar"
+              :style "background-color: ${theme.base};"
+              (label 
+                :text "text")))
+          (box
+            :hexpand true
+            :orientation "v"
+            :space-evenly true
+            :width 120
+            :vexpand true
+            (button 
+              :class "urgentwid bar"
+              (label 
+                :text "Button"))
+
+            (button 
+              :class "colorswidbox bar"
+              :style "background-color: ${theme.base};"
+              (scroll
+                :hscroll true 
+                :vscroll false 
+                :vexpand true 
+                :active false
+                (label 
+                  :text "lorem ipsum dolor sit amet."))))
+                
+              
+          (box 
+            :width 15 
+            :style "
+            background-color: ${theme.highlight}; 
+            border-radius: 10px; 
+            margin: 5px 5px 5px 5px;"
+            (box 
+              :style "
+              background-color: ${theme.subtle};
+              border-radius: 10px;
+              margin-bottom: 60px;
+              ")))))))
+          
 
 (defwidget combobox [text items onchange]
   (box
     :hexpand true
-    :class "widget"
-    :style "margin-left: 0px;"
+    :class "interactive"
     (overlay 
       (combo-box-text 
         :items items 
