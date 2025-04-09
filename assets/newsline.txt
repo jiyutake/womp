@@ -105,3 +105,4 @@ I use A- YOU ARE NOT SAFE ON THIS TERRITORY AND CAN NOT GUARANTEE SURVIVAL OF YO
 That's relatable, actually. You probably haven't read what i'm talking about because you didn't have the notifications open on your screen when the previous ticker was passing by. How do i know that? Well, a lot of luck and some attempts of making this sound cooler than it looks to me writing this on my poor keyboard looking it through my poor monitor.
 ERROR: The message that was going to be displayed here was too long to be displayed, and would probably crash the user's computer if attempted to be rendered. Check eww logs for more details.     echo "[womp][ERROR]| Variable really_big_variable_that_is_probably_not_practical_to_write_specially_considering_that_it_uses_underscores not found."
 I'm not getting paid for writing this. It's just for the love of it, i guess.
+"Linux users, man. All they do is configure and never do proper work" - Emi "certified vimbo" mkshift
