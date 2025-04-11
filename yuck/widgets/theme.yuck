@@ -24,29 +24,34 @@
       :space-evenly false
       :vexpand true
       (box 
-        :width 200
+        :width 230
         :orientation "v"
         :space-evenly false 
         :class "leftbar"
-        :spacing 15
-        (sidebarselect 
-          :icon "./assets/icons/tpen"
-          :name "Theme"
-          :pos 0)
-        (sidebarselect 
-          :icon "./assets/icons/layout"
-          :name "Layout"
-          :pos 1)
-        (sidebarselect 
-          :icon "./assets/icons/cpu"
-          :name "Performance"
-          :pos 2)
+        (box
+          :orientation "v"
+          :class "widget"
+          :spacing 15
+          (sidebarselect 
+            :icon "./assets/icons/tpen"
+            :name "Theme"
+            :pos 0)
+          (sidebarselect 
+            :icon "./assets/icons/layout"
+            :name "Layout"
+            :pos 1)
+          (sidebarselect 
+            :icon "./assets/icons/cpu"
+            :name "Performance"
+            :pos 2))
         (box 
           :vexpand true)
-        (sidebarselect 
-          :icon "./assets/icons/link"
-          :name "Credits"
-          :pos 3))
+        (box
+          :class "widget"
+          (sidebarselect 
+            :icon "./assets/icons/link"
+            :name "Credits"
+            :pos 3)))
       (stack 
         :hexpand true
         :transition "slideright"
@@ -59,7 +64,9 @@
 
 (defwidget sidebarselect [icon name pos]
   (button
+    :class {pos == selectedthememenu ? "interactive hard" : "widget"}
     :onclick "${EWW_CMD} update selectedthememenu=${pos}"
+    :style "padding: 10px;"
     (box 
       :orientation "h"
       :spacing 10
@@ -68,7 +75,7 @@
         :path "${icon}${pos == selectedthememenu ? 'b' : ''}.svg"
         :image-width 20) 
       (label 
-        :markup {pos == selectedthememenu ? "<span weight='bold'>${name}</span>" : name}))))
+        :markup {pos == selectedthememenu ? "<span weight='bold'>${name}</span>" : "<span foreground='${theme.subtle}'>${name}</span>"}))))
 
 
 (defwidget headcont []

@@ -256,7 +256,7 @@
         :hexpand true
         (image 
           :image-width 20
-          :path "./assets/icons/linkb.svg")
+          :path "./assets/icons/linkw.svg")
         (button
           :onclick "xdg-open https://github.com/jiyutake/womp/issues"
           (label 
