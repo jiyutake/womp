@@ -2,8 +2,11 @@
 .barbg {
   background-color: $base;
   padding: $padding;
-  margin: 2*$margin;
+  // margin: 2*$margin;
   border-radius: $round + $padding;
+  &.square {
+    border-radius: 0px;
+  }
 }
 
 .clock {

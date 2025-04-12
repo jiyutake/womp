@@ -37,7 +37,7 @@
       :style "padding: 0px 5px;"
       (image 
         :image-width 20 
-        :path "./assets/icons/cpub.svg")
+        :path "./assets/icons/cpud.svg")
       (label 
         :style "margin: 10px 0;"
         :markup "<b>Resources</b>"))

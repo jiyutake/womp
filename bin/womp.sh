@@ -26,7 +26,6 @@ help() {
             toggle
         \e[1mWINDOW\e[22m
             bar 
-            screenborder 
             applauncher
             recordplayer
             notificationlog
@@ -109,7 +108,7 @@ case $1 in
     ;;
     window)
         case "$3" in
-            applauncher|notificationlog|systemctl|bar|screenborder|recordplayer|themectl) 
+            applauncher|notificationlog|systemctl|bar|recordplayer|themectl) 
                 case "$2" in
                     open|toggle|close)
                         $EWW_DIR/scripts/winpos.sh $3 $2

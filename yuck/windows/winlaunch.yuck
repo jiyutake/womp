@@ -1,8 +1,8 @@
 
 (defwindow winlaunch 
   :geometry (geometry 
-              :x 70 
-              :y 0 
+              :x 80 
+              :y 10 
               :width 60 
               :height 120
               :anchor "top left")
@@ -13,6 +13,6 @@
   :windowtype "dock"
   
   (box 
-    :class "barbg"  
+    :class "barbg ${picomrunning ? '' : 'square'}"  
     (unscrollableicons)))
 
