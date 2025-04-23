@@ -1,10 +1,10 @@
 
 (defwindow bar 
   :geometry (geometry 
-              :x "10"
+              :x "0"
               :y "0"
               :width 40 
-              :height "98%"
+              :height "100%"
               :anchor "center left")
   :stacking "bg"
   :exclusive true 
@@ -16,7 +16,7 @@
 
 (defwidget barstruct [] 
   (centerbox 
-    :class "barbg ${picomrunning ? '' : 'square'}"
+    :class "barbg ${picomrunning ? 'notsquare' : 'square'}"
     :orientation "v"
     (top)
     (middle)

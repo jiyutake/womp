@@ -38,7 +38,7 @@
 (deflisten batanim :initial true "./bin/performancevar.sh get battery_anim")
 (deflisten lyricsenable :initial true "./bin/performancevar.sh get lyrics")
 (deflisten newsenable :initial true "./bin/performancevar.sh get news")
-(deflisten picomrunning :initial true "bash -c 'if pidof picom &> /dev/null; then echo true; else echo false; fi'")
+(defpoll picomrunning :initial false :interval "1m" "bash -c 'if pidof picom &> /dev/null; then echo true; else echo false; fi'")
 (deflisten fullscreencheck "./bin/fullscreen_check_listen.sh")
 
 ;; Windows
